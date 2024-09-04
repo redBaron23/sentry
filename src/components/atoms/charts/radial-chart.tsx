@@ -1,0 +1,123 @@
+"use client";
+
+import {
+  ChartConfig,
+  ChartContainer,
+  ChartTooltip,
+  ChartTooltipContent,
+} from "@/components/ui/chart";
+import {
+  Label,
+  PolarAngleAxis,
+  PolarRadiusAxis,
+  RadialBar,
+  RadialBarChart,
+} from "recharts";
+
+interface RadialChartProps {
+  name: string;
+  value: number;
+  color?: string;
+  maxWidth?: number;
+  startAngle?: number;
+  endAngle?: number;
+  innerRadius?: number;
+  outerRadius?: number;
+}
+
+export function RadialChart({
+  name,
+  value,
+  color = "hsl(142, 76%, 36%)",
+  maxWidth = 200,
+  startAngle = 180,
+  endAngle = 0,
+  innerRadius = 80,
+  outerRadius = 130,
+}: RadialChartProps) {
+  const chartData = [
+    {
+      name,
+      value,
+    },
+  ];
+
+  const chartConfig: ChartConfig = {
+    [name]: {
+      label: name,
+      color: color,
+    },
+  };
+
+  return (
+    <ChartContainer
+      config={chartConfig}
+      className={`mx-auto aspect-square w-full max-w-[${maxWidth}px]`}
+    >
+      <RadialBarChart
+        data={chartData}
+        startAngle={startAngle}
+        endAngle={endAngle}
+        innerRadius={innerRadius}
+        outerRadius={outerRadius}
+      >
+        <PolarAngleAxis
+          type="number"
+          domain={[0, 100]}
+          angleAxisId={0}
+          tick={false}
+        />
+        <RadialBar
+          background
+          dataKey="value"
+          // fill={`var(--color-${name})`}
+          cornerRadius={5}
+          className="stroke-transparent stroke-2 fill-green-700"
+        />
+        <ChartTooltip
+          cursor={false}
+          content={<ChartTooltipContent nameKey={name} />}
+        />
+        <PolarRadiusAxis tick={false} axisLine={false}>
+          <Label
+            content={({ viewBox }) => {
+              if (viewBox && "cx" in viewBox && "cy" in viewBox) {
+                return (
+                  <>
+                    <text x={viewBox.cx} y={viewBox.cy} textAnchor="middle">
+                      <tspan
+                        x={viewBox.cx}
+                        y={viewBox.cy}
+                        className="fill-foreground text-2xl font-bold"
+                      >
+                        {value}%
+                      </tspan>
+                    </text>
+                    <text x={viewBox.cx} y={viewBox.cy}>
+                      <tspan
+                        x={(viewBox.cx || 0) - 90}
+                        y={(viewBox.cy || 0) + 20}
+                        textAnchor="start"
+                        className="fill-muted-foreground text-xs"
+                      >
+                        0%
+                      </tspan>
+                      <tspan
+                        x={(viewBox.cx || 0) + 100}
+                        y={(viewBox.cy || 0) + 20}
+                        textAnchor="end"
+                        className="fill-muted-foreground text-xs"
+                      >
+                        100%
+                      </tspan>
+                    </text>
+                  </>
+                );
+              }
+            }}
+          />
+        </PolarRadiusAxis>
+      </RadialBarChart>
+    </ChartContainer>
+  );
+}
