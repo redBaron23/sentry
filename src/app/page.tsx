@@ -1,3 +1,4 @@
+import { BarChart } from "@/components/atoms/charts/bar-chart";
 import { RadialChart } from "@/components/atoms/charts/radial-chart";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { ChartColumnIncreasing } from "lucide-react";
@@ -25,7 +26,7 @@ export default function Home() {
               <ChartColumnIncreasing className="h-5 w-5 text-muted-foreground" />
             </div>
           </CardHeader>
-          <CardContent className="grid grid-cols-2 gap-4 pt-6">
+          <CardContent className="flex flex-col md:flex-row gap-4 pt-6">
             <RadialChart title="Server" name="Server" value={99} />
             <RadialChart title="Work Station" name="Work Station" value={99} />
           </CardContent>
@@ -37,7 +38,7 @@ export default function Home() {
               <ChartColumnIncreasing className="h-5 w-5 text-muted-foreground" />
             </div>
           </CardHeader>
-          <CardContent className="grid grid-cols-2 gap-4 pt-6">
+          <CardContent className="flex flex-col md:flex-row gap-4 pt-6">
             <RadialChart title="Server" name="Server" value={97} />
             <RadialChart title="Work Station" name="Work Station" value={95} />
           </CardContent>
@@ -52,7 +53,7 @@ export default function Home() {
             </div>
           </CardHeader>
           <CardContent className="grid grid-cols-2 gap-4 pt-6">
-            <RadialChart title="Server" name="Server" value={55} />
+            <BarChart title="Vulnerabilidades por severidad" />
             <RadialChart title="Work Station" name="Work Station" value={55} />
           </CardContent>
         </Card>

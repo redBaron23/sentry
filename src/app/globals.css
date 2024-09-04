@@ -67,6 +67,10 @@
     --chart-3: 197 37% 24%;
     --chart-4: 43 74% 66%;
     --chart-5: 27 87% 67%;
+    --chart-critical: 0 100% 65%;
+    --chart-high: 22 100% 50%;
+    --chart-medium: 45 100% 51%;
+    --chart-low: 116 46% 49%;
     --radius: 0.5rem;
   }
   .dark {
@@ -94,6 +98,10 @@
     --chart-3: 30 80% 55%;
     --chart-4: 280 65% 60%;
     --chart-5: 340 75% 55%;
+    --chart-critical: 0 100% 65%;
+    --chart-high: 22 100% 50%;
+    --chart-medium: 45 100% 51%;
+    --chart-low: 116 46% 49%;
   }
 }
 
