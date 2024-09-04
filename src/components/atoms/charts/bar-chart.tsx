@@ -50,8 +50,8 @@ interface Props {
 
 export function BarChart({ title }: Props) {
   return (
-    <div className="flex flex-col gap-3">
-      {title && <h5 className="self-center">{title}</h5>}
+    <div className="flex flex-col gap-3 text-center">
+      {title && <h6>{title}</h6>}
       <ChartContainer config={chartConfig}>
         <RechartBarChart
           accessibilityLayer

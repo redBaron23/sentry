@@ -44,29 +44,49 @@ export default function Home() {
           </CardContent>
         </Card>
       </div>
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-3 ">
         <Card>
           <CardHeader className="border-b pb-4">
             <div className="flex justify-between items-center">
-              <CardTitle>Parches de seguridad (SCCM)</CardTitle>
+              <CardTitle>Vulnerabilidades IT</CardTitle>
               <ChartColumnIncreasing className="h-5 w-5 text-muted-foreground" />
             </div>
           </CardHeader>
-          <CardContent className="grid grid-cols-2 gap-4 pt-6">
-            <BarChart title="Vulnerabilidades por severidad" />
-            <RadialChart title="Work Station" name="Work Station" value={55} />
+          <CardContent className="grid grid-cols-3 gap-4 pt-6 ">
+            <div className="flex flex-col justify-between">
+              <div className="flex flex-col gap-3">
+                <h6>Mes base</h6>
+                <p className="font-medium text-2xl">4,049</p>
+              </div>
+              <div className="flex flex-col gap-3">
+                <h6>Mes base</h6>
+                <p className="font-medium text-2xl">4,049</p>
+              </div>
+            </div>
+
+            <BarChart title="Vulnerabilidades por Severidad" />
           </CardContent>
         </Card>
         <Card>
           <CardHeader className="border-b pb-4">
             <div className="flex justify-between items-center">
-              <CardTitle>Antivirus</CardTitle>
+              <CardTitle>Vulnerabilidades IT</CardTitle>
               <ChartColumnIncreasing className="h-5 w-5 text-muted-foreground" />
             </div>
           </CardHeader>
-          <CardContent className="grid grid-cols-2 gap-4 pt-6">
-            <RadialChart title="Server" name="Server" value={99} />
-            <RadialChart title="Work Station" name="Work Station" value={99} />
+          <CardContent className="grid grid-cols-3 gap-4 pt-6 ">
+            <div className="flex flex-col justify-between">
+              <div className="flex flex-col gap-3">
+                <h6>Mes base</h6>
+                <p className="font-medium text-2xl">4,049</p>
+              </div>
+              <div className="flex flex-col gap-3">
+                <h6>Mes base</h6>
+                <p className="font-medium text-2xl">4,049</p>
+              </div>
+            </div>
+
+            <BarChart title="Vulnerabilidades por severidad" />
           </CardContent>
         </Card>
       </div>
