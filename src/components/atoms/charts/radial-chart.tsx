@@ -34,8 +34,8 @@ export function RadialChart({
   maxWidth = 200,
   startAngle = 180,
   endAngle = 0,
-  innerRadius = 80,
-  outerRadius = 130,
+  innerRadius = 70,
+  outerRadius = 120,
 }: RadialChartProps) {
   const chartData = [
     {
@@ -52,12 +52,12 @@ export function RadialChart({
   };
 
   return (
-    <div className="flex flex-col items-center">
+    <div className="flex flex-col items-center w-full">
       {title && <h5>{title}</h5>}
       <div className={`w-full min-w-[${maxWidth}px]`}>
         <ChartContainer
           config={chartConfig}
-          className={`mx-auto aspect-square  max-w-[${maxWidth}px]`}
+          className={`mx-auto aspect-square   max-w-[${maxWidth}px]`}
         >
           <RadialBarChart
             data={chartData}
@@ -100,7 +100,7 @@ export function RadialChart({
                         </text>
                         <text x={viewBox.cx} y={viewBox.cy}>
                           <tspan
-                            x={(viewBox.cx || 0) - 90}
+                            x={(viewBox.cx || 0) - 80}
                             y={(viewBox.cy || 0) + 20}
                             textAnchor="start"
                             className="fill-muted-foreground text-xs"
@@ -108,7 +108,7 @@ export function RadialChart({
                             0%
                           </tspan>
                           <tspan
-                            x={(viewBox.cx || 0) + 100}
+                            x={(viewBox.cx || 0) + 90}
                             y={(viewBox.cy || 0) + 20}
                             textAnchor="end"
                             className="fill-muted-foreground text-xs"
