@@ -66,7 +66,7 @@ export default function Home() {
             </div>
 
             <BarChart title="Vulnerabilidades por Severidad" />
-            <VariationChart />
+            <VariationChart value={22.1} title="Porcentaje de variacion" />
           </CardContent>
         </Card>
         <Card>

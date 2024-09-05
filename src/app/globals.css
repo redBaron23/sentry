@@ -71,6 +71,8 @@
     --chart-high: 22 100% 50%;
     --chart-medium: 45 100% 51%;
     --chart-low: 116 46% 49%;
+    --chart-variation-positive: 116 46% 49%;
+    --chart-variation-negative: 22 100% 50%;
     --radius: 0.5rem;
   }
   .dark {
