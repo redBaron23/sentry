@@ -59,12 +59,13 @@ export default function Home() {
                 <p className="font-medium text-2xl">4,049</p>
               </div>
               <div className="flex flex-col gap-3">
-                <h6>Mes base</h6>
-                <p className="font-medium text-2xl">4,049</p>
+                <h6>Octubre</h6>
+                <p className="font-medium text-2xl">3,501</p>
               </div>
             </div>
 
             <BarChart title="Vulnerabilidades por Severidad" />
+            {/* <VariationChart variation={0} /> */}
           </CardContent>
         </Card>
         <Card>

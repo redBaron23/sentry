@@ -52,7 +52,7 @@ export function RadialChart({
   };
 
   return (
-    <div className="flex flex-col text-center">
+    <div className="flex flex-col w-full text-center">
       {title && <h6>{title}</h6>}
       <div className={`w-full min-w-[${maxWidth}px]`}>
         <ChartContainer
