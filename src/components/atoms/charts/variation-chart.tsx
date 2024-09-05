@@ -45,8 +45,8 @@ export function VariationChart({ title, value }) {
           data={chartData}
           startAngle={180}
           endAngle={0}
-          innerRadius={80}
-          outerRadius={130}
+          innerRadius={70}
+          outerRadius={120}
         >
           <PolarAngleAxis
             type="number"
