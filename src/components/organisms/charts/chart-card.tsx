@@ -19,7 +19,7 @@ const ChartCard = ({ title, children, cols = 2 }: Props) => {
         </div>
       </CardHeader>
       <CardContent
-        className={clsx("grid grid-cols-1 gap-7 pt-6", {
+        className={clsx("text-center grid grid-cols-1 gap-8 pt-6", {
           "md:grid-cols-2": cols === 2,
           "xl:grid-cols-3": cols === 3,
         })}

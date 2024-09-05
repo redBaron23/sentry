@@ -39,7 +39,7 @@
     @apply text-lg font-semibold;
   }
   h6 {
-    @apply text-lg font-semibold;
+    @apply text-base font-semibold;
   }
 
   :root {

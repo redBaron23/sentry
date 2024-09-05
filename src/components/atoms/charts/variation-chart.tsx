@@ -20,10 +20,9 @@ interface Props {
   title: string;
 }
 
-export function VariationChart({ title, value }) {
+export function VariationChart({ title, value }: Props) {
   const chartData = [{ variation: value }];
 
-  const porcentualVariation = value / 100;
   const currentBackgroundColor =
     value >= 0 ? "variation-positive" : "variation-negative";
 

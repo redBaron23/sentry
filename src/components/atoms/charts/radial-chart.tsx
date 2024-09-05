@@ -30,7 +30,7 @@ export function RadialChart({
   name,
   value,
   title,
-  color = "hsl(142, 76%, 36%)",
+  color = "hsl(var(--chart-variation-positive))",
   maxWidth = 200,
   startAngle = 180,
   endAngle = 0,
@@ -75,9 +75,9 @@ export function RadialChart({
             <RadialBar
               background
               dataKey="value"
-              // fill={`var(--color-${name})`}
+              fill={color}
               cornerRadius={5}
-              className="stroke-transparent stroke-2 fill-green-700"
+              className="stroke-transparent stroke-2"
             />
             <ChartTooltip
               cursor={false}

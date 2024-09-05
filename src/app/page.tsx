@@ -2,6 +2,7 @@ import { BarChart } from "@/components/atoms/charts/bar-chart";
 import { RadialChart } from "@/components/atoms/charts/radial-chart";
 import { VariationChart } from "@/components/atoms/charts/variation-chart";
 import ChartCard from "@/components/organisms/charts/chart-card";
+import Link from "next/link";
 
 export default function Home() {
   return (
@@ -27,11 +28,11 @@ export default function Home() {
           <div className="flex flex-col gap-7 items-center">
             <div className="flex flex-col gap-3">
               <h6>Mes base</h6>
-              <p className="font-medium text-2xl">4,049</p>
+              <p className="text-3xl font-bold">4,049</p>
             </div>
             <div className="flex flex-col gap-3">
               <h6>Octubre</h6>
-              <p className="font-medium text-2xl">3,501</p>
+              <p className="text-3xl font-bold">3,501</p>
             </div>
           </div>
 
@@ -39,20 +40,38 @@ export default function Home() {
           <VariationChart value={22.1} title="Porcentaje de variacion" />
         </ChartCard>
 
-        <ChartCard title="Vulnerabilidades IT" cols={3}>
-          <div className="flex flex-col gap-7 items-center">
-            <div className="flex flex-col gap-3">
-              <h6>Mes base</h6>
-              <p className="font-medium text-2xl">4,049</p>
-            </div>
-            <div className="flex flex-col gap-3">
-              <h6>Octubre</h6>
-              <p className="font-medium text-2xl">3,501</p>
-            </div>
+        <ChartCard title="Gestion de Incidentes" cols={3}>
+          <div className="flex flex-col gap-3 ">
+            <h6>Total de Incidentes Alto/Criticos</h6>
+            <span className="text-3xl font-bold">0</span>
           </div>
 
-          <BarChart title="Vulnerabilidades por Severidad" />
-          <VariationChart value={22.1} title="Porcentaje de variacion" />
+          <div className="flex flex-col gap-3">
+            <h6>Alertas Cerradas por Estado</h6>
+            <div className="space-y-2">
+              <div className="flex flex-col">
+                <span className="text-3xl font-bold">348</span>
+                <Link href="#" className="text-sm text-blue-600">
+                  Falso Positivo
+                </Link>
+              </div>
+              <div className="flex flex-col">
+                <span className="text-3xl font-bold">0</span>
+                <Link href="#" className="text-sm text-blue-600">
+                  Incidente
+                </Link>
+              </div>
+            </div>
+          </div>
+          <div className="flex flex-col gap-3">
+            <h6>Detalle de Escalamiento</h6>
+            <div className="flex flex-col">
+              <span className="text-3xl font-bold">5</span>
+              <Link href="#" className="text-sm text-blue-600">
+                Fuera de Hora
+              </Link>
+            </div>
+          </div>
         </ChartCard>
       </div>
     </main>
