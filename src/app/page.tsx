@@ -1,5 +1,6 @@
 import { BarChart } from "@/components/atoms/charts/bar-chart";
 import { RadialChart } from "@/components/atoms/charts/radial-chart";
+import { VariationChart } from "@/components/atoms/charts/variation-chart";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { ChartColumnIncreasing } from "lucide-react";
 
@@ -65,7 +66,7 @@ export default function Home() {
             </div>
 
             <BarChart title="Vulnerabilidades por Severidad" />
-            {/* <VariationChart variation={0} /> */}
+            <VariationChart />
           </CardContent>
         </Card>
         <Card>

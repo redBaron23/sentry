@@ -1,42 +1,96 @@
 "use client";
 
-interface VariationChartProps {
-  variation: number;
-}
+import {
+  Label,
+  PolarAngleAxis,
+  PolarRadiusAxis,
+  RadialBar,
+  RadialBarChart,
+} from "recharts";
 
-export function VariationChart({ variation }: VariationChartProps) {
-  // Calculamos el ángulo basado en el porcentaje (100% = 180 grados)
-  const angle = (variation / 100) * 180;
+import {
+  ChartConfig,
+  ChartContainer,
+  ChartTooltip,
+  ChartTooltipContent,
+} from "@/components/ui/chart";
 
-  // Determinamos el color basado en si es positivo o negativo
-  const color = variation >= 0 ? "#22c55e" : "#ef4444"; // Verde para positivo, rojo para negativo
+export const description = "A radial chart with stacked sections";
+
+const chartData = [{ desktop: 70 }];
+
+const chartConfig = {
+  desktop: {
+    label: "Desktop",
+    color: "hsl(var(--chart-low))",
+  },
+} satisfies ChartConfig;
+
+export function VariationChart() {
+  const totalVisitors = chartData[0].desktop;
 
   return (
-    <div className="relative w-48 h-24">
-      {/* Arco base */}
-      <div className="absolute w-full h-full border-t-[12px] border-gray-200 rounded-t-full"></div>
-
-      {/* Arco de variación */}
-      <div
-        className="absolute w-full h-full border-t-[12px] rounded-t-full"
-        style={{
-          borderColor: color,
-          transform: `rotate(${angle}deg)`,
-          transformOrigin: "bottom center",
-          clipPath:
-            variation >= 0
-              ? "polygon(50% 0, 100% 0, 100% 100%, 0 100%)"
-              : "polygon(0 0, 50% 0, 100% 100%, 0 100%)",
-        }}
-      ></div>
-
-      {/* Porcentaje */}
-      <div className="absolute inset-0 flex items-center justify-center top-6">
-        <span className="text-2xl font-bold" style={{ color }}>
-          {variation > 0 ? "+" : ""}
-          {variation}%
-        </span>
-      </div>
-    </div>
+    <ChartContainer
+      config={chartConfig}
+      className="mx-auto aspect-square w-full max-w-[250px]"
+    >
+      <RadialBarChart
+        data={chartData}
+        startAngle={180}
+        endAngle={0}
+        innerRadius={80}
+        outerRadius={130}
+      >
+        <PolarAngleAxis
+          type="number"
+          domain={[0, 100]}
+          angleAxisId={0}
+          tick={false}
+        />
+        <ChartTooltip
+          cursor={false}
+          content={<ChartTooltipContent hideLabel />}
+        />
+        <PolarRadiusAxis
+          tick={false}
+          tickLine={false}
+          axisLine={false}
+          type="number"
+          domain={[0, 100]}
+        >
+          <Label
+            content={({ viewBox }) => {
+              if (viewBox && "cx" in viewBox && "cy" in viewBox) {
+                return (
+                  <text x={viewBox.cx} y={viewBox.cy} textAnchor="middle">
+                    <tspan
+                      x={viewBox.cx}
+                      y={(viewBox.cy || 0) - 16}
+                      className="fill-foreground text-2xl font-bold"
+                    >
+                      {totalVisitors.toLocaleString()}
+                    </tspan>
+                    <tspan
+                      x={viewBox.cx}
+                      y={(viewBox.cy || 0) + 4}
+                      className="fill-muted-foreground"
+                    >
+                      Visitors
+                    </tspan>
+                  </text>
+                );
+              }
+            }}
+          />
+        </PolarRadiusAxis>
+        <RadialBar
+          dataKey="desktop"
+          stackId="a"
+          cornerRadius={5}
+          fill="var(--color-desktop)"
+          className="stroke-transparent stroke-2"
+        />
+      </RadialBarChart>
+    </ChartContainer>
   );
 }
