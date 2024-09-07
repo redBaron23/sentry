@@ -10,49 +10,40 @@ import {
 } from "recharts";
 
 import {
-  ChartConfig,
   ChartContainer,
   ChartTooltip,
   ChartTooltipContent,
 } from "@/components/ui/chart";
 
-export const description = "A bar chart with an active bar and labels";
-
-const chartData = [
-  { vulnerability: "critical", quantity: 40, fill: "var(--color-critical)" },
-  { vulnerability: "high", quantity: 60, fill: "var(--color-high)" },
-  { vulnerability: "medium", quantity: 140, fill: "var(--color-medium)" },
-  { vulnerability: "low", quantity: 30, fill: "var(--color-low)" },
-];
-
-const chartConfig = {
-  critical: {
-    label: "Critical",
-    color: "hsl(var(--chart-critical))",
-  },
-  high: {
-    label: "High",
-    color: "hsl(var(--chart-high))",
-  },
-  medium: {
-    label: "Medium",
-    color: "hsl(var(--chart-medium))",
-  },
-  low: {
-    label: "Low",
-    color: "hsl(var(--chart-low))",
-  },
-} satisfies ChartConfig;
+interface BarData {
+  label: string;
+  color: string;
+  quantity: number;
+}
 
 interface Props {
   title?: string;
+  data: Record<string, BarData>;
 }
 
-export function BarChart({ title }: Props) {
+export function BarChart({ title, data }: Props) {
+  const chartData = Object.entries(data).map(([key, value]) => ({
+    name: key,
+    ...value,
+    fill: value.color,
+  }));
+
+  const config = Object.fromEntries(
+    Object.entries(data).map(([key, { label, color }]) => [
+      key,
+      { label, color },
+    ])
+  );
+
   return (
     <div className="flex flex-col gap-3 text-center">
       {title && <h6>{title}</h6>}
-      <ChartContainer config={chartConfig}>
+      <ChartContainer config={config}>
         <RechartBarChart
           accessibilityLayer
           margin={{ top: 20 }}
@@ -60,13 +51,11 @@ export function BarChart({ title }: Props) {
         >
           <CartesianGrid vertical={false} />
           <XAxis
-            dataKey="vulnerability"
+            dataKey="name"
             tickLine={false}
             tickMargin={10}
             axisLine={false}
-            tickFormatter={(value) =>
-              chartConfig[value as keyof typeof chartConfig]?.label
-            }
+            tickFormatter={(value) => data[value]?.label || value}
           />
           <ChartTooltip
             cursor={false}
@@ -81,7 +70,7 @@ export function BarChart({ title }: Props) {
                 <Rectangle
                   {...props}
                   fillOpacity={0.8}
-                  stroke={props.payload.fill}
+                  stroke={props.fill}
                   strokeDasharray={4}
                   strokeDashoffset={4}
                 />
