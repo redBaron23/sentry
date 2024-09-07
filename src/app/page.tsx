@@ -57,6 +57,32 @@ const last12MonthTicketsChartData = {
   },
 };
 
+const ticketsRemediationChartData = {
+  setup: {
+    label: "Configuracion Insegura",
+    color: "hsl(var(--chart-new-tickets))",
+    quantity: 19,
+  },
+  out: {
+    label: "SO fuera de soporte",
+    color: "hsl(var(--chart-new-tickets))",
+    quantity: 3,
+  },
+};
+
+const ticketsPendingRemediationChartData = {
+  setup: {
+    label: "Aplicacion WEB",
+    color: "hsl(var(--chart-new-tickets))",
+    quantity: 14,
+  },
+  out: {
+    label: "Infraestructura Interna",
+    color: "hsl(var(--chart-new-tickets))",
+    quantity: 8,
+  },
+};
+
 export default function Home() {
   return (
     <main className="min-h-screen bg-slate-50 p-8">
@@ -149,6 +175,22 @@ export default function Home() {
           >
             <BarChart data={ticketsChartData} />
           </ChartCard>
+        </div>
+        <div className="flex flex-col gap-3">
+          <div className="flex grid-cols-2 gap-3">
+            <ChartCard
+              title="Tickets Pendientes por Categoria de Remediacion"
+              cols={1}
+            >
+              <BarChart data={ticketsRemediationChartData} />
+            </ChartCard>
+            <ChartCard
+              title="Tickets Pendientes por Tipo de Analisis de Remediacion"
+              cols={1}
+            >
+              <BarChart data={ticketsPendingRemediationChartData} />
+            </ChartCard>
+          </div>
         </div>
       </div>
     </main>
