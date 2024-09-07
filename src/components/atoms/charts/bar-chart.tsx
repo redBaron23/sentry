@@ -7,6 +7,7 @@ import {
   BarChart as RechartBarChart,
   Rectangle,
   XAxis,
+  YAxis,
 } from "recharts";
 
 import {
@@ -24,9 +25,10 @@ interface BarData {
 interface Props {
   title?: string;
   data: Record<string, BarData>;
+  showYAxis?: boolean;
 }
 
-export function BarChart({ title, data }: Props) {
+export function BarChart({ title, data, showYAxis = true }: Props) {
   const chartData = Object.entries(data).map(([key, value]) => ({
     name: key,
     ...value,
@@ -57,6 +59,9 @@ export function BarChart({ title, data }: Props) {
             axisLine={false}
             tickFormatter={(value) => data[value]?.label || value}
           />
+          {showYAxis && (
+            <YAxis axisLine={false} tickLine={false} tickMargin={10} />
+          )}
           <ChartTooltip
             cursor={false}
             content={<ChartTooltipContent hideLabel />}

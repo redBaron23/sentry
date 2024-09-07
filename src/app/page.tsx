@@ -1,5 +1,6 @@
 import { BarChart } from "@/components/atoms/charts/bar-chart";
 import { RadialChart } from "@/components/atoms/charts/radial-chart";
+import { StackedBarChart } from "@/components/atoms/charts/stacked-bar-chart";
 import { VariationChart } from "@/components/atoms/charts/variation-chart";
 import TicketCountCard from "@/components/atoms/ticket-count-card";
 import ChartCard from "@/components/organisms/charts/chart-card";
@@ -27,6 +28,33 @@ const ticketsChartData = {
   jun: { label: "Junio", color: "hsl(var(--chart-low))", quantity: 0 },
   jul: { label: "Jul", color: "hsl(var(--chart-low))", quantity: 4 },
   ago: { label: "Agosto", color: "hsl(var(--chart-low))", quantity: 6 },
+};
+
+const last12MonthTicketsChartData = {
+  new: {
+    label: "Tickets Pendientes",
+    color: "hsl(var(--chart-pending-tickets))",
+    values: {
+      January: 12,
+      February: 0,
+      March: 0,
+      April: 0,
+      May: 21,
+      June: 8,
+    },
+  },
+  pending: {
+    label: "Tickets Nuevos",
+    color: "hsl(var(--chart-new-tickets))",
+    values: {
+      January: 6,
+      February: 6,
+      March: 3,
+      April: 3,
+      May: 20,
+      June: 22,
+    },
+  },
 };
 
 export default function Home() {
@@ -110,7 +138,13 @@ export default function Home() {
             <TicketCountCard title="Tickets Creados" count={22} />
           </div>
           <ChartCard
-            title="Tickets Resueltos por mes (Ultimos 12 meses"
+            title="Tickets Pendientes y Tickets Nuevos por Mes (últimos 12 meses)"
+            cols={1}
+          >
+            <StackedBarChart data={last12MonthTicketsChartData} />
+          </ChartCard>
+          <ChartCard
+            title="Tickets Resueltos por mes (últimos 12 meses)"
             cols={1}
           >
             <BarChart data={ticketsChartData} />
