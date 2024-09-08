@@ -190,21 +190,19 @@ export default function Home() {
             <StackedBarChart data={last12MonthTicketsChartData} />
           </ChartCard>
         </div>
-        <div className="flex flex-col gap-3">
-          <div className="flex gap-3 h-full">
-            <ChartCard
-              title="Tickets Pendientes por Categoria de Remediacion"
-              cols={1}
-            >
-              <BarChart data={ticketsRemediationChartData} />
-            </ChartCard>
-            <ChartCard
-              title="Tickets Pendientes por Tipo de Analisis de Remediacion"
-              cols={1}
-            >
-              <BarChart data={ticketsPendingRemediationChartData} />
-            </ChartCard>
-          </div>
+        <div className="grid grid-cols-2 gap-3">
+          <ChartCard
+            title="Tickets Pendientes por Categoria de Remediacion"
+            cols={1}
+          >
+            <BarChart data={ticketsRemediationChartData} />
+          </ChartCard>
+          <ChartCard
+            title="Tickets Pendientes por Tipo de Analisis de Remediacion"
+            cols={1}
+          >
+            <BarChart data={ticketsPendingRemediationChartData} />
+          </ChartCard>
         </div>
       </div>
       <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
@@ -214,17 +212,11 @@ export default function Home() {
         >
           <BarChart data={ticketsChartData} />
         </ChartCard>
-        <div className="flex gap-3">
-          <ChartCard
-            title="Tickets Pendientes por Categoria de Remediacion"
-            cols={1}
-          >
+        <div className="grid grid-cols-2 gap-3">
+          <ChartCard title="Tickets Pendientes por Severidad" cols={1}>
             <DonutChart data={ticketsPendingBySeverityChartData} />
           </ChartCard>
-          <ChartCard
-            title="Tickets Pendientes por Categoria de Remediacion"
-            cols={1}
-          >
+          <ChartCard title="Tickets Pendientes por Tipo de PenTest" cols={1}>
             <DonutChart data={ticketsPendingByPenTestChartData} />
           </ChartCard>
         </div>
