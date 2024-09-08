@@ -1,4 +1,5 @@
 import { BarChart } from "@/components/atoms/charts/bar-chart";
+import { DonutChart } from "@/components/atoms/charts/donut-chart";
 import { RadialChart } from "@/components/atoms/charts/radial-chart";
 import { StackedBarChart } from "@/components/atoms/charts/stacked-bar-chart";
 import { VariationChart } from "@/components/atoms/charts/variation-chart";
@@ -80,6 +81,25 @@ const ticketsPendingRemediationChartData = {
     label: "Infraestructura Interna",
     color: "hsl(var(--chart-new-tickets))",
     quantity: 8,
+  },
+};
+
+const ticketsPendingBySeverityChartData = {
+  critical: {
+    label: "Critical",
+    color: "hsl(var(--chart-critical))",
+    quantity: 40,
+  },
+  high: { label: "High", color: "hsl(var(--chart-high))", quantity: 60 },
+  medium: { label: "Medium", color: "hsl(var(--chart-medium))", quantity: 140 },
+  low: { label: "Low", color: "hsl(var(--chart-low))", quantity: 30 },
+};
+
+const ticketsPendingByPenTestChartData = {
+  pen: {
+    label: "Penetration test externo",
+    quantity: 22,
+    color: "hsl(var(--chart-1))",
   },
 };
 
@@ -191,6 +211,18 @@ export default function Home() {
               <BarChart data={ticketsPendingRemediationChartData} />
             </ChartCard>
           </div>
+          <ChartCard
+            title="Tickets Pendientes por Categoria de Remediacion"
+            cols={1}
+          >
+            <DonutChart data={ticketsPendingBySeverityChartData} type="donut" />
+          </ChartCard>
+          <ChartCard
+            title="Tickets Pendientes por Categoria de Remediacion"
+            cols={1}
+          >
+            <DonutChart data={ticketsPendingByPenTestChartData} type="donut" />
+          </ChartCard>
         </div>
       </div>
     </main>
