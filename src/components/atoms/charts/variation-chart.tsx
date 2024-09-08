@@ -34,7 +34,7 @@ export function VariationChart({ title, value }: Props) {
   } satisfies ChartConfig;
 
   return (
-    <div className="flex flex-col w-full text-center">
+    <div className="flex w-full flex-col text-center">
       {title && <h6>{title}</h6>}
       <ChartContainer
         config={chartConfig}

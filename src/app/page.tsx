@@ -106,7 +106,7 @@ const ticketsPendingByPenTestChartData = {
 export default function Home() {
   return (
     <main className="min-h-screen bg-slate-50 p-8">
-      <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-3 pb-3">
+      <div className="grid grid-cols-1 gap-3 pb-3 md:grid-cols-2 xl:grid-cols-3">
         <ChartCard title="Parches de seguridad (SCCM)">
           <RadialChart title="Server" name="Server" value={55} />
           <RadialChart title="Work Station" name="Work Station" value={55} />
@@ -122,9 +122,9 @@ export default function Home() {
           <RadialChart title="Work Station" name="Work Station" value={95} />
         </ChartCard>
       </div>
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-3 pb-3">
+      <div className="grid grid-cols-1 gap-3 pb-3 md:grid-cols-2">
         <ChartCard title="Vulnerabilidades IT" cols={3}>
-          <div className="flex flex-col gap-7 items-center">
+          <div className="flex flex-col items-center gap-7">
             <div className="flex flex-col gap-3">
               <h6>Mes base</h6>
               <p className="text-3xl font-bold">4,049</p>
@@ -144,7 +144,7 @@ export default function Home() {
         </ChartCard>
 
         <ChartCard title="Gestion de Incidentes" cols={3}>
-          <div className="flex flex-col gap-3 ">
+          <div className="flex flex-col gap-3">
             <h6>Total de Incidentes Alto/Criticos</h6>
             <span className="text-3xl font-bold">0</span>
           </div>
@@ -177,9 +177,9 @@ export default function Home() {
           </div>
         </ChartCard>
       </div>
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-3 pb-3">
+      <div className="grid grid-cols-1 gap-3 pb-3 md:grid-cols-2">
         <div className="flex flex-col gap-3">
-          <div className="grid grid-cols-1 sm:grid-cols-3 gap-3">
+          <div className="grid grid-cols-1 gap-3 sm:grid-cols-3">
             <TicketCountCard title="Tickets Creados" count={8} />
             <TicketCountCard title="Tickets Creados" count={6} />
             <TicketCountCard title="Tickets Creados" count={22} />
@@ -191,7 +191,7 @@ export default function Home() {
             <StackedBarChart data={last12MonthTicketsChartData} />
           </ChartCard>
         </div>
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
+        <div className="grid grid-cols-1 gap-3 md:grid-cols-2">
           <ChartCard
             title="Tickets Pendientes por Categoria de Remediacion"
             cols={1}
@@ -206,14 +206,14 @@ export default function Home() {
           </ChartCard>
         </div>
       </div>
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
+      <div className="grid grid-cols-1 gap-3 md:grid-cols-2">
         <ChartCard
           title="Tickets Resueltos por mes (últimos 12 meses)"
           cols={1}
         >
           <BarChart data={ticketsChartData} />
         </ChartCard>
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
+        <div className="grid grid-cols-1 gap-3 md:grid-cols-2">
           <ChartCard title="Tickets Pendientes por Severidad" cols={1}>
             <DonutChart data={ticketsPendingBySeverityChartData} />
           </ChartCard>

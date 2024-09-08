@@ -33,7 +33,7 @@ const renderCustomizedLabel = ({ percent, quantity }: any) => {
 export function DonutChart({ title, data }: Props) {
   const totalQuantity = Object.values(data).reduce(
     (sum, item) => sum + item.quantity,
-    0
+    0,
   );
 
   const chartData = Object.entries(data).map(([key, value]) => ({
@@ -46,12 +46,12 @@ export function DonutChart({ title, data }: Props) {
     Object.entries(data).map(([key, { label, color }]) => [
       key,
       { label, color },
-    ])
+    ]),
   );
 
   return (
-    <div className="flex flex-col h-full">
-      {title && <h6 className="text-center mb-2">{title}</h6>}
+    <div className="flex h-full flex-col">
+      {title && <h6 className="mb-2 text-center">{title}</h6>}
       <div className="flex-grow">
         <ChartContainer config={config} className="h-full w-full">
           <ResponsiveContainer width="100%" height="100%">

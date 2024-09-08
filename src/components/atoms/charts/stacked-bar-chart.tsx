@@ -56,7 +56,7 @@ export function StackedBarChart({
     Object.entries(data).map(([key, { label, color }]) => [
       key,
       { label, color },
-    ])
+    ]),
   );
 
   const barKeys = Object.keys(data);

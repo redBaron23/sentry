@@ -39,12 +39,12 @@ export function BarChart({ title, data, showYAxis = true }: Props) {
     Object.entries(data).map(([key, { label, color }]) => [
       key,
       { label, color },
-    ])
+    ]),
   );
 
   return (
-    <div className="flex flex-col h-full">
-      {title && <h6 className="text-center mb-2">{title}</h6>}
+    <div className="flex h-full flex-col">
+      {title && <h6 className="mb-2 text-center">{title}</h6>}
       <div className="flex-grow">
         <ChartContainer config={config} className="h-full w-full">
           <RechartBarChart
