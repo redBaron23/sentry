@@ -138,6 +138,7 @@ export default function Home() {
           <BarChart
             title="Vulnerabilidades por Severidad"
             data={vulnerabilitiesChartData}
+            showYAxis={false}
           />
           <VariationChart value={22.1} title="Porcentaje de variacion" />
         </ChartCard>
