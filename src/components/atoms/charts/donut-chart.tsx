@@ -1,6 +1,11 @@
 "use client";
 
-import { Cell, Pie, PieChart as RechartPieChart } from "recharts";
+import {
+  Cell,
+  Pie,
+  PieChart as RechartPieChart,
+  ResponsiveContainer,
+} from "recharts";
 
 import {
   ChartContainer,
@@ -45,26 +50,35 @@ export function DonutChart({ title, data }: Props) {
   );
 
   return (
-    <div className="flex flex-col gap-3 text-center">
-      {title && <h6>{title}</h6>}
-      <ChartContainer config={config}>
-        <RechartPieChart>
-          <ChartLegend content={<ChartLegendContent nameKey="name" />} />
-          <Pie
-            data={chartData}
-            dataKey="quantity"
-            nameKey="name"
-            innerRadius={80}
-            labelLine={true}
-            label={renderCustomizedLabel}
-          >
-            {chartData.map((entry, index) => (
-              <Cell key={`cell-${index}`} fill={entry.color} />
-            ))}
-          </Pie>
-          <ChartTooltip content={<ChartTooltipContent />} />
-        </RechartPieChart>
-      </ChartContainer>
+    <div className="flex flex-col h-full">
+      {title && <h6 className="text-center mb-2">{title}</h6>}
+      <div className="flex-grow">
+        <ChartContainer config={config} className="h-full w-full">
+          <ResponsiveContainer width="100%" height="100%">
+            <RechartPieChart>
+              <ChartLegend
+                content={<ChartLegendContent nameKey="name" />}
+                verticalAlign="bottom"
+                align="center"
+              />
+              <Pie
+                data={chartData}
+                dataKey="quantity"
+                nameKey="name"
+                innerRadius="50%"
+                outerRadius="80%"
+                labelLine={false}
+                label={renderCustomizedLabel}
+              >
+                {chartData.map((entry, index) => (
+                  <Cell key={`cell-${index}`} fill={entry.color} />
+                ))}
+              </Pie>
+              <ChartTooltip content={<ChartTooltipContent />} />
+            </RechartPieChart>
+          </ResponsiveContainer>
+        </ChartContainer>
+      </div>
     </div>
   );
 }

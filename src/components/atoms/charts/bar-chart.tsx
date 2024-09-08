@@ -43,35 +43,35 @@ export function BarChart({ title, data, showYAxis = true }: Props) {
   );
 
   return (
-    <div className="flex flex-col gap-3 text-center">
-      {title && <h6>{title}</h6>}
-      <ChartContainer config={config}>
-        <RechartBarChart
-          accessibilityLayer
-          margin={{ top: 20 }}
-          data={chartData}
-        >
-          <CartesianGrid vertical={false} />
-          <XAxis
-            dataKey="name"
-            tickLine={false}
-            tickMargin={10}
-            axisLine={false}
-            tickFormatter={(value) => data[value]?.label || value}
-          />
-          {showYAxis && (
-            <YAxis axisLine={false} tickLine={false} tickMargin={10} />
-          )}
-          <ChartTooltip
-            cursor={false}
-            content={<ChartTooltipContent hideLabel />}
-          />
-          <Bar
-            dataKey="quantity"
-            strokeWidth={2}
-            radius={8}
-            activeBar={({ ...props }) => {
-              return (
+    <div className="flex flex-col h-full">
+      {title && <h6 className="text-center mb-2">{title}</h6>}
+      <div className="flex-grow">
+        <ChartContainer config={config} className="h-full w-full">
+          <RechartBarChart
+            accessibilityLayer
+            data={chartData}
+            margin={{ top: 20, right: 10, left: 10, bottom: 5 }}
+          >
+            <CartesianGrid vertical={false} />
+            <XAxis
+              dataKey="name"
+              tickLine={false}
+              tickMargin={10}
+              axisLine={false}
+              tickFormatter={(value) => data[value]?.label || value}
+            />
+            {showYAxis && (
+              <YAxis axisLine={false} tickLine={false} tickMargin={10} />
+            )}
+            <ChartTooltip
+              cursor={false}
+              content={<ChartTooltipContent hideLabel />}
+            />
+            <Bar
+              dataKey="quantity"
+              strokeWidth={2}
+              radius={8}
+              activeBar={({ ...props }) => (
                 <Rectangle
                   {...props}
                   fillOpacity={0.8}
@@ -79,19 +79,19 @@ export function BarChart({ title, data, showYAxis = true }: Props) {
                   strokeDasharray={4}
                   strokeDashoffset={4}
                 />
-              );
-            }}
-          >
-            <LabelList
-              dataKey="quantity"
-              position="top"
-              offset={10}
-              fill="var(--foreground)"
-              fontSize={12}
-            />
-          </Bar>
-        </RechartBarChart>
-      </ChartContainer>
+              )}
+            >
+              <LabelList
+                dataKey="quantity"
+                position="top"
+                offset={10}
+                fill="var(--foreground)"
+                fontSize={12}
+              />
+            </Bar>
+          </RechartBarChart>
+        </ChartContainer>
+      </div>
     </div>
   );
 }
