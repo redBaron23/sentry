@@ -215,13 +215,13 @@ export default function Home() {
             title="Tickets Pendientes por Categoria de Remediacion"
             cols={1}
           >
-            <DonutChart data={ticketsPendingBySeverityChartData} type="donut" />
+            <DonutChart data={ticketsPendingBySeverityChartData} />
           </ChartCard>
           <ChartCard
             title="Tickets Pendientes por Categoria de Remediacion"
             cols={1}
           >
-            <DonutChart data={ticketsPendingByPenTestChartData} type="donut" />
+            <DonutChart data={ticketsPendingByPenTestChartData} />
           </ChartCard>
         </div>
       </div>
