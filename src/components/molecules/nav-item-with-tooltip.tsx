@@ -3,7 +3,6 @@ import {
   TooltipContent,
   TooltipTrigger,
 } from "@/components/ui/tooltip";
-import { cn } from "@/lib/utils";
 import { LucideIcon } from "lucide-react";
 import { NavItem } from "../atoms/nav-item";
 
@@ -25,13 +24,7 @@ export function NavItemWithTooltip({
   return (
     <Tooltip>
       <TooltipTrigger asChild>
-        <NavItem
-          href={href}
-          icon={icon}
-          label={label}
-          isActive={isActive}
-          className={cn(isLogo && "text-blue-500")}
-        />
+        <NavItem href={href} icon={icon} label={label} isLogo={isLogo} />
       </TooltipTrigger>
       <TooltipContent side="right">{label}</TooltipContent>
     </Tooltip>

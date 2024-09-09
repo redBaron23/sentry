@@ -6,27 +6,34 @@ interface NavItemProps {
   href: string;
   icon: LucideIcon;
   label: string;
-  isActive: boolean;
   className?: string;
+  isLogo?: boolean;
 }
 
 export function NavItem({
   href,
   icon: Icon,
   label,
-  isActive,
+  isLogo,
   className,
 }: NavItemProps) {
   return (
     <Link
       href={href}
       className={cn(
-        "flex h-9 w-9 items-center justify-center rounded-lg transition-colors hover:text-foreground md:h-8 md:w-8",
-        isActive ? "bg-accent text-accent-foreground" : "text-muted-foreground",
+        "group flex h-9 w-9 items-center justify-center rounded-lg transition-colors md:h-8 md:w-8",
+        "hover:bg-accent/50",
         className,
       )}
     >
-      <Icon className="h-5 w-5" />
+      <Icon
+        className={cn(
+          "transition-colors",
+          isLogo
+            ? "text-blue-500 group-hover:text-blue-600"
+            : "h-5 w-5 text-muted-foreground group-hover:text-accent-foreground",
+        )}
+      />
       <span className="sr-only">{label}</span>
     </Link>
   );
