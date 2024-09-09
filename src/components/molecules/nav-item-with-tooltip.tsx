@@ -23,7 +23,7 @@ export function NavItemWithTooltip({
 }: NavItemWithTooltipProps) {
   return (
     <Tooltip>
-      <TooltipTrigger asChild>
+      <TooltipTrigger asChild={isLogo}>
         <NavItem
           href={href}
           icon={icon}

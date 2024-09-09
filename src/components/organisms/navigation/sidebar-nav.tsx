@@ -48,7 +48,7 @@ export function SidebarNav() {
         <NavItemWithTooltip
           href="/dashboard/settings"
           icon={Settings}
-          label="Settings"
+          label="Configuración"
           isActive={pathname === "/dashboard/settings"}
         />
       </nav>
