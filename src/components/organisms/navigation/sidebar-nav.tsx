@@ -7,17 +7,17 @@ import { usePathname } from "next/navigation";
 
 const navItems = [
   { icon: Home, label: "Dashboard", href: PAGES.DASHBOARD },
-  { icon: Shield, label: "Penetration Testing", href: "/dashboard/pentest" },
+  { icon: Shield, label: "Penetration Testing", href: PAGES.PENETRATION_TEST },
   {
     icon: AlertTriangle,
     label: "Gestión de Incidentes",
-    href: "/dashboard/incidents",
+    href: PAGES.INCIDENTS,
   },
-  { icon: Shield, label: "Tablero de Antivirus", href: "/dashboard/antivirus" },
+  { icon: Shield, label: "Tablero de Antivirus", href: PAGES.ANTIVIRUS },
   {
     icon: BarChart,
     label: "Tablero de Ciberseguridad",
-    href: "/dashboard/cybersecurity",
+    href: PAGES.CYBERSECURITY,
   },
 ];
 
