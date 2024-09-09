@@ -7,7 +7,7 @@ import {
   DropdownMenuSeparator,
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
-import Image from "next/image";
+import { User } from "lucide-react";
 
 export function UserMenu() {
   return (
@@ -18,13 +18,7 @@ export function UserMenu() {
           size="icon"
           className="overflow-hidden rounded-full"
         >
-          <Image
-            src="/placeholder-user.jpg"
-            width={36}
-            height={36}
-            alt="Avatar"
-            className="overflow-hidden rounded-full"
-          />
+          <User className="text-slate-500" />
         </Button>
       </DropdownMenuTrigger>
       <DropdownMenuContent align="end">
