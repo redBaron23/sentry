@@ -3,11 +3,11 @@ import { Metadata } from "next";
 import Link from "next/link";
 
 export const metadata: Metadata = {
-  title: "Sentrio - Iniciar sesión",
-  description: "Inicia sesión en tu cuenta de Sentrio.",
+  title: "Sentrio - Registro",
+  description: "Crea una nueva cuenta en Sentrio.",
 };
 
-export default function LoginPage() {
+export default function RegisterPage() {
   return (
     <div className="flex min-h-screen flex-col md:flex-row">
       {/* Sección de branding para dispositivos grandes */}
@@ -46,29 +46,29 @@ export default function LoginPage() {
         <div className="w-full max-w-md space-y-8">
           <div className="text-center">
             <h1 className="text-3xl font-bold tracking-tight text-primary">
-              Iniciar sesión
+              Crear una cuenta
             </h1>
             <p className="mt-2 text-sm text-muted-foreground">
-              Ingresa tus credenciales para acceder a Sentrio
+              Regístrate para comenzar a usar Sentrio
             </p>
           </div>
 
-          <UserAuthForm mode="login" />
+          <UserAuthForm mode="register" />
 
           <div className="text-center">
             <p className="text-sm text-muted-foreground">
-              ¿No tienes una cuenta?{" "}
+              ¿Ya tienes una cuenta?{" "}
               <Link
-                href="/register"
+                href="/login"
                 className="font-medium text-primary hover:underline"
               >
-                Regístrate aquí
+                Inicia sesión aquí
               </Link>
             </p>
           </div>
 
           <p className="text-center text-sm text-muted-foreground">
-            Al continuar, aceptas nuestros{" "}
+            Al registrarte, aceptas nuestros{" "}
             <Link
               href="/terms"
               className="font-medium text-primary hover:underline"
