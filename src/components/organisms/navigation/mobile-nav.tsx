@@ -1,56 +1,49 @@
 "use client";
 
-import { NavItem } from "@/components/atoms/nav-item";
+import { NAV_ITEMS, PAGES } from "@/lib/constants/pages";
 import { cn } from "@/lib/utils";
-import { AlertTriangle, BarChart, Home, Shield } from "lucide-react";
+import { Shield } from "lucide-react";
+import Link from "next/link";
 import { usePathname } from "next/navigation";
-
-const navItems = [
-  { icon: Home, label: "Dashboard", href: "/dashboard" },
-  { icon: Shield, label: "Penetration Testing", href: "/dashboard/pentest" },
-  {
-    icon: AlertTriangle,
-    label: "Gestión de Incidentes",
-    href: "/dashboard/incidents",
-  },
-  { icon: Shield, label: "Tablero de Antivirus", href: "/dashboard/antivirus" },
-  {
-    icon: BarChart,
-    label: "Tablero de Ciberseguridad",
-    href: "/dashboard/cybersecurity",
-  },
-];
 
 export function MobileNav() {
   const pathname = usePathname();
 
   return (
     <nav className="grid gap-2 text-base font-medium">
-      <NavItem href="/dashboard" icon={Shield} label="Sentrio" isLogo />
-      {navItems.map((item) => (
-        <div
-          key={item.href}
-          className={cn(
-            "flex items-center gap-3 rounded-lg px-3 py-2 transition-all duration-200 ease-in-out",
-            pathname === item.href
-              ? "bg-accent text-accent-foreground shadow-sm"
-              : "text-muted-foreground hover:bg-accent/10 hover:text-accent-foreground",
-          )}
-        >
-          <NavItem
+      <Link
+        href={PAGES.DASHBOARD}
+        className="group relative flex h-10 w-10 items-center justify-center rounded-lg transition-all duration-300 ease-in-out hover:bg-accent/10"
+      >
+        <Shield className="text-blue-500 group-hover:text-blue-600" />
+        <span className="sr-only">Sentrio</span>
+      </Link>
+      {NAV_ITEMS.map((item) => {
+        const isActive = pathname === item.href;
+        const Icon = item.icon;
+        return (
+          <Link
+            key={item.href}
             href={item.href}
-            icon={item.icon}
-            label={item.label}
             className={cn(
-              "h-8 w-8",
-              pathname === item.href
-                ? "text-accent-foreground"
-                : "text-muted-foreground",
+              "flex items-center gap-3 rounded-lg px-3 py-2 transition-all duration-200 ease-in-out",
+              isActive
+                ? "bg-accent text-accent-foreground shadow-sm"
+                : "text-muted-foreground hover:bg-accent/10 hover:text-accent-foreground",
             )}
-          />
-          <span className="text-sm font-medium">{item.label}</span>
-        </div>
-      ))}
+          >
+            <div
+              className={cn(
+                "flex h-8 w-8 items-center justify-center",
+                isActive ? "text-accent-foreground" : "text-muted-foreground",
+              )}
+            >
+              <Icon className="h-5 w-5" />
+            </div>
+            <span className="text-sm font-medium">{item.label}</span>
+          </Link>
+        );
+      })}
     </nav>
   );
 }
