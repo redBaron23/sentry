@@ -180,9 +180,9 @@ export default function DashboardPage() {
       <div className="grid grid-cols-1 gap-3 pb-3 md:grid-cols-2">
         <div className="flex flex-col gap-3">
           <div className="grid grid-cols-1 gap-3 sm:grid-cols-3">
-            <TicketCountCard title="Tickets Creados" count={8} />
-            <TicketCountCard title="Tickets Creados" count={6} />
-            <TicketCountCard title="Tickets Creados" count={22} />
+            <TicketCountCard title="Tickets Creados" count={4} />
+            <TicketCountCard title="Tickets Cerrados" count={3} />
+            <TicketCountCard title="Tickets Pendientes" count={12} />
           </div>
           <ChartCard
             title="Tickets Pendientes y Tickets Nuevos por Mes (últimos 12 meses)"
