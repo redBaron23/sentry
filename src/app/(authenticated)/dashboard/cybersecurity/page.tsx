@@ -1,9 +1,6 @@
 import { BarChart } from "@/components/atoms/charts/bar-chart";
-import { DonutChart } from "@/components/atoms/charts/donut-chart";
 import { RadialChart } from "@/components/atoms/charts/radial-chart";
-import { StackedBarChart } from "@/components/atoms/charts/stacked-bar-chart";
 import { VariationChart } from "@/components/atoms/charts/variation-chart";
-import TicketCountCard from "@/components/atoms/ticket-count-card";
 import ChartCard from "@/components/organisms/charts/chart-card";
 import { IncidentManagement } from "@/components/organisms/IncidentManagementCard";
 
@@ -151,51 +148,6 @@ export default function DashboardPage() {
           ]}
           escalationDetails={[{ label: "Fuera de Hora", value: 5, link: "#" }]}
         />
-      </div>
-      <div className="grid grid-cols-1 gap-3 pb-3 md:grid-cols-2">
-        <div className="flex flex-col gap-3">
-          <div className="grid grid-cols-1 gap-4 sm:grid-cols-3">
-            <TicketCountCard count={4} type="created" />
-            <TicketCountCard count={3} type="closed" />
-            <TicketCountCard count={12} type="pending" />
-          </div>
-          <ChartCard
-            title="Tickets Pendientes y Tickets Nuevos por Mes (últimos 12 meses)"
-            cols={1}
-          >
-            <StackedBarChart data={last12MonthTicketsChartData} />
-          </ChartCard>
-        </div>
-        <div className="grid grid-cols-1 gap-3 md:grid-cols-2">
-          <ChartCard
-            title="Tickets Pendientes por Categoria de Remediacion"
-            cols={1}
-          >
-            <BarChart data={ticketsRemediationChartData} />
-          </ChartCard>
-          <ChartCard
-            title="Tickets Pendientes por Tipo de Analisis de Remediacion"
-            cols={1}
-          >
-            <BarChart data={ticketsPendingRemediationChartData} />
-          </ChartCard>
-        </div>
-      </div>
-      <div className="grid grid-cols-1 gap-3 md:grid-cols-2">
-        <ChartCard
-          title="Tickets Resueltos por mes (últimos 12 meses)"
-          cols={1}
-        >
-          <BarChart data={ticketsChartData} />
-        </ChartCard>
-        <div className="grid grid-cols-1 gap-3 md:grid-cols-2">
-          <ChartCard title="Tickets Pendientes por Severidad" cols={1}>
-            <DonutChart data={ticketsPendingBySeverityChartData} />
-          </ChartCard>
-          <ChartCard title="Tickets Pendientes por Tipo de PenTest" cols={1}>
-            <DonutChart data={ticketsPendingByPenTestChartData} />
-          </ChartCard>
-        </div>
       </div>
     </>
   );
