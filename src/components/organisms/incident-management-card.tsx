@@ -45,7 +45,7 @@ export function IncidentManagement({
         icon={AlertTriangle}
       />
       <div className="space-y-4">
-        <h6 className="text-sm font-medium text-muted-foreground">
+        <h6 className="text-center text-sm font-medium text-muted-foreground">
           Alertas Cerradas por Estado
         </h6>
         {closedAlerts.map((alert, index) => (
@@ -53,7 +53,7 @@ export function IncidentManagement({
         ))}
       </div>
       <div className="space-y-4">
-        <h6 className="text-sm font-medium text-muted-foreground">
+        <h6 className="text-center text-sm font-medium text-muted-foreground">
           Detalle de Escalamiento
         </h6>
         {escalationDetails.map((detail, index) => (

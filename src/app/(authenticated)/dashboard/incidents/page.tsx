@@ -138,8 +138,6 @@ const alertData = [
 export default function AlertDashboardPage() {
   return (
     <div className="space-y-6 p-6">
-      <h1 className="text-3xl font-bold">Panel de Alertas</h1>
-
       {/* Resumen de Alertas */}
       <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-5">
         <AlertStatus title="Alertas Totales" value={306} />
@@ -161,14 +159,13 @@ export default function AlertDashboardPage() {
       <div className="grid grid-cols-1 gap-6 lg:grid-cols-2">
         <ChartCard title="Alertas Gestionadas" cols={1}>
           <CombinedChart
-            title="Alertas Gestionadas"
             barData={MANAGED_ALERTS_DATA.barData}
             lineData={MANAGED_ALERTS_DATA.lineData}
           />
         </ChartCard>
 
         <ChartCard title="Alertas por estado" cols={1}>
-          <DonutChart title="Alertas por estado" data={ALERT_STATUS_DATA} />
+          <DonutChart data={ALERT_STATUS_DATA} />
         </ChartCard>
       </div>
 
@@ -177,11 +174,7 @@ export default function AlertDashboardPage() {
         <AlertTable alerts={alertData} title="Alertas Recientes" />
 
         <ChartCard title="Alertas por Origen de Detección" cols={1}>
-          <BarChart
-            title="Alertas por Origen de Detección"
-            data={ALERT_ORIGIN_DATA}
-            showYAxis={true}
-          />
+          <BarChart data={ALERT_ORIGIN_DATA} showYAxis={true} />
         </ChartCard>
       </div>
     </div>

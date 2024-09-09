@@ -2,10 +2,10 @@ import { BarChart } from "@/components/atoms/charts/bar-chart";
 import { DonutChart } from "@/components/atoms/charts/donut-chart";
 import { RadialChart } from "@/components/atoms/charts/radial-chart";
 import { StackedBarChart } from "@/components/atoms/charts/stacked-bar-chart";
-import { VariationChart } from "@/components/atoms/charts/variation-chart";
 import TicketCountCard from "@/components/atoms/ticket-count-card";
 import ChartCard from "@/components/organisms/charts/chart-card";
-import { IncidentManagement } from "@/components/organisms/IncidentManagementCard";
+import { IncidentManagement } from "@/components/organisms/incident-management-card";
+import { VulnerabilitiesIT } from "@/components/organisms/vulnerabilities-it";
 
 const vulnerabilitiesChartData = {
   critical: {
@@ -123,25 +123,12 @@ export default function DashboardPage() {
         </ChartCard>
       </div>
       <div className="grid grid-cols-1 gap-3 pb-3 md:grid-cols-2">
-        <ChartCard title="Vulnerabilidades IT" cols={3}>
-          <div className="flex flex-col items-center gap-7">
-            <div className="flex flex-col gap-3">
-              <h6>Mes base</h6>
-              <p className="text-3xl font-bold">4,049</p>
-            </div>
-            <div className="flex flex-col gap-3">
-              <h6>Octubre</h6>
-              <p className="text-3xl font-bold">3,501</p>
-            </div>
-          </div>
-
-          <BarChart
-            title="Vulnerabilidades por Severidad"
-            data={vulnerabilitiesChartData}
-            showYAxis={false}
-          />
-          <VariationChart value={22.1} title="Porcentaje de variacion" />
-        </ChartCard>
+        <VulnerabilitiesIT
+          baseMonth={{ label: "Mes base", value: 4049 }}
+          currentMonth={{ label: "Octubre", value: 3501 }}
+          vulnerabilitiesChartData={vulnerabilitiesChartData}
+          variationPercentage={22.1}
+        />
 
         <IncidentManagement
           criticalIncidents={0}

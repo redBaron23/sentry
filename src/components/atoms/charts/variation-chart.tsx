@@ -17,7 +17,7 @@ import {
 
 interface Props {
   value: number;
-  title: string;
+  title?: string;
 }
 
 export function VariationChart({ title, value }: Props) {
