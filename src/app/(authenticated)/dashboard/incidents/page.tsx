@@ -8,33 +8,33 @@ import { ChartColors } from "@/lib/constants/charts";
 
 const ALERT_ORIGIN_DATA = {
   microsoftWindows: {
-    label: "Microsoft Windows",
-    color: ChartColors.BLUE, // Se mantiene BLUE
+    label: "Windows",
+    color: ChartColors.BLUE,
     quantity: 78,
   },
   phishingReport: {
-    label: "Botón de reporte de phishing",
-    color: ChartColors.ORANGE, // Cambiado de GREEN a ORANGE
+    label: "Phishing",
+    color: ChartColors.BLUE,
     quantity: 67,
   },
   microsoftDefender: {
-    label: "Microsoft 365 Defender",
-    color: ChartColors.PURPLE, // Se mantiene PURPLE
+    label: "M365 Defender",
+    color: ChartColors.BLUE,
     quantity: 57,
   },
   trendMicro: {
-    label: "Trend Micro Antivirus",
-    color: ChartColors.GREEN, // Cambiado de ORANGE a GREEN
+    label: "Trend Micro",
+    color: ChartColors.BLUE,
     quantity: 41,
   },
   clarity: {
     label: "Clarity",
-    color: ChartColors.LIGHT_BLUE, // Cambiado de PINK a LIGHT_BLUE
+    color: ChartColors.BLUE,
     quantity: 32,
   },
   other: {
     label: "Otro",
-    color: ChartColors.GRAY, // Se mantiene GRAY
+    color: ChartColors.BLUE,
     quantity: 14,
   },
 };
