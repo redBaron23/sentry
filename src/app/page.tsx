@@ -144,21 +144,21 @@ export default function Home() {
         </ChartCard>
 
         <ChartCard title="Gestion de Incidentes" cols={3}>
-          <div className="flex flex-col gap-3">
+          <div className="flex flex-col gap-4">
             <h6>Total de Incidentes Alto/Criticos</h6>
             <span className="text-3xl font-bold">0</span>
           </div>
 
-          <div className="flex flex-col gap-3">
+          <div className="flex flex-col gap-4">
             <h6>Alertas Cerradas por Estado</h6>
-            <div className="space-y-2">
-              <div className="flex flex-col">
+            <div className="space-y-6">
+              <div className="flex flex-col gap-2">
                 <span className="text-3xl font-bold">348</span>
                 <Link href="#" className="text-sm text-blue-600">
                   Falso Positivo
                 </Link>
               </div>
-              <div className="flex flex-col">
+              <div className="flex flex-col gap-2">
                 <span className="text-3xl font-bold">0</span>
                 <Link href="#" className="text-sm text-blue-600">
                   Incidente
@@ -166,9 +166,9 @@ export default function Home() {
               </div>
             </div>
           </div>
-          <div className="flex flex-col gap-3">
+          <div className="flex flex-col gap-4">
             <h6>Detalle de Escalamiento</h6>
-            <div className="flex flex-col">
+            <div className="flex flex-col gap-2">
               <span className="text-3xl font-bold">5</span>
               <Link href="#" className="text-sm text-blue-600">
                 Fuera de Hora
