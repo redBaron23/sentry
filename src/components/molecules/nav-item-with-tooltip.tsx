@@ -24,7 +24,13 @@ export function NavItemWithTooltip({
   return (
     <Tooltip>
       <TooltipTrigger asChild>
-        <NavItem href={href} icon={icon} label={label} isLogo={isLogo} />
+        <NavItem
+          href={href}
+          icon={icon}
+          label={label}
+          isActive={isActive}
+          isLogo={isLogo}
+        />
       </TooltipTrigger>
       <TooltipContent side="right">{label}</TooltipContent>
     </Tooltip>

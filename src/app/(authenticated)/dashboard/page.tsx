@@ -105,7 +105,7 @@ const ticketsPendingByPenTestChartData = {
 
 export default function DashboardPage() {
   return (
-    <main className="min-h-screen bg-slate-50 p-8">
+    <>
       <div className="grid grid-cols-1 gap-3 pb-3 md:grid-cols-2 xl:grid-cols-3">
         <ChartCard title="Parches de seguridad (SCCM)">
           <RadialChart title="Server" name="Server" value={55} />
@@ -222,6 +222,6 @@ export default function DashboardPage() {
           </ChartCard>
         </div>
       </div>
-    </main>
+    </>
   );
 }

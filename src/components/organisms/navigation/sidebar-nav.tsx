@@ -1,11 +1,12 @@
 "use client";
 
 import { NavItemWithTooltip } from "@/components/molecules/nav-item-with-tooltip";
+import { PAGES } from "@/lib/constants/pages";
 import { AlertTriangle, BarChart, Home, Settings, Shield } from "lucide-react";
 import { usePathname } from "next/navigation";
 
 const navItems = [
-  { icon: Home, label: "Dashboard", href: "/dashboard" },
+  { icon: Home, label: "Dashboard", href: PAGES.DASHBOARD },
   { icon: Shield, label: "Penetration Testing", href: "/dashboard/pentest" },
   {
     icon: AlertTriangle,
