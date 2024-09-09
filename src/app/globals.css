@@ -62,21 +62,30 @@
     --border: 220 20% 80%;
     --input: 220 20% 80%;
     --ring: 220 60% 50%;
-    --chart-1: 220 70% 50%;
-    --chart-2: 190 70% 50%;
-    --chart-3: 160 70% 50%;
-    --chart-4: 130 70% 50%;
-    --chart-5: 100 70% 50%;
-    --chart-critical: 0 80% 50%;
-    --chart-high: 25 80% 50%;
-    --chart-medium: 40 80% 50%;
-    --chart-low: 100 60% 50%;
-    --chart-variation-positive: 140 60% 50%;
-    --chart-variation-negative: 0 80% 50%;
-    --chart-new-tickets: 220 70% 50%;
-    --chart-pending-tickets: 40 80% 50%;
+
+    /* Colores de gráficos ajustados */
+    --chart-1: 210 100% 50%;
+    --chart-2: 180 100% 35%;
+    --chart-3: 150 100% 35%;
+    --chart-4: 120 70% 45%;
+    --chart-5: 90 70% 45%;
+    --chart-critical: 0 100% 45%;
+    --chart-high: 25 100% 50%;
+    --chart-medium: 40 100% 50%;
+    --chart-low: 170 70% 45%;
+    --chart-variation-positive: 140 80% 40%;
+    --chart-variation-negative: 0 90% 45%;
+    --chart-new-tickets: 210 100% 50%;
+    --chart-pending-tickets: 35 100% 50%;
+
+    /* Nuevos colores para ciberseguridad */
+    --chart-secure: 140 100% 40%;
+    --chart-warning: 45 100% 50%;
+    --chart-threat: 350 100% 50%;
+
     --radius: 0.5rem;
   }
+
   .dark {
     --background: 220 30% 10%;
     --foreground: 220 20% 90%;
@@ -97,19 +106,26 @@
     --border: 220 30% 25%;
     --input: 220 30% 25%;
     --ring: 220 60% 50%;
-    --chart-1: 220 70% 60%;
-    --chart-2: 190 70% 60%;
-    --chart-3: 160 70% 60%;
-    --chart-4: 130 70% 60%;
-    --chart-5: 100 70% 60%;
-    --chart-critical: 0 70% 60%;
-    --chart-high: 25 70% 60%;
-    --chart-medium: 40 70% 60%;
-    --chart-low: 100 60% 60%;
-    --chart-variation-positive: 140 60% 60%;
-    --chart-variation-negative: 0 70% 60%;
-    --chart-new-tickets: 220 70% 60%;
-    --chart-pending-tickets: 40 70% 60%;
+
+    /* Ajustes para modo oscuro */
+    --chart-1: 210 100% 60%;
+    --chart-2: 180 100% 45%;
+    --chart-3: 150 100% 45%;
+    --chart-4: 120 70% 55%;
+    --chart-5: 90 70% 55%;
+    --chart-critical: 0 100% 55%;
+    --chart-high: 25 100% 60%;
+    --chart-medium: 40 100% 60%;
+    --chart-low: 170 70% 55%;
+    --chart-variation-positive: 140 80% 50%;
+    --chart-variation-negative: 0 90% 55%;
+    --chart-new-tickets: 210 100% 60%;
+    --chart-pending-tickets: 35 100% 60%;
+
+    /* Nuevos colores para ciberseguridad en modo oscuro */
+    --chart-secure: 140 100% 50%;
+    --chart-warning: 45 100% 60%;
+    --chart-threat: 350 100% 60%;
   }
 }
 
