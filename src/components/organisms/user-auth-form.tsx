@@ -1,7 +1,9 @@
 "use client";
 
 import { Icons } from "@/lib/constants/icons";
+import { PAGES } from "@/lib/constants/pages";
 import { cn } from "@/lib/utils";
+import { useRouter } from "next/navigation";
 import * as React from "react";
 import { Button } from "../ui/button";
 import { Input } from "../ui/input";
@@ -12,6 +14,7 @@ interface UserAuthFormProps extends React.HTMLAttributes<HTMLDivElement> {
 }
 
 export function UserAuthForm({ className, mode, ...props }: UserAuthFormProps) {
+  const router = useRouter();
   const [isLoading, setIsLoading] = React.useState<boolean>(false);
 
   async function onSubmit(event: React.SyntheticEvent) {
@@ -20,6 +23,7 @@ export function UserAuthForm({ className, mode, ...props }: UserAuthFormProps) {
 
     setTimeout(() => {
       setIsLoading(false);
+      router.push(PAGES.DASHBOARD);
     }, 3000);
   }
 
