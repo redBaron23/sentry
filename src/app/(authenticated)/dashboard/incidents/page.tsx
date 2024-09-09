@@ -3,7 +3,7 @@ import { CombinedChart } from "@/components/atoms/charts/combine-chart";
 import { DonutChart } from "@/components/atoms/charts/donut-chart";
 import { AlertStatus } from "@/components/molecules/alert-status";
 import ChartCard from "@/components/organisms/charts/chart-card";
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+import { AlertTable } from "@/components/organisms/incidents/alert-table";
 import { ChartColors } from "@/lib/constants/charts";
 
 const ALERT_ORIGIN_DATA = {
@@ -121,6 +121,20 @@ export const MANAGED_ALERTS_DATA = {
   ],
 };
 
+const alertData = [
+  {
+    description:
+      "TEC - WIN - User created, modified or deleted on server locally",
+    count: 39,
+  },
+  { description: "Ayuda revisión correo", count: 1 },
+  {
+    description:
+      "Check Point - More than 20 events of same signature in 2 minutes(Internal Source)",
+    count: 1,
+  },
+];
+
 export default function AlertDashboardPage() {
   return (
     <div className="space-y-6 p-6">
@@ -160,31 +174,7 @@ export default function AlertDashboardPage() {
 
       {/* Tabla de Alertas y Gráfico de Origen */}
       <div className="grid grid-cols-1 gap-6 lg:grid-cols-2">
-        <Card>
-          <CardHeader>
-            <CardTitle>Alertas</CardTitle>
-          </CardHeader>
-          <CardContent>
-            <table className="w-full">
-              <thead>
-                <tr>
-                  <th className="text-left">Alerta</th>
-                  <th className="text-right">Total</th>
-                </tr>
-              </thead>
-              <tbody>
-                <tr>
-                  <td>
-                    - TEC - WIN - User created, modified or deleted on server
-                    locally
-                  </td>
-                  <td className="text-right">39</td>
-                </tr>
-                {/* Añade más filas aquí */}
-              </tbody>
-            </table>
-          </CardContent>
-        </Card>
+        <AlertTable alerts={alertData} title="Alertas Recientes" />
 
         <ChartCard title="Alertas por Origen de Detección" cols={1}>
           <BarChart
