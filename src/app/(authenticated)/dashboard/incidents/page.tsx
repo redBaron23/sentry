@@ -62,7 +62,7 @@ const ALERT_STATUS_DATA = {
   },
 };
 
-export const MANAGED_ALERTS_DATA = {
+const MANAGED_ALERTS_DATA = {
   barData: [
     {
       month: "Jul-24",
