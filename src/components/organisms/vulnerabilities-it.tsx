@@ -1,6 +1,6 @@
-import { VariationChart } from "@/components/atoms/charts/variation-chart";
 import { ShieldAlert } from "lucide-react";
 import { BarChart } from "../atoms/charts/bar-chart";
+import { VariationChart } from "../atoms/charts/variation-chart";
 import ChartCard from "./charts/chart-card";
 
 interface VulnerabilityStatProps {

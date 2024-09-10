@@ -1,10 +1,6 @@
-import {
-  Tooltip,
-  TooltipContent,
-  TooltipTrigger,
-} from "@/components/ui/tooltip";
 import { LucideIcon } from "lucide-react";
 import { NavItem } from "../atoms/nav-item";
+import { Tooltip, TooltipContent, TooltipTrigger } from "../ui/tooltip";
 
 interface NavItemWithTooltipProps {
   href: string;

@@ -1,10 +1,10 @@
-import { BarChart } from "@/components/atoms/charts/bar-chart";
-import { CombinedChart } from "@/components/atoms/charts/combine-chart";
-import { DonutChart } from "@/components/atoms/charts/donut-chart";
-import { AlertStatus } from "@/components/molecules/alert-status";
-import ChartCard from "@/components/organisms/charts/chart-card";
-import { AlertTable } from "@/components/organisms/incidents/alert-table";
 import { ChartColors } from "@/lib/constants/charts";
+import { BarChart } from "../../../../components/atoms/charts/bar-chart";
+import { CombinedChart } from "../../../../components/atoms/charts/combine-chart";
+import { DonutChart } from "../../../../components/atoms/charts/donut-chart";
+import { AlertStatus } from "../../../../components/molecules/alert-status";
+import ChartCard from "../../../../components/organisms/charts/chart-card";
+import { AlertTable } from "../../../../components/organisms/incidents/alert-table";
 
 const ALERT_ORIGIN_DATA = {
   microsoftWindows: {

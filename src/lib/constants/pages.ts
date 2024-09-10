@@ -3,12 +3,15 @@ import { AlertTriangle, BarChart, Home, Shield } from "lucide-react";
 export enum PAGES {
   INDEX = "/",
   LOGIN = "/login",
-  REGISTER = "/register",
+  SIGN_UP = "/sign-up",
+  VERIFY_EMAIL = "/verify-email",
   DASHBOARD = "/dashboard",
   PENETRATION_TEST = "/dashboard/penetration-test",
   INCIDENTS = "/dashboard/incidents",
   CYBERSECURITY = "/dashboard/cybersecurity",
   ANTIVIRUS = "/dashboard/antivirus",
+  CONTACT = "/contact",
+  RESEND_EMAIL_VERIFICATION = "/resend",
 }
 
 export const NAV_ITEMS = [

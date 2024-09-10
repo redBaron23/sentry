@@ -1,4 +1,5 @@
-import { Button } from "@/components/ui/button";
+import { HelpCircle, LogOut, Settings, User } from "lucide-react";
+import { Button } from "../ui/button";
 import {
   DropdownMenu,
   DropdownMenuContent,
@@ -6,8 +7,7 @@ import {
   DropdownMenuLabel,
   DropdownMenuSeparator,
   DropdownMenuTrigger,
-} from "@/components/ui/dropdown-menu";
-import { HelpCircle, LogOut, Settings, User } from "lucide-react";
+} from "../ui/dropdown-menu";
 
 export function UserMenu() {
   return (
