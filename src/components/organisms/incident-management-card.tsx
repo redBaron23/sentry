@@ -3,7 +3,7 @@ import Link from "next/link";
 import ChartCard from "./charts/chart-card";
 
 interface IncidentStat {
-  label: string;
+  label?: string;
   value: number;
   link?: string;
 }
@@ -22,7 +22,11 @@ const StatBlock = ({
 }: IncidentStat & { icon?: React.ElementType }) => (
   <div className="flex flex-col items-center rounded-lg bg-card p-4 shadow-sm transition-all duration-300 hover:shadow-md">
     {Icon && <Icon className="mb-2 h-8 w-8 text-primary" />}
-    <h6 className="mb-2 text-sm font-medium text-muted-foreground">{label}</h6>
+    {label && (
+      <h6 className="mb-2 text-sm font-medium text-muted-foreground">
+        {label}
+      </h6>
+    )}
     <span className="mb-1 text-3xl font-bold text-foreground">{value}</span>
     {link && (
       <Link href={link} className="text-sm text-primary hover:underline">
@@ -39,11 +43,12 @@ export function IncidentManagement({
 }: IncidentManagementProps) {
   return (
     <ChartCard title="Gestión de Incidentes" cols={3}>
-      <StatBlock
-        label="Total de Incidentes Alto/Críticos"
-        value={criticalIncidents}
-        icon={AlertTriangle}
-      />
+      <div className="space-y-4">
+        <h6 className="text-center text-sm font-medium text-muted-foreground">
+          Total de Incidentes Alto/Críticos
+        </h6>
+        <StatBlock value={criticalIncidents} icon={AlertTriangle} />
+      </div>
       <div className="space-y-4">
         <h6 className="text-center text-sm font-medium text-muted-foreground">
           Alertas Cerradas por Estado
