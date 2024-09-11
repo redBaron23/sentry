@@ -32,6 +32,8 @@ interface Props {
 const TicketCountCard = ({ count, type }: Props) => {
   const { title, bgColor, textColor, icon: Icon } = TICKET_STYLES[type];
 
+  console.log();
+
   return (
     <Card
       className={`text-center ${bgColor} border-none shadow-md transition-all duration-300 hover:shadow-lg`}
