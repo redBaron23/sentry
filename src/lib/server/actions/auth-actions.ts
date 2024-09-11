@@ -42,11 +42,19 @@ export const signUpAction = baseActionClient
       },
     });
 
-    console.log(error, data);
-
     if (error) {
       throw new ActionError(error.message);
     }
+
+    if (
+      data.user &&
+      data.user.identities &&
+      data.user.identities.length === 0
+    ) {
+      throw new ActionError("User already exists");
+    }
+
+    console.log(error, data);
   });
 
 export const verifyEmailAction = baseActionClient
