@@ -3,9 +3,10 @@
 import { useToast } from "@/hooks/use-toast";
 import { PAGES } from "@/lib/constants/pages";
 import { createSupabaseBrowserClient } from "@/lib/supabase/client";
-import { HelpCircle, LogOut, Settings, User } from "lucide-react";
+import { HelpCircle, LogOut, Settings } from "lucide-react";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
+import { Avatar, AvatarFallback, AvatarImage } from "../ui/avatar";
 import { Button } from "../ui/button";
 import {
   DropdownMenu,
@@ -16,7 +17,12 @@ import {
   DropdownMenuTrigger,
 } from "../ui/dropdown-menu";
 
-export function UserMenu() {
+interface UserMenuProps {
+  userInitials: string;
+  userImage?: string;
+}
+
+export function UserMenu({ userInitials, userImage }: UserMenuProps) {
   const router = useRouter();
   const { toast } = useToast();
 
@@ -26,7 +32,6 @@ export function UserMenu() {
 
     if (error) {
       console.log(error);
-
       toast({
         title: "Error al salir",
         description: error.message,
@@ -41,11 +46,14 @@ export function UserMenu() {
     <DropdownMenu>
       <DropdownMenuTrigger asChild>
         <Button
-          variant="outline"
+          variant="ghost"
           size="icon"
-          className="cursor-pointer overflow-hidden rounded-full"
+          className="rounded-full hover:bg-secondary"
         >
-          <User className="text-slate-700" />
+          <Avatar>
+            <AvatarImage src={userImage} alt={userInitials} />
+            <AvatarFallback>{userInitials}</AvatarFallback>
+          </Avatar>
         </Button>
       </DropdownMenuTrigger>
       <DropdownMenuContent align="end" className="w-56">
@@ -53,21 +61,18 @@ export function UserMenu() {
           Mi Cuenta
         </DropdownMenuLabel>
         <DropdownMenuSeparator />
-        <DropdownMenuItem className="cursor-pointer" asChild>
+        <DropdownMenuItem asChild>
           <Link href={PAGES.SETTINGS}>
             <Settings className="mr-2 h-4 w-4" />
             <span>Configuración</span>
           </Link>
         </DropdownMenuItem>
-        <DropdownMenuItem className="cursor-pointer">
+        <DropdownMenuItem>
           <HelpCircle className="mr-2 h-4 w-4" />
           <span>Soporte</span>
         </DropdownMenuItem>
         <DropdownMenuSeparator />
-        <DropdownMenuItem
-          className="cursor-pointer text-red-600"
-          onClick={handleLogout}
-        >
+        <DropdownMenuItem onClick={handleLogout} className="text-red-600">
           <LogOut className="mr-2 h-4 w-4" />
           <span>Cerrar Sesión</span>
         </DropdownMenuItem>
