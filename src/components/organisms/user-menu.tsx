@@ -1,5 +1,6 @@
 "use client";
 
+import { useToast } from "@/hooks/use-toast";
 import { PAGES } from "@/lib/constants/pages";
 import { createSupabaseBrowserClient } from "@/lib/supabase/client";
 import { HelpCircle, LogOut, Settings, User } from "lucide-react";
@@ -16,13 +17,22 @@ import {
 
 export function UserMenu() {
   const router = useRouter();
+  const { toast } = useToast();
 
   const handleLogout = async () => {
     const supabase = createSupabaseBrowserClient();
-    const res = await supabase.auth.signOut();
-    console.log(res);
-    if (!res.error) {
-      router.push(PAGES.LOGIN);
+    const { error } = await supabase.auth.signOut();
+
+    if (error) {
+      console.log(error);
+
+      toast({
+        title: "Error al salir",
+        description: error.message,
+        variant: "destructive",
+      });
+    } else {
+      router.replace(PAGES.LOGIN);
     }
   };
 
