@@ -1,7 +1,7 @@
-import { RadialChart } from "@/components/atoms/charts/radial-chart";
-import ChartCard from "@/components/organisms/charts/chart-card";
-import { IncidentManagement } from "@/components/organisms/incident-management-card";
-import { VulnerabilitiesIT } from "@/components/organisms/vulnerabilities-it";
+import { RadialChart } from "../../../../components/atoms/charts/radial-chart";
+import ChartCard from "../../../../components/organisms/charts/chart-card";
+import { IncidentManagement } from "../../../../components/organisms/incident-management-card";
+import { VulnerabilitiesIT } from "../../../../components/organisms/vulnerabilities-it";
 
 const vulnerabilitiesChartData = {
   critical: {

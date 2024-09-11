@@ -1,13 +1,10 @@
-import { UserAuthForm } from "@/components/organisms/user-auth-form";
-import { Metadata } from "next";
-import Link from "next/link";
+import React from "react";
 
-export const metadata: Metadata = {
-  title: "Sentrio - Registro",
-  description: "Crea una nueva cuenta en Sentrio.",
-};
+interface AuthTemplateProps {
+  children: React.ReactNode;
+}
 
-export default function RegisterPage() {
+export function AuthTemplate({ children }: AuthTemplateProps) {
   return (
     <div className="flex min-h-screen flex-col md:flex-row">
       {/* Sección de branding para dispositivos grandes */}
@@ -41,50 +38,9 @@ export default function RegisterPage() {
         </div>
       </div>
 
-      {/* Sección de formulario */}
+      {/* Sección de contenido */}
       <div className="flex flex-1 flex-col items-center justify-center bg-background p-8">
-        <div className="w-full max-w-md space-y-8">
-          <div className="text-center">
-            <h1 className="text-3xl font-bold tracking-tight text-primary">
-              Crear una cuenta
-            </h1>
-            <p className="mt-2 text-sm text-muted-foreground">
-              Regístrate para comenzar a usar Sentrio
-            </p>
-          </div>
-
-          <UserAuthForm mode="register" />
-
-          <div className="text-center">
-            <p className="text-sm text-muted-foreground">
-              ¿Ya tienes una cuenta?{" "}
-              <Link
-                href="/login"
-                className="font-medium text-primary hover:underline"
-              >
-                Inicia sesión aquí
-              </Link>
-            </p>
-          </div>
-
-          <p className="text-center text-sm text-muted-foreground">
-            Al registrarte, aceptas nuestros{" "}
-            <Link
-              href="/terms"
-              className="font-medium text-primary hover:underline"
-            >
-              Términos de Servicio
-            </Link>{" "}
-            y{" "}
-            <Link
-              href="/privacy"
-              className="font-medium text-primary hover:underline"
-            >
-              Política de Privacidad
-            </Link>
-            .
-          </p>
-        </div>
+        <div className="w-full max-w-md space-y-8">{children}</div>
       </div>
     </div>
   );

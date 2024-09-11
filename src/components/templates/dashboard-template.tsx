@@ -1,10 +1,10 @@
-import { Button } from "@/components/ui/button";
-import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
 import { PanelLeft } from "lucide-react";
 import React from "react";
 import { MobileNav } from "../organisms/navigation/mobile-nav";
 import { SidebarNav } from "../organisms/navigation/sidebar-nav";
 import { UserMenu } from "../organisms/user-menu";
+import { Button } from "../ui/button";
+import { Sheet, SheetContent, SheetTrigger } from "../ui/sheet";
 
 interface DashboardTemplateProps {
   children: React.ReactNode;

@@ -1,18 +1,18 @@
 "use client";
 
 import {
-  ChartConfig,
-  ChartContainer,
-  ChartTooltip,
-  ChartTooltipContent,
-} from "@/components/ui/chart";
-import {
   Label,
   PolarAngleAxis,
   PolarRadiusAxis,
   RadialBar,
   RadialBarChart,
 } from "recharts";
+import {
+  ChartConfig,
+  ChartContainer,
+  ChartTooltip,
+  ChartTooltipContent,
+} from "../../ui/chart";
 
 interface RadialChartProps {
   name: string;
@@ -52,12 +52,12 @@ export function RadialChart({
   };
 
   return (
-    <div className="flex flex-col gap-3 w-full text-center">
+    <div className="flex w-full flex-col gap-3 text-center">
       {title && <h6>{title}</h6>}
       <div className={`w-full min-w-[${maxWidth}px]`}>
         <ChartContainer
           config={chartConfig}
-          className={`mx-auto aspect-square   max-w-[${maxWidth}px]`}
+          className={`mx-auto aspect-square max-w-[${maxWidth}px]`}
         >
           <RadialBarChart
             data={chartData}

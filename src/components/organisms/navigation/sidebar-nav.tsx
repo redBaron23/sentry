@@ -1,9 +1,9 @@
 "use client";
 
-import { NavItemWithTooltip } from "@/components/molecules/nav-item-with-tooltip";
 import { NAV_ITEMS, PAGES } from "@/lib/constants/pages";
 import { Settings, Shield } from "lucide-react";
 import { usePathname } from "next/navigation";
+import { NavItemWithTooltip } from "../../molecules/nav-item-with-tooltip";
 
 export function SidebarNav() {
   const pathname = usePathname();

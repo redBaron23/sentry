@@ -1,8 +1,8 @@
-import { BarChart } from "@/components/atoms/charts/bar-chart";
-import { DonutChart } from "@/components/atoms/charts/donut-chart";
-import { StackedBarChart } from "@/components/atoms/charts/stacked-bar-chart";
-import TicketCountCard from "@/components/atoms/ticket-count-card";
-import ChartCard from "@/components/organisms/charts/chart-card";
+import { BarChart } from "../../../../components/atoms/charts/bar-chart";
+import { DonutChart } from "../../../../components/atoms/charts/donut-chart";
+import { StackedBarChart } from "../../../../components/atoms/charts/stacked-bar-chart";
+import TicketCountCard from "../../../../components/atoms/ticket-count-card";
+import ChartCard from "../../../../components/organisms/charts/chart-card";
 
 const vulnerabilitiesChartData = {
   critical: {

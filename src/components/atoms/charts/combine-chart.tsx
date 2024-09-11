@@ -17,7 +17,7 @@ import {
   ChartLegendContent,
   ChartTooltip,
   ChartTooltipContent,
-} from "@/components/ui/chart";
+} from "../../ui/chart";
 
 interface DataPoint {
   label: string;
@@ -54,9 +54,10 @@ export function CombinedChart({
   const combinedData = barData.map((barPoint) => {
     const linePoint = lineData.find((lp) => lp.month === barPoint.month);
     const total =
-      barPoint.closedFalsePositive.quantity +
-      barPoint.inProgress.quantity +
-      barPoint.unmanaged.quantity;
+      (barPoint.closedFalsePositive.quantity ?? 0) +
+      (barPoint.inProgress.quantity ?? 0) +
+      (barPoint.unmanaged.quantity ?? 0);
+
     return {
       month: barPoint.month,
       closedFalsePositive: barPoint.closedFalsePositive.quantity,

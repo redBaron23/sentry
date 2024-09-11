@@ -1,3 +1,4 @@
+import { AlertCircle } from "lucide-react";
 import {
   Table,
   TableBody,
@@ -5,8 +6,7 @@ import {
   TableHead,
   TableHeader,
   TableRow,
-} from "@/components/ui/table";
-import { AlertCircle } from "lucide-react";
+} from "../../ui/table";
 import ChartCard from "../charts/chart-card";
 
 interface AlertItem {
