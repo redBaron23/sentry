@@ -4,6 +4,7 @@ import { useToast } from "@/hooks/use-toast";
 import { PAGES } from "@/lib/constants/pages";
 import { createSupabaseBrowserClient } from "@/lib/supabase/client";
 import { HelpCircle, LogOut, Settings, User } from "lucide-react";
+import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { Button } from "../ui/button";
 import {
@@ -52,9 +53,11 @@ export function UserMenu() {
           Mi Cuenta
         </DropdownMenuLabel>
         <DropdownMenuSeparator />
-        <DropdownMenuItem className="cursor-pointer">
-          <Settings className="mr-2 h-4 w-4" />
-          <span>Configuración</span>
+        <DropdownMenuItem className="cursor-pointer" asChild>
+          <Link href={PAGES.SETTINGS}>
+            <Settings className="mr-2 h-4 w-4" />
+            <span>Configuración</span>
+          </Link>
         </DropdownMenuItem>
         <DropdownMenuItem className="cursor-pointer">
           <HelpCircle className="mr-2 h-4 w-4" />

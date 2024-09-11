@@ -30,10 +30,10 @@ export function SidebarNav() {
       </nav>
       <nav className="mt-auto flex flex-col items-center gap-4 px-2 py-4">
         <NavItemWithTooltip
-          href="/dashboard/settings"
+          href={PAGES.SETTINGS}
           icon={Settings}
           label="Configuración"
-          isActive={pathname === "/dashboard/settings"}
+          isActive={pathname === PAGES.SETTINGS}
         />
       </nav>
     </>
