@@ -1,3 +1,4 @@
+import { SpeedInsights } from "@vercel/speed-insights/next";
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import { Toaster } from "../components/ui/sonner";
@@ -21,6 +22,7 @@ export default function RootLayout({
       <body className={inter.className}>
         <TooltipProvider>{children}</TooltipProvider>
         <Toaster />
+        <SpeedInsights />
       </body>
     </html>
   );
