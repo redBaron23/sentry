@@ -15,7 +15,7 @@ export const loginAction = baseActionClient
   .metadata({ actionName: "login" })
   .schema(loginSchema)
   .action(async ({ parsedInput, ctx: {} }) => {
-    const supabase = createServerSideClient();
+    const supabase = await createServerSideClient();
 
     const { error } = await supabase.auth.signInWithPassword(parsedInput);
 
@@ -30,7 +30,7 @@ export const signUpAction = baseActionClient
   .metadata({ actionName: "signUp" })
   .schema(signUpSchema)
   .action(async ({ parsedInput: { email, password, name }, ctx: {} }) => {
-    const supabase = createServerSideClient();
+    const supabase = await createServerSideClient();
 
     const { error } = await supabase.auth.signUp({
       email,
@@ -51,7 +51,7 @@ export const verifyEmailAction = baseActionClient
   .metadata({ actionName: "verifyEmail" })
   .schema(verifyEmailSchema)
   .action(async ({ parsedInput, ctx: {} }) => {
-    const supabase = createServerSideClient();
+    const supabase = await createServerSideClient();
 
     const { error } = await supabase.auth.verifyOtp({
       email: parsedInput.email,
