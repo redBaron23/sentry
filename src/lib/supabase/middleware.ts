@@ -1,5 +1,4 @@
 import { createServerClient } from "@supabase/ssr";
-import { redirect } from "next/navigation";
 import { NextResponse, type NextRequest } from "next/server";
 import {
   AUTHENTICATED_PAGES,
@@ -43,20 +42,19 @@ export async function updateSession(request: NextRequest) {
     data: { user },
   } = await supabase.auth.getUser();
 
-  //
-  // if user, is not an API page and don't exist and is navigating in authenticated pages
+  if (request.nextUrl.pathname.startsWith(PAGES.API)) {
+    return supabaseResponse;
+  }
+
+  // if user and don't exist and is navigating in authenticated pages
   if (
     !user &&
-    !request.nextUrl.pathname.startsWith(PAGES.API) &&
     AUTHENTICATED_PAGES.some((page) =>
       request.nextUrl.pathname.startsWith(page),
     )
   ) {
     // no user, potentially respond by redirecting the user to the login page
-    const url = request.nextUrl.clone();
-    url.pathname = "/login";
-    return NextResponse.redirect(url);
-    // redirect(PAGES.LOGIN);
+    return NextResponse.redirect(new URL(PAGES.LOGIN, request.url));
   }
 
   // if user exists and is navigating in unauthenticated pages
@@ -69,7 +67,7 @@ export async function updateSession(request: NextRequest) {
     // const url = request.nextUrl.clone();
     // url.pathname = PAGES.DASHBOARD;
     // return NextResponse.redirect(url);
-    redirect(PAGES.DASHBOARD);
+    return NextResponse.redirect(new URL(PAGES.DASHBOARD, request.url));
   }
 
   // IMPORTANT: You *must* return the supabaseResponse object as it is. If you're
