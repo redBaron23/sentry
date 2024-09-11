@@ -20,7 +20,7 @@ export enum PAGES {
 }
 
 export const UNAUTHENTICATED_PAGES = [PAGES.LOGIN, PAGES.SIGN_UP];
-export const AUTHENTICATED_PAGES = [PAGES.DASHBOARD, PAGES.SETT];
+export const AUTHENTICATED_PAGES = [PAGES.DASHBOARD, PAGES.SETTINGS];
 
 export const NAV_ITEMS = [
   { icon: Home, label: "Dashboard", href: PAGES.DASHBOARD },
