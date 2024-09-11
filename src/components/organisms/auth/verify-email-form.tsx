@@ -1,5 +1,16 @@
 "use client";
 
+import { ResendCodeButton } from "@/components/atoms/buttons/resend-code-button";
+import { Button } from "@/components/ui/button";
+import {
+  Form,
+  FormControl,
+  FormField,
+  FormItem,
+  FormLabel,
+  FormMessage,
+} from "@/components/ui/form";
+import { Input } from "@/components/ui/input";
 import { toast } from "@/hooks/use-toast";
 import { PAGES } from "@/lib/constants/pages";
 import { createSupabaseBrowserClient } from "@/lib/supabase/client";
@@ -9,16 +20,6 @@ import { useRouter } from "next/navigation";
 import { useState } from "react";
 import { useForm } from "react-hook-form";
 import { z } from "zod";
-import { Button } from "../../ui/button";
-import {
-  Form,
-  FormControl,
-  FormField,
-  FormItem,
-  FormLabel,
-  FormMessage,
-} from "../../ui/form";
-import { Input } from "../../ui/input";
 
 const schema = z.object({
   token: z.string().length(6, "El código debe tener exactamente 6 caracteres"),
@@ -44,9 +45,9 @@ export function VerifyEmailForm({ email }: Props) {
 
     setIsLoading(true);
     try {
-      const supabaseClient = createSupabaseBrowserClient();
+      const supabase = createSupabaseBrowserClient();
 
-      const { error } = await supabaseClient.auth.verifyOtp({
+      const { error } = await supabase.auth.verifyOtp({
         email,
         token: token,
         type: "signup",
@@ -76,8 +77,39 @@ export function VerifyEmailForm({ email }: Props) {
     }
   };
 
+  const resendCode = async () => {
+    if (!email) return;
+
+    try {
+      const supabase = createSupabaseBrowserClient();
+
+      const { error } = await supabase.auth.resend({
+        type: "signup",
+        email: email,
+      });
+
+      if (error) throw error;
+
+      toast({
+        title: "Código reenviado",
+        description: "Se ha enviado un nuevo código a tu correo electrónico.",
+        variant: "default",
+      });
+    } catch (error) {
+      console.error("Error al reenviar el código:", error);
+      toast({
+        title: "Error al reenviar",
+        description:
+          error instanceof Error
+            ? error.message
+            : "Ha ocurrido un error al reenviar el código.",
+        variant: "destructive",
+      });
+    }
+  };
+
   return (
-    <>
+    <div className="mx-auto w-full max-w-md space-y-6">
       <div className="text-center">
         <h1 className="text-3xl font-bold tracking-tight text-primary">
           Validar Email
@@ -103,13 +135,18 @@ export function VerifyEmailForm({ email }: Props) {
                     placeholder="123456"
                     disabled={isLoading}
                     maxLength={6}
+                    className="border-input bg-background"
                   />
                 </FormControl>
                 <FormMessage />
               </FormItem>
             )}
           />
-          <Button type="submit" className="w-full" disabled={isLoading}>
+          <Button
+            type="submit"
+            className="w-full bg-primary text-primary-foreground hover:bg-primary/90"
+            disabled={isLoading}
+          >
             {isLoading ? "Validando..." : "Validar Email"}
           </Button>
         </form>
@@ -117,13 +154,7 @@ export function VerifyEmailForm({ email }: Props) {
 
       <div className="text-center">
         <p className="text-sm text-muted-foreground">
-          ¿No recibiste el código?{" "}
-          <Link
-            href={PAGES.RESEND_EMAIL_VERIFICATION}
-            className="font-medium text-primary hover:underline"
-          >
-            Reenviar código
-          </Link>
+          ¿No recibiste el código? <ResendCodeButton onResend={resendCode} />
         </p>
       </div>
 
@@ -137,6 +168,6 @@ export function VerifyEmailForm({ email }: Props) {
         </Link>
         .
       </p>
-    </>
+    </div>
   );
 }

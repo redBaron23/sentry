@@ -18,8 +18,8 @@ export function UserMenu() {
   const router = useRouter();
 
   const handleLogout = async () => {
-    const supabaseClient = createSupabaseBrowserClient();
-    await supabaseClient.auth.signOut();
+    const supabase = createSupabaseBrowserClient();
+    await supabase.auth.signOut();
 
     router.push(PAGES.LOGIN);
   };

@@ -32,7 +32,7 @@ export const signUpAction = baseActionClient
   .action(async ({ parsedInput: { email, password, name }, ctx: {} }) => {
     const supabase = await createServerSideClient();
 
-    const { error } = await supabase.auth.signUp({
+    const { error, data } = await supabase.auth.signUp({
       email,
       password,
       options: {
@@ -41,6 +41,8 @@ export const signUpAction = baseActionClient
         },
       },
     });
+
+    console.log(error, data);
 
     if (error) {
       throw new ActionError(error.message);
