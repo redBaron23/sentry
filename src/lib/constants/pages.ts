@@ -2,9 +2,9 @@ import { AlertTriangle, BarChart, Home, Shield } from "lucide-react";
 
 export enum PAGES {
   INDEX = "/",
+  API = "/api",
   LOGIN = "/login",
   SIGN_UP = "/sign-up",
-  VERIFY_EMAIL = "/verify-email",
   DASHBOARD = "/dashboard",
   PENETRATION_TEST = "/dashboard/penetration-test",
   INCIDENTS = "/dashboard/incidents",
@@ -13,6 +13,9 @@ export enum PAGES {
   CONTACT = "/contact",
   RESEND_EMAIL_VERIFICATION = "/resend",
 }
+
+export const UNAUTHENTICATED_PAGES = [PAGES.LOGIN, PAGES.SIGN_UP];
+export const AUTHENTICATED_PAGES = [PAGES.DASHBOARD];
 
 export const NAV_ITEMS = [
   { icon: Home, label: "Dashboard", href: PAGES.DASHBOARD },

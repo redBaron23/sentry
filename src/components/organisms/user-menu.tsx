@@ -1,4 +1,9 @@
+"use client";
+
+import { PAGES } from "@/lib/constants/pages";
+import { supabaseClient } from "@/lib/supabase/client";
 import { HelpCircle, LogOut, Settings, User } from "lucide-react";
+import { useRouter } from "next/navigation";
 import { Button } from "../ui/button";
 import {
   DropdownMenu,
@@ -10,6 +15,13 @@ import {
 } from "../ui/dropdown-menu";
 
 export function UserMenu() {
+  const router = useRouter();
+
+  const handleLogout = async () => {
+    const res = await supabaseClient.auth.signOut();
+    router.push(PAGES.LOGIN);
+  };
+
   return (
     <DropdownMenu>
       <DropdownMenuTrigger asChild>
@@ -35,7 +47,10 @@ export function UserMenu() {
           <span>Soporte</span>
         </DropdownMenuItem>
         <DropdownMenuSeparator />
-        <DropdownMenuItem className="cursor-pointer text-red-600">
+        <DropdownMenuItem
+          className="cursor-pointer text-red-600"
+          onClick={handleLogout}
+        >
           <LogOut className="mr-2 h-4 w-4" />
           <span>Cerrar Sesión</span>
         </DropdownMenuItem>

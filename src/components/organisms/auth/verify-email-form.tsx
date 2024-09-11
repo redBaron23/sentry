@@ -2,7 +2,7 @@
 
 import { toast } from "@/hooks/use-toast";
 import { PAGES } from "@/lib/constants/pages";
-import { createClient } from "@/lib/supabase/client";
+import { supabaseClient } from "@/lib/supabase/client";
 import { zodResolver } from "@hookform/resolvers/zod";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
@@ -31,7 +31,6 @@ interface Props {
 export function VerifyEmailForm({ email }: Props) {
   const router = useRouter();
   const [isLoading, setIsLoading] = useState(false);
-  const supabase = createClient();
 
   const form = useForm<z.infer<typeof schema>>({
     resolver: zodResolver(schema),
@@ -45,7 +44,7 @@ export function VerifyEmailForm({ email }: Props) {
 
     setIsLoading(true);
     try {
-      const { error } = await supabase.auth.verifyOtp({
+      const { error } = await supabaseClient.auth.verifyOtp({
         email,
         token: token,
         type: "signup",
