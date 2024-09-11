@@ -1,22 +1,20 @@
 "use client";
 
+import FormInput from "@/components/atoms/form-inputs/form-input";
+import { OAuthProviders } from "@/components/molecules/oauth-providers";
+import { Button } from "@/components/ui/button";
+import { Form } from "@/components/ui/form";
 import { Icons } from "@/lib/constants/icons";
 import { loginAction } from "@/lib/server/actions/auth-actions";
-import { createSupabaseBrowserClient } from "@/lib/supabase/client";
-import { cn, getURL } from "@/lib/utils";
+import { cn } from "@/lib/utils";
 import { loginSchema } from "@/types/schemas/auth-schemas";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useHookFormAction } from "@next-safe-action/adapter-react-hook-form/hooks";
-import { HTMLAttributes, useState } from "react";
-import FormInput from "../../atoms/form-inputs/form-input";
-import { Button } from "../../ui/button";
-import { Form } from "../../ui/form";
+import { HTMLAttributes } from "react";
 
 interface Props extends HTMLAttributes<HTMLDivElement> {}
 
 export function LoginForm({ className, ...props }: Props) {
-  const [isLoadingGoogle, setIsLoadingGoogle] = useState(false);
-
   const {
     handleSubmitWithAction,
     action: {
@@ -25,23 +23,6 @@ export function LoginForm({ className, ...props }: Props) {
     },
     form,
   } = useHookFormAction(loginAction, zodResolver(loginSchema));
-
-  const handleLoginWithGoogle = async () => {
-    setIsLoadingGoogle(true);
-    const supabase = createSupabaseBrowserClient();
-
-    console.log("url", getURL());
-    const { error, data } = await supabase.auth.signInWithOAuth({
-      provider: "google",
-      options: {
-        redirectTo: getURL(),
-      },
-    });
-
-    console.log({ error, data });
-  };
-
-  const isSigningIn = isLoadingGoogle || isExecuting;
 
   return (
     <div className={cn("space-y-6", className)} {...props}>
@@ -56,7 +37,7 @@ export function LoginForm({ className, ...props }: Props) {
             autoCapitalize="none"
             autoComplete="email"
             autoCorrect="off"
-            disabled={isSigningIn}
+            disabled={isExecuting}
             className="mt-1"
           />
           <FormInput
@@ -64,11 +45,11 @@ export function LoginForm({ className, ...props }: Props) {
             name="password"
             label="Contraseña"
             type="password"
-            disabled={isSigningIn}
+            disabled={isExecuting}
             className="mt-1"
           />
-          <Button className="w-full" disabled={isSigningIn}>
-            {isSigningIn && (
+          <Button className="w-full" disabled={isExecuting}>
+            {isExecuting && (
               <Icons.spinner className="mr-2 h-4 w-4 animate-spin" />
             )}
             Iniciar sesión
@@ -91,20 +72,7 @@ export function LoginForm({ className, ...props }: Props) {
         </div>
       </div>
 
-      <Button
-        variant="outline"
-        type="button"
-        disabled={isSigningIn}
-        onClick={handleLoginWithGoogle}
-        className="w-full"
-      >
-        {isSigningIn ? (
-          <Icons.spinner className="mr-2 h-4 w-4 animate-spin" />
-        ) : (
-          <Icons.google className="mr-2 h-4 w-4" />
-        )}
-        Google
-      </Button>
+      <OAuthProviders />
     </div>
   );
 }
