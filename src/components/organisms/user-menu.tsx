@@ -1,7 +1,7 @@
 "use client";
 
 import { PAGES } from "@/lib/constants/pages";
-import { supabaseClient } from "@/lib/supabase/client";
+import { createSupabaseBrowserClient } from "@/lib/supabase/client";
 import { HelpCircle, LogOut, Settings, User } from "lucide-react";
 import { useRouter } from "next/navigation";
 import { Button } from "../ui/button";
@@ -18,7 +18,9 @@ export function UserMenu() {
   const router = useRouter();
 
   const handleLogout = async () => {
-    const res = await supabaseClient.auth.signOut();
+    const supabaseClient = createSupabaseBrowserClient();
+    await supabaseClient.auth.signOut();
+
     router.push(PAGES.LOGIN);
   };
 

@@ -2,7 +2,7 @@
 
 import { toast } from "@/hooks/use-toast";
 import { PAGES } from "@/lib/constants/pages";
-import { supabaseClient } from "@/lib/supabase/client";
+import { createSupabaseBrowserClient } from "@/lib/supabase/client";
 import { zodResolver } from "@hookform/resolvers/zod";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
@@ -44,6 +44,8 @@ export function VerifyEmailForm({ email }: Props) {
 
     setIsLoading(true);
     try {
+      const supabaseClient = createSupabaseBrowserClient();
+
       const { error } = await supabaseClient.auth.verifyOtp({
         email,
         token: token,
