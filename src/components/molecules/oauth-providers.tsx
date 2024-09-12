@@ -8,6 +8,7 @@ import { ProviderButton } from "../atoms/buttons/provider-button";
 export function OAuthProviders() {
   const [isLoadingGoogle, setIsLoadingGoogle] = useState(false);
   const [isLoadingAzure, setIsLoadingAzure] = useState(false);
+  console.log(GOOGLE_REDIRECT_URL);
 
   const handleLoginWithProvider = async (provider: "google" | "azure") => {
     const setLoading =
@@ -22,7 +23,9 @@ export function OAuthProviders() {
       },
     });
 
-    setLoading(false);
+    if (error) {
+      setLoading(false);
+    }
   };
 
   return (
