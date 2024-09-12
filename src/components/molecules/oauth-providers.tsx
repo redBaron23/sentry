@@ -1,9 +1,10 @@
 "use client";
 
 import { createSupabaseBrowserClient } from "@/lib/supabase/client";
-import { getURL } from "@/lib/utils";
 import { useState } from "react";
 import { ProviderButton } from "../atoms/buttons/provider-button";
+
+const googleRedirectUrl = `${window.location.origin}/api/auth/callback`;
 
 export function OAuthProviders() {
   const [isLoadingGoogle, setIsLoadingGoogle] = useState(false);
@@ -18,7 +19,7 @@ export function OAuthProviders() {
     const { error, data } = await supabase.auth.signInWithOAuth({
       provider: provider === "azure" ? "azure" : "google",
       options: {
-        redirectTo: getURL(),
+        redirectTo: googleRedirectUrl,
       },
     });
 

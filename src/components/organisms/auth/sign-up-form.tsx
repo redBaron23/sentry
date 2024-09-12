@@ -2,12 +2,10 @@
 
 import { Icons } from "@/lib/constants/icons";
 import { signUpAction } from "@/lib/server/actions/auth-actions";
-import { createSupabaseBrowserClient } from "@/lib/supabase/client";
 import { cn } from "@/lib/utils";
 import { signUpSchema } from "@/types/schemas/auth-schemas";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useHookFormAction } from "@next-safe-action/adapter-react-hook-form/hooks";
-import { getURL } from "next/dist/shared/lib/utils";
 import { HTMLAttributes, useState } from "react";
 import FormInput from "../../atoms/form-inputs/form-input";
 import { Button } from "../../ui/button";
@@ -34,21 +32,6 @@ export function SignUpForm({ onSignUpComplete, className, ...props }: Props) {
       },
     },
   });
-
-  const handleLoginWithGoogle = async () => {
-    setIsLoadingGoogle(true);
-    const supabase = createSupabaseBrowserClient();
-
-    console.log("url", getURL());
-    const { error, data } = await supabase.auth.signInWithOAuth({
-      provider: "google",
-      options: {
-        redirectTo: getURL(),
-      },
-    });
-
-    console.log({ error, data });
-  };
 
   const isSigningUp = isLoadingGoogle || isExecuting;
 
