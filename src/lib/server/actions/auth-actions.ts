@@ -53,8 +53,6 @@ export const signUpAction = baseActionClient
     ) {
       throw new ActionError("User already exists");
     }
-
-    console.log(error, data);
   });
 
 export const verifyEmailAction = baseActionClient

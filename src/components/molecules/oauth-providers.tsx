@@ -1,19 +1,13 @@
 "use client";
 
+import { GOOGLE_REDIRECT_URL } from "@/lib/constants/globa";
 import { createSupabaseBrowserClient } from "@/lib/supabase/client";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { ProviderButton } from "../atoms/buttons/provider-button";
 
 export function OAuthProviders() {
   const [isLoadingGoogle, setIsLoadingGoogle] = useState(false);
   const [isLoadingAzure, setIsLoadingAzure] = useState(false);
-  const [origin, setOrigin] = useState<string>("");
-
-  useEffect(() => {
-    setOrigin(window.location.origin);
-  }, []);
-
-  const googleRedirectUrl = `${origin}/api/auth/callback`;
 
   const handleLoginWithProvider = async (provider: "google" | "azure") => {
     const setLoading =
@@ -24,11 +18,10 @@ export function OAuthProviders() {
     const { error, data } = await supabase.auth.signInWithOAuth({
       provider: provider === "azure" ? "azure" : "google",
       options: {
-        redirectTo: googleRedirectUrl,
+        redirectTo: GOOGLE_REDIRECT_URL,
       },
     });
 
-    console.log({ error, data });
     setLoading(false);
   };
 
