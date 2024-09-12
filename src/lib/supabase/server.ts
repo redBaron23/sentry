@@ -27,3 +27,10 @@ export async function createServerSideClient() {
     },
   );
 }
+
+export async function getUserFromServer() {
+  const supabase = await createServerSideClient();
+  const res = await supabase.auth.getUser();
+
+  return res.data.user;
+}
