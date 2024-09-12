@@ -1,5 +1,6 @@
 "use client";
 
+import { GOOGLE_REDIRECT_URL } from "@/lib/constants/global";
 import { createSupabaseBrowserClient } from "@/lib/supabase/client";
 import { useState } from "react";
 import { ProviderButton } from "../atoms/buttons/provider-button";
@@ -19,8 +20,9 @@ export function OAuthProviders() {
       options: {
         queryParams: {
           prompt: "consent",
+          access_type: "offline",
         },
-        redirectTo: "http://localhost:3000/api/auth/callback",
+        redirectTo: GOOGLE_REDIRECT_URL,
       },
     });
 
