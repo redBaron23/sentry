@@ -17,6 +17,10 @@ export function OAuthProviders() {
     await supabase.auth.signInWithOAuth({
       provider: provider === "azure" ? "azure" : "google",
       options: {
+        queryParams: {
+          prompt: "consent",
+          acces_type: "offline",
+        },
         redirectTo: "http://localhost:3000/api/auth/callback",
       },
     });
