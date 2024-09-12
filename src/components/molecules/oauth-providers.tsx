@@ -19,7 +19,6 @@ export function OAuthProviders() {
       options: {
         queryParams: {
           prompt: "consent",
-          access_type: "offline",
         },
         redirectTo: "http://localhost:3000/api/auth/callback",
       },
