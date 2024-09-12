@@ -3,11 +3,9 @@ import { getUserFromServer } from "@/lib/supabase/server";
 import { getUserInitials } from "@/lib/utils";
 import { UserMenu } from "../user-menu";
 
-interface HeaderActionsProps {
-  notificationCount: number;
-}
+interface Props {}
 
-export async function HeaderActions({ notificationCount }: HeaderActionsProps) {
+export async function HeaderActions({}: Props) {
   const user = await getUserFromServer();
 
   const userInitials = getUserInitials(user?.user_metadata.name);
@@ -15,7 +13,7 @@ export async function HeaderActions({ notificationCount }: HeaderActionsProps) {
 
   return (
     <div className="flex items-center space-x-2 rounded-full bg-secondary/50 p-1">
-      <NotificationBell initialCount={notificationCount} />
+      <NotificationBell initialCount={3} />
       <UserMenu userInitials={userInitials} userImage={userImageSrc} />
     </div>
   );

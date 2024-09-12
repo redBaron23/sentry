@@ -8,17 +8,9 @@ import { Sheet, SheetContent, SheetTrigger } from "../ui/sheet";
 
 interface DashboardTemplateProps {
   children: React.ReactNode;
-  userInitials?: string;
-  userImage?: string;
-  notificationCount?: number;
 }
 
-export function DashboardTemplate({
-  children,
-  userInitials = "JR",
-  userImage,
-  notificationCount = 3,
-}: DashboardTemplateProps) {
+export function DashboardTemplate({ children }: DashboardTemplateProps) {
   return (
     <div className="flex min-h-screen w-full">
       <aside className="fixed inset-y-0 left-0 z-10 hidden w-14 flex-col border-r bg-background sm:flex">
@@ -37,11 +29,7 @@ export function DashboardTemplate({
               <MobileNav />
             </SheetContent>
           </Sheet>
-          <HeaderActions
-            notificationCount={notificationCount}
-            userInitials={userInitials}
-            userImage={userImage}
-          />
+          <HeaderActions />
         </header>
         <main className="flex-1 overflow-y-auto p-4 sm:p-6">{children}</main>
       </div>
