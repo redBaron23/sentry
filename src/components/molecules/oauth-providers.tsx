@@ -10,7 +10,6 @@ export function OAuthProviders() {
   const [origin, setOrigin] = useState<string>("");
 
   useEffect(() => {
-    // Este código se ejecutará solo en el cliente
     setOrigin(window.location.origin);
   }, []);
 
