@@ -1,14 +1,20 @@
 "use client";
 
 import { createSupabaseBrowserClient } from "@/lib/supabase/client";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { ProviderButton } from "../atoms/buttons/provider-button";
 
 export function OAuthProviders() {
   const [isLoadingGoogle, setIsLoadingGoogle] = useState(false);
   const [isLoadingAzure, setIsLoadingAzure] = useState(false);
+  const [origin, setOrigin] = useState<string>("");
 
-  const googleRedirectUrl = `${window.location.origin}/api/auth/callback`;
+  useEffect(() => {
+    // Este código se ejecutará solo en el cliente
+    setOrigin(window.location.origin);
+  }, []);
+
+  const googleRedirectUrl = `${origin}/api/auth/callback`;
 
   const handleLoginWithProvider = async (provider: "google" | "azure") => {
     const setLoading =
