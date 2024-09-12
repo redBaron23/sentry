@@ -1,6 +1,5 @@
 "use client";
 
-import { GOOGLE_REDIRECT_URL } from "@/lib/constants/global";
 import { createSupabaseBrowserClient } from "@/lib/supabase/client";
 import { useState } from "react";
 import { ProviderButton } from "../atoms/buttons/provider-button";
@@ -8,7 +7,6 @@ import { ProviderButton } from "../atoms/buttons/provider-button";
 export function OAuthProviders() {
   const [isLoadingGoogle, setIsLoadingGoogle] = useState(false);
   const [isLoadingAzure, setIsLoadingAzure] = useState(false);
-  console.log(GOOGLE_REDIRECT_URL);
 
   const handleLoginWithProvider = async (provider: "google" | "azure") => {
     const setLoading =
@@ -16,16 +14,14 @@ export function OAuthProviders() {
     setLoading(true);
     const supabase = createSupabaseBrowserClient();
 
-    const { error, data } = await supabase.auth.signInWithOAuth({
+    await supabase.auth.signInWithOAuth({
       provider: provider === "azure" ? "azure" : "google",
       options: {
-        redirectTo: GOOGLE_REDIRECT_URL,
+        redirectTo: "http://localhost:3000/api/auth/callback",
       },
     });
 
-    if (error) {
-      setLoading(false);
-    }
+    setLoading(false);
   };
 
   return (
