@@ -1,6 +1,6 @@
 "use client";
 
-import { GOOGLE_REDIRECT_URL } from "@/lib/constants/globa";
+import { GOOGLE_REDIRECT_URL } from "@/lib/constants/global";
 import { createSupabaseBrowserClient } from "@/lib/supabase/client";
 import { useState } from "react";
 import { ProviderButton } from "../atoms/buttons/provider-button";
