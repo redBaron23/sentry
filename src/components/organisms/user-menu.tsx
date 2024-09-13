@@ -42,10 +42,11 @@ export function UserMenu({ userInitials, userImage }: UserMenuProps) {
         description: error.message,
         variant: "destructive",
       });
-      setIsLoggingOut(false);
     } else {
       router.replace(PAGES.LOGIN);
     }
+
+    setIsLoggingOut(false);
   };
 
   const avatarFallback = userInitials || <User />;
