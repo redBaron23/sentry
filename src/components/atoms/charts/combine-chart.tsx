@@ -122,13 +122,7 @@ export function CombinedChart({
                   dataKey={key}
                   stackId="a"
                   fill={config[key as keyof typeof config].color}
-                  radius={
-                    index === 0
-                      ? [4, 4, 0, 0]
-                      : index === barKeys.length - 1
-                        ? [0, 0, 4, 4]
-                        : [0, 0, 0, 0]
-                  }
+                  radius={index === 0 ? [0, 0, 8, 8] : [8, 8, 0, 0]}
                   yAxisId="left"
                 >
                   {index === barKeys.length - 1 && (
