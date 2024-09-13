@@ -37,14 +37,14 @@ export default function LoginPage() {
       <p className="text-center text-sm text-muted-foreground">
         Al continuar, aceptas nuestros{" "}
         <Link
-          href="/terms"
+          href={PAGES.TERMS}
           className="font-medium text-primary hover:underline"
         >
           Términos de Servicio
         </Link>{" "}
         y{" "}
         <Link
-          href="/privacy"
+          href={PAGES.PRIVACY}
           className="font-medium text-primary hover:underline"
         >
           Política de Privacidad

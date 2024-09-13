@@ -1,13 +1,18 @@
 import { AlertTriangle, BarChart, Home, Shield } from "lucide-react";
 
 export enum PAGES {
+  /** Globa */
+  CONTACT = "/contact",
+  TERMS = "/terms",
+  PRIVACY = "/privacy",
+  HELP = "/help",
+
   /** Unauthenticated */
   INDEX = "/",
   API = "/api",
   LOGIN = "/login",
   SIGN_UP = "/sign-up",
   RESEND_EMAIL_VERIFICATION = "/resend",
-  CONTACT = "/contact",
 
   /** Authenticated */
   SETTINGS = "/settings",

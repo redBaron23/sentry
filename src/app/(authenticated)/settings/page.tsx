@@ -1,4 +1,5 @@
 import { SettingsForm } from "@/components/organisms/settings/settings-form";
+import { PAGES } from "@/lib/constants/pages";
 import { Metadata } from "next";
 import Link from "next/link";
 import { Button } from "../../../components/ui/button";
@@ -94,12 +95,15 @@ export default function SettingsPage() {
 
       <p className="mt-8 text-center text-sm text-muted-foreground">
         ¿Necesitas ayuda? Consulta nuestra{" "}
-        <Link href="/help" className="font-medium text-primary hover:underline">
+        <Link
+          href={PAGES.HELP}
+          className="font-medium text-primary hover:underline"
+        >
           página de ayuda
         </Link>{" "}
         o{" "}
         <Link
-          href="/contact"
+          href={PAGES.CONTACT}
           className="font-medium text-primary hover:underline"
         >
           contáctanos

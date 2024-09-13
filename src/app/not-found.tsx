@@ -1,3 +1,4 @@
+import { PAGES } from "@/lib/constants/pages";
 import Link from "next/link";
 import { Button } from "../components/ui/button";
 
@@ -11,10 +12,10 @@ export default function Custom404() {
           Lo sentimos, la página que estás buscando no existe o ha sido movida.
         </p>
         <div className="flex justify-center space-x-4">
-          <Link href="/">
+          <Link href={PAGES.PRIVACY}>
             <Button>Volver al inicio</Button>
           </Link>
-          <Link href="/contact">
+          <Link href={PAGES.CONTACT}>
             <Button variant="outline">Contactar soporte</Button>
           </Link>
         </div>
