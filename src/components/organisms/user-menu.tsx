@@ -3,7 +3,7 @@
 import { useToast } from "@/hooks/use-toast";
 import { PAGES } from "@/lib/constants/pages";
 import { createSupabaseBrowserClient } from "@/lib/supabase/client";
-import { HelpCircle, Loader2, LogOut, Settings } from "lucide-react";
+import { HelpCircle, Loader2, LogOut, Settings, User } from "lucide-react";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { useState } from "react";
@@ -48,6 +48,8 @@ export function UserMenu({ userInitials, userImage }: UserMenuProps) {
     }
   };
 
+  const avatarFallback = userInitials || <User />;
+
   return (
     <DropdownMenu open={isOpen} onOpenChange={setIsOpen}>
       <DropdownMenuTrigger asChild>
@@ -58,7 +60,7 @@ export function UserMenu({ userInitials, userImage }: UserMenuProps) {
         >
           <Avatar>
             <AvatarImage src={userImage} alt={userInitials} />
-            <AvatarFallback>{userInitials}</AvatarFallback>
+            <AvatarFallback>{avatarFallback}</AvatarFallback>
           </Avatar>
         </Button>
       </DropdownMenuTrigger>

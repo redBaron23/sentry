@@ -1,7 +1,6 @@
 "use client";
 
-import { GOOGLE_REDIRECT_URL } from "@/lib/constants/global";
-import { createSupabaseBrowserClient } from "@/lib/supabase/client";
+import { oauthClientSignIn } from "@/lib/supabase/client";
 import { useState } from "react";
 import { ProviderButton } from "../atoms/buttons/provider-button";
 
@@ -13,18 +12,8 @@ export function OAuthProviders() {
     const setLoading =
       provider === "google" ? setIsLoadingGoogle : setIsLoadingAzure;
     setLoading(true);
-    const supabase = createSupabaseBrowserClient();
 
-    await supabase.auth.signInWithOAuth({
-      provider: provider === "azure" ? "azure" : "google",
-      options: {
-        queryParams: {
-          prompt: "consent",
-          access_type: "offline",
-        },
-        redirectTo: GOOGLE_REDIRECT_URL,
-      },
-    });
+    await oauthClientSignIn(provider);
 
     setLoading(false);
   };
@@ -38,8 +27,7 @@ export function OAuthProviders() {
       />
       <ProviderButton
         provider="azure"
-        onClick={() => {}}
-        // onClick={() => handleLoginWithProvider("azure")}
+        onClick={() => handleLoginWithProvider("azure")}
         isLoading={isLoadingAzure}
       />
     </div>

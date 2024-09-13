@@ -7,6 +7,7 @@ interface Props {}
 
 export async function HeaderActions({}: Props) {
   const user = await getUserFromServer();
+  console.log(user);
 
   const userInitials = getUserInitials(user?.user_metadata.name);
   const userImageSrc = user?.user_metadata.picture;
