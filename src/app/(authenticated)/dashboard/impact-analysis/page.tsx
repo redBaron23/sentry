@@ -12,18 +12,12 @@ const savingsChartData = {
 };
 
 const riskData = [
-  { x: 2, y: 3, name: "Riesgo A" },
-  { x: 1, y: 4, name: "Riesgo B" },
-  { x: 3, y: 2, name: "Riesgo C" },
-  // ... más puntos de riesgo
+  { x: 0, y: null, name: null, low: 4, medium: 0, high: 0, critical: 0, cn: 1 },
+  { x: 1, y: null, name: null, low: 3, medium: 1, high: 0, critical: 0, cn: 1 },
+  { x: 2, y: null, name: null, low: 2, medium: 2, high: 0, critical: 0, cn: 3 },
+  { x: 3, y: null, name: null, low: 1, medium: 2, high: 1, critical: 0 },
+  { x: 4, y: null, name: null, low: 0, medium: 1, high: 2, critical: 1, cn: 2 },
 ];
-
-const riskConfig = {
-  veryLow: { label: "Very Low", color: "#00FF00" },
-  low: { label: "Low", color: "#FFFF00" },
-  high: { label: "High", color: "#FFA500" },
-  veryHigh: { label: "Very High", color: "#FF0000" },
-};
 
 const roiData = [
   { name: "Ene", inversionSeguridad: 50000, perdidasEvitadas: 75000, roi: 50 },

@@ -43,6 +43,14 @@ const chartConfig: ChartConfig = {
   roi: { label: "ROI", color: "hsl(var(--chart-roi))" },
 };
 
+const CustomChartTooltipContent = (props: any) => {
+  return (
+    <div style={{ paddingRight: "10px" }}>
+      <ChartTooltipContent {...props} />
+    </div>
+  );
+};
+
 export function ROIChart({ title, description, data }: Props) {
   return (
     <div className="flex h-full flex-col">

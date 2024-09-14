@@ -2,8 +2,8 @@
 
 import {
   Area,
-  AreaChart,
   CartesianGrid,
+  ComposedChart,
   ResponsiveContainer,
   Scatter,
   XAxis,
@@ -21,6 +21,10 @@ interface RiskData {
   x: number;
   y: number;
   name: string;
+  low: number;
+  medium: number;
+  high: number;
+  critical: number;
 }
 
 interface Props {
@@ -30,6 +34,12 @@ interface Props {
 
 const CustomShape = (props: any) => {
   const { cx, cy, payload } = props;
+
+  console.log(payload);
+  if (!payload.cn) {
+    return;
+  }
+
   return (
     <g>
       <circle
@@ -62,14 +72,6 @@ const chartConfig: ChartConfig = {
 };
 
 export function RiskMatrix({ title, data }: Props) {
-  const areaData = [
-    { x: 0, low: 4, medium: 0, high: 0, critical: 0 },
-    { x: 1, low: 3, medium: 1, high: 0, critical: 0 },
-    { x: 2, low: 2, medium: 2, high: 0, critical: 0 },
-    { x: 3, low: 1, medium: 2, high: 1, critical: 0 },
-    { x: 4, low: 0, medium: 1, high: 2, critical: 1 },
-  ];
-
   return (
     <div className="flex h-full flex-col">
       {title && <h6 className="mb-2 text-center font-bold">{title}</h6>}
@@ -77,8 +79,8 @@ export function RiskMatrix({ title, data }: Props) {
       <div className="flex-grow">
         <ChartContainer config={chartConfig}>
           <ResponsiveContainer width="100%" height={400}>
-            <AreaChart
-              data={areaData}
+            <ComposedChart
+              data={data}
               margin={{ top: 20, right: 30, left: 0, bottom: 0 }}
             >
               <CartesianGrid strokeDasharray="3 3" />
@@ -133,8 +135,8 @@ export function RiskMatrix({ title, data }: Props) {
                 fill={chartConfig.critical.color}
                 fillOpacity={0.6}
               />
-              <Scatter name="Riesgos" fill="#8884d8" shape={<CustomShape />} />
-            </AreaChart>
+              <Scatter dataKey="cn" shape={<CustomShape />} />
+            </ComposedChart>
           </ResponsiveContainer>
         </ChartContainer>
       </div>
