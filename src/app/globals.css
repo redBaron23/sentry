@@ -63,6 +63,14 @@
     --input: 220 20% 80%;
     --ring: 220 60% 50%;
 
+    --chart-investment: 220 70% 50%; /* Azul para inversiones en seguridad */
+    --chart-savings: 140 60% 45%; /* Verde para ahorros/pérdidas evitadas */
+    --chart-risk-low: 120 70% 45%; /* Verde claro para riesgo bajo */
+    --chart-risk-medium: 40 80% 50%; /* Amarillo para riesgo medio */
+    --chart-risk-high: 25 85% 55%; /* Naranja para riesgo alto */
+    --chart-risk-critical: 0 80% 50%; /* Rojo para riesgo crítico */
+    --chart-roi: 280 60% 50%; /* Púrpura para ROI */
+
     /* Colores de gráficos ajustados */
     --chart-1: 210 100% 50%;
     --chart-2: 180 100% 35%;
@@ -114,6 +122,15 @@
     --chart-3: 150 100% 45%;
     --chart-4: 120 70% 55%;
     --chart-5: 90 70% 55%;
+
+    --chart-investment: 220 70% 60%;
+    --chart-savings: 140 60% 55%;
+    --chart-risk-low: 120 70% 55%;
+    --chart-risk-medium: 40 80% 60%;
+    --chart-risk-high: 25 85% 65%;
+    --chart-risk-critical: 0 80% 60%;
+    --chart-roi: 280 60% 60%;
+
     --chart-critical: 0 80% 50%; /* Un rojo más intenso */
     --chart-high: 25 85% 55%; /* Un naranja más vibrante */
     --chart-medium: 50 90% 55%; /* Para modo claro */
