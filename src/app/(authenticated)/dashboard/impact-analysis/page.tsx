@@ -1,5 +1,5 @@
 import { AreaChart } from "@/components/atoms/charts/area-chart";
-import { LineChart } from "@/components/atoms/charts/line-chart";
+import { RiskMatrix } from "@/components/atoms/charts/risk-matrix";
 import ChartCard from "@/components/organisms/charts/chart-card";
 
 const savingsChartData = {
@@ -11,43 +11,18 @@ const savingsChartData = {
   Jun: { label: "Junio", value: 200000 },
 };
 
-const riskStatusChartData = {
-  high: {
-    label: "Alto Riesgo",
-    color: "hsl(var(--chart-high))",
-    values: {
-      Jan: 80,
-      Feb: 75,
-      Mar: 70,
-      Apr: 65,
-      May: 60,
-      Jun: 55,
-    },
-  },
-  medium: {
-    label: "Riesgo Medio",
-    color: "hsl(var(--chart-medium))",
-    values: {
-      Jan: 15,
-      Feb: 18,
-      Mar: 22,
-      Apr: 25,
-      May: 28,
-      Jun: 30,
-    },
-  },
-  low: {
-    label: "Bajo Riesgo",
-    color: "hsl(var(--chart-low))",
-    values: {
-      Jan: 5,
-      Feb: 7,
-      Mar: 8,
-      Apr: 10,
-      May: 12,
-      Jun: 15,
-    },
-  },
+const riskData = [
+  { x: 2, y: 3, name: "Riesgo A" },
+  { x: 1, y: 4, name: "Riesgo B" },
+  { x: 3, y: 2, name: "Riesgo C" },
+  // ... más puntos de riesgo
+];
+
+const riskConfig = {
+  veryLow: { label: "Very Low", color: "#00FF00" },
+  low: { label: "Low", color: "#FFFF00" },
+  high: { label: "High", color: "#FFA500" },
+  veryHigh: { label: "Very High", color: "#FF0000" },
 };
 
 export default function ImpactAnalysisPage() {
@@ -63,7 +38,7 @@ export default function ImpactAnalysisPage() {
         title="Evolución del Perfil de Riesgo de Ciberseguridad"
         cols={1}
       >
-        <LineChart data={riskStatusChartData} />
+        <RiskMatrix title="Matriz de Riesgo" data={riskData} />
       </ChartCard>
     </div>
   );

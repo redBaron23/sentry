@@ -12,6 +12,7 @@ export function SidebarNav() {
     <>
       <nav className="flex flex-col items-center gap-4 px-2 py-4">
         <NavItemWithTooltip
+          key="sentrio"
           href={PAGES.DASHBOARD}
           icon={Shield}
           label="Sentrio"
@@ -30,6 +31,7 @@ export function SidebarNav() {
       </nav>
       <nav className="mt-auto flex flex-col items-center gap-4 px-2 py-4">
         <NavItemWithTooltip
+          key="settings"
           href={PAGES.SETTINGS}
           icon={Settings}
           label="Configuración"

@@ -69,10 +69,11 @@
     --chart-3: 150 100% 35%;
     --chart-4: 120 70% 45%;
     --chart-5: 90 70% 45%;
-    --chart-critical: 0 100% 45%;
-    --chart-high: 25 100% 50%;
-    --chart-medium: 40 100% 50%;
-    --chart-low: 170 70% 45%;
+    --chart-critical: 0 80% 50%; /* Un rojo más intenso */
+    --chart-high: 25 85% 55%; /* Un naranja más vibrante */
+    --chart-medium: 50 90% 55%; /* Para modo claro */
+    --chart-low: 120 60% 50%; /* Un verde más natural */
+
     --chart-variation-positive: 140 80% 40%;
     --chart-variation-negative: 0 90% 45%;
     --chart-new-tickets: 210 100% 50%;
@@ -113,10 +114,11 @@
     --chart-3: 150 100% 45%;
     --chart-4: 120 70% 55%;
     --chart-5: 90 70% 55%;
-    --chart-critical: 0 100% 55%;
-    --chart-high: 25 100% 60%;
-    --chart-medium: 40 100% 60%;
-    --chart-low: 170 70% 55%;
+    --chart-critical: 0 80% 50%; /* Un rojo más intenso */
+    --chart-high: 25 85% 55%; /* Un naranja más vibrante */
+    --chart-medium: 50 90% 55%; /* Para modo claro */
+    --chart-low: 120 60% 50%; /* Un verde más natural */
+
     --chart-variation-positive: 140 80% 50%;
     --chart-variation-negative: 0 90% 55%;
     --chart-new-tickets: 210 100% 60%;
