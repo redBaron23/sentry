@@ -30,15 +30,11 @@ interface CustomXAxisTickProps {
   x: number;
   y: number;
   payload: { value: string };
-  data: Record<string, BarData>;
 }
 
-const CustomXAxisTick: React.FC<CustomXAxisTickProps> = ({
-  x,
-  y,
-  payload,
-  data,
-}) => {
+const CustomXAxisTick: React.FC<
+  CustomXAxisTickProps & { data: Record<string, BarData> }
+> = ({ x, y, payload, data }) => {
   return (
     <g transform={`translate(${x},${y})`}>
       <text
@@ -54,6 +50,14 @@ const CustomXAxisTick: React.FC<CustomXAxisTickProps> = ({
       </text>
     </g>
   );
+};
+
+const CustomXAxisTickWrapper = (data: Record<string, BarData>) => {
+  function WrappedComponent(props: CustomXAxisTickProps) {
+    return <CustomXAxisTick {...props} data={data} />;
+  }
+  WrappedComponent.displayName = "CustomXAxisTickWrapper";
+  return WrappedComponent;
 };
 
 export const BarChart: React.FC<Props> = ({
@@ -89,7 +93,7 @@ export const BarChart: React.FC<Props> = ({
                 dataKey="name"
                 tickLine={false}
                 height={60}
-                tick={<CustomXAxisTick data={data} />}
+                tick={CustomXAxisTickWrapper(data)}
               />
               {showYAxis && (
                 <YAxis axisLine={false} tickLine={false} tickMargin={10} />
