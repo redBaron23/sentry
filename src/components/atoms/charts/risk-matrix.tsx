@@ -4,6 +4,7 @@ import {
   Area,
   CartesianGrid,
   ComposedChart,
+  Label,
   ResponsiveContainer,
   Scatter,
   XAxis,
@@ -19,12 +20,13 @@ import {
 
 interface RiskData {
   x: number;
-  y: number;
-  name: string;
-  low: number;
-  medium: number;
-  high: number;
-  critical: number;
+  impact?: number;
+  label?: string;
+  link?: string;
+  low?: number;
+  medium?: number;
+  high?: number;
+  critical?: number;
 }
 
 interface Props {
@@ -35,20 +37,23 @@ interface Props {
 const CustomShape = (props: any) => {
   const { cx, cy, payload } = props;
 
-  console.log(payload);
-  if (!payload.cn) {
-    return;
+  if (!payload.label) {
+    return null;
   }
 
   return (
-    <g>
+    <g
+      onClick={() => {
+        window.open(payload.link, "_blank");
+      }}
+    >
       <circle
         cx={cx}
         cy={cy}
         r={8}
         stroke="hsl(var(--foreground))"
         strokeWidth={2}
-        fill="hsl(var(--chart-1))"
+        fill="hsl(var(--chart-threat))"
       />
       <text
         x={cx}
@@ -58,17 +63,17 @@ const CustomShape = (props: any) => {
         fontSize="12"
         fontWeight="bold"
       >
-        {payload.name}
+        {payload.label}
       </text>
     </g>
   );
 };
 
 const chartConfig: ChartConfig = {
-  low: { label: "Bajo", color: "hsl(var(--chart-low))" },
-  medium: { label: "Medio", color: "hsl(var(--chart-medium))" },
-  high: { label: "Alto", color: "hsl(var(--chart-high))" },
-  critical: { label: "Crítico", color: "hsl(var(--chart-threat))" },
+  low: { label: "Bajo", color: "hsl(120, 100%, 35%)" },
+  medium: { label: "Medio", color: "hsl(40, 100%, 50%)" },
+  high: { label: "Alto", color: "hsl(30, 100%, 50%)" },
+  critical: { label: "Crítico", color: "hsl(0, 100%, 50%)" },
 };
 
 export function RiskMatrix({ title, data }: Props) {
@@ -78,7 +83,7 @@ export function RiskMatrix({ title, data }: Props) {
 
       <div className="flex-grow">
         <ChartContainer config={chartConfig}>
-          <ResponsiveContainer width="100%" height={400}>
+          <ResponsiveContainer>
             <ComposedChart
               data={data}
               margin={{ top: 20, right: 30, left: 0, bottom: 0 }}
@@ -89,7 +94,11 @@ export function RiskMatrix({ title, data }: Props) {
                 type="number"
                 domain={[0, 4]}
                 tickCount={5}
-                label={{ value: "Probabilidad", position: "bottom", offset: 0 }}
+                label={{
+                  value: "Probabilidad",
+                  position: "insideBottom",
+                  offset: 0,
+                }}
               />
               <YAxis
                 type="number"
@@ -99,10 +108,21 @@ export function RiskMatrix({ title, data }: Props) {
                   value: "Impacto",
                   angle: -90,
                   position: "insideLeft",
-                  offset: 10,
+                  offset: 20,
                 }}
               />
-              <ChartTooltip content={<ChartTooltipContent />} />
+              <ChartTooltip
+                content={
+                  <ChartTooltipContent
+                  //   formatter={(value, name, props) => {
+                  //     if (name === "name") {
+                  //       return [`Riesgo: ${value}`, ""];
+                  //     }
+                  //     return [value, name];
+                  //   }}
+                  />
+                }
+              />
               <Area
                 type="monotone"
                 dataKey="low"
@@ -135,7 +155,41 @@ export function RiskMatrix({ title, data }: Props) {
                 fill={chartConfig.critical.color}
                 fillOpacity={0.6}
               />
-              <Scatter dataKey="cn" shape={<CustomShape />} />
+              <Scatter dataKey="impact" shape={<CustomShape />} />
+
+              {/* Risk level labels */}
+              <Label
+                content={
+                  <text x={50} y={50}>
+                    Bajo
+                  </text>
+                }
+                position="center"
+              />
+              <Label
+                content={
+                  <text x={150} y={150}>
+                    Medio
+                  </text>
+                }
+                position="center"
+              />
+              <Label
+                content={
+                  <text x={250} y={250}>
+                    Alto
+                  </text>
+                }
+                position="center"
+              />
+              <Label
+                content={
+                  <text x={350} y={350}>
+                    Crítico
+                  </text>
+                }
+                position="center"
+              />
             </ComposedChart>
           </ResponsiveContainer>
         </ChartContainer>
