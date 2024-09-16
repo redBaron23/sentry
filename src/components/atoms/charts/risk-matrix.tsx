@@ -46,6 +46,7 @@ const CustomShape = (props: any) => {
       onClick={() => {
         window.open(payload.link, "_blank");
       }}
+      style={{ cursor: "pointer" }}
     >
       <circle
         cx={cx}
@@ -67,6 +68,23 @@ const CustomShape = (props: any) => {
       </text>
     </g>
   );
+};
+
+const CustomTooltip = ({ active, payload }: any) => {
+  if (active && payload && payload.length) {
+    const data = payload[0].payload;
+    if (data.label) {
+      return (
+        <div className="custom-tooltip rounded border border-gray-300 bg-white p-2 shadow-md">
+          <p className="font-bold">{data.label}</p>
+          <p>Impacto: {data.impact}</p>
+        </div>
+      );
+    }
+    // Si no hay label, usamos el tooltip original
+    return <ChartTooltipContent active={active} payload={payload} />;
+  }
+  return null;
 };
 
 const chartConfig: ChartConfig = {
@@ -111,18 +129,7 @@ export function RiskMatrix({ title, data }: Props) {
                   offset: 20,
                 }}
               />
-              <ChartTooltip
-                content={
-                  <ChartTooltipContent
-                  //   formatter={(value, name, props) => {
-                  //     if (name === "name") {
-                  //       return [`Riesgo: ${value}`, ""];
-                  //     }
-                  //     return [value, name];
-                  //   }}
-                  />
-                }
-              />
+              <ChartTooltip content={<CustomTooltip />} />
               <Area
                 type="monotone"
                 dataKey="low"
@@ -193,6 +200,14 @@ export function RiskMatrix({ title, data }: Props) {
             </ComposedChart>
           </ResponsiveContainer>
         </ChartContainer>
+      </div>
+
+      <div className="mt-4 text-center text-sm text-gray-600">
+        <p>Los puntos en el gráfico representan riesgos específicos.</p>
+        <p>
+          Pase el cursor sobre un punto para ver detalles y haga clic para
+          obtener información completa.
+        </p>
       </div>
     </div>
   );
