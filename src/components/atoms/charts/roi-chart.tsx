@@ -7,7 +7,6 @@ import {
   Legend,
   Line,
   ResponsiveContainer,
-  Tooltip,
   XAxis,
   YAxis,
 } from "recharts";
@@ -15,6 +14,7 @@ import {
 import {
   ChartConfig,
   ChartContainer,
+  ChartTooltip,
   ChartTooltipContent,
 } from "@/components/ui/chart";
 
@@ -43,13 +43,15 @@ const chartConfig: ChartConfig = {
   roi: { label: "ROI", color: "hsl(var(--chart-roi))" },
 };
 
-const CustomChartTooltipContent = (props: any) => {
-  return (
-    <div style={{ paddingRight: "10px" }}>
-      <ChartTooltipContent {...props} />
-    </div>
-  );
-};
+const formatCurrency = (value: number) =>
+  new Intl.NumberFormat("es-ES", {
+    style: "currency",
+    currency: "USD",
+    minimumFractionDigits: 0,
+    maximumFractionDigits: 0,
+  }).format(value);
+
+const formatPercentage = (value: number) => `${value.toFixed(1)}%`;
 
 export function ROIChart({ title, description, data }: Props) {
   return (
@@ -73,13 +75,15 @@ export function ROIChart({ title, description, data }: Props) {
                 yAxisId="left"
                 orientation="left"
                 stroke={chartConfig.inversionSeguridad.color}
+                tickFormatter={formatCurrency}
               />
               <YAxis
                 yAxisId="right"
                 orientation="right"
                 stroke={chartConfig.roi.color}
+                tickFormatter={formatPercentage}
               />
-              <Tooltip content={<ChartTooltipContent />} />
+              <ChartTooltip content={<ChartTooltipContent />} />
               <Legend />
               <Bar
                 yAxisId="left"
@@ -88,12 +92,12 @@ export function ROIChart({ title, description, data }: Props) {
                 fill={chartConfig.inversionSeguridad.color}
                 barSize={20}
               />
-              <Line
+              <Bar
                 yAxisId="left"
-                type="monotone"
                 dataKey="perdidasEvitadas"
                 name="Pérdidas Evitadas"
-                stroke={chartConfig.perdidasEvitadas.color}
+                fill={chartConfig.perdidasEvitadas.color}
+                barSize={20}
               />
               <Line
                 yAxisId="right"
