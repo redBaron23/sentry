@@ -83,7 +83,9 @@ export function ROIChart({ title, description, data }: Props) {
                 stroke={chartConfig.roi.color}
                 tickFormatter={formatPercentage}
               />
-              <ChartTooltip content={<ChartTooltipContent />} />
+              <ChartTooltip
+                content={<ChartTooltipContent className="min-w-[15rem]" />}
+              />
               <Legend />
               <Bar
                 yAxisId="left"
