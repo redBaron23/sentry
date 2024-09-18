@@ -1,5 +1,6 @@
 "use client";
 
+import { useCallback, useState } from "react";
 import {
   Area,
   CartesianGrid,
@@ -7,6 +8,7 @@ import {
   Label,
   ResponsiveContainer,
   Scatter,
+  TooltipProps,
   XAxis,
   YAxis,
 } from "recharts";
@@ -17,6 +19,7 @@ import {
   ChartTooltip,
   ChartTooltipContent,
 } from "@/components/ui/chart";
+import useDimensions from "@/hooks/use-dimensions";
 
 interface RiskData {
   x: number;
@@ -34,20 +37,17 @@ interface Props {
   data: RiskData[];
 }
 
-const CustomShape = (props: any) => {
-  const { cx, cy, payload } = props;
-
+const CustomShape = ({ cx, cy, payload, onPointClick }: any) => {
   if (!payload.label) {
     return null;
   }
 
+  const handlePointClick = () => {
+    onPointClick(payload);
+  };
+
   return (
-    <g
-      onClick={() => {
-        window.open(payload.link, "_blank");
-      }}
-      style={{ cursor: "pointer" }}
-    >
+    <g onClick={handlePointClick} style={{ cursor: "pointer" }}>
       <circle
         cx={cx}
         cy={cy}
@@ -56,33 +56,43 @@ const CustomShape = (props: any) => {
         strokeWidth={2}
         fill="hsl(var(--chart-threat))"
       />
-      <text
-        x={cx}
-        y={cy - 15}
-        textAnchor="middle"
-        fill="hsl(var(--foreground))"
-        fontSize="12"
-        fontWeight="bold"
-      >
-        {payload.label}
-      </text>
     </g>
   );
 };
 
-const CustomTooltip = ({ active, payload }: any) => {
-  if (active && payload && payload.length) {
-    const data = payload[0].payload;
-    if (data.label) {
+const CustomTooltip = ({
+  active,
+  payload,
+  label,
+  activePoint,
+}: TooltipProps<number, string> & { activePoint: any }) => {
+  const { isMobile } = useDimensions();
+
+  if ((active && payload && payload.length) || activePoint) {
+    const data = activePoint || (payload && payload[0].payload);
+    if (data && data.label) {
       return (
         <div className="custom-tooltip rounded border border-gray-300 bg-white p-2 shadow-md">
           <p className="font-bold">{data.label}</p>
           <p>Impacto: {data.impact}</p>
+          <p>Probabilidad: {data.x}</p>
+          {isMobile && data.link && (
+            <a
+              href={data.link}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="mt-2 inline-block text-blue-500 underline"
+              onClick={(e) => e.stopPropagation()}
+            >
+              Más información
+            </a>
+          )}
         </div>
       );
     }
-    // Si no hay label, usamos el tooltip original
-    return <ChartTooltipContent active={active} payload={payload} />;
+    return (
+      <ChartTooltipContent active={active} payload={payload} label={label} />
+    );
   }
   return null;
 };
@@ -95,11 +105,37 @@ const chartConfig: ChartConfig = {
 };
 
 export function RiskMatrix({ title, data }: Props) {
+  const [activePoint, setActivePoint] = useState<RiskData | null>(null);
+  const { isMobile } = useDimensions();
+
+  const handlePointClick = useCallback(
+    (point: RiskData) => {
+      if (isMobile) {
+        setActivePoint(point);
+      } else {
+        window.open(point.link, "_blank");
+      }
+    },
+    [isMobile],
+  );
+
+  const handleChartClick = useCallback(
+    (event: React.MouseEvent) => {
+      if (!activePoint || (event.target as SVGElement).tagName !== "circle") {
+        setActivePoint(null);
+      }
+    },
+    [activePoint],
+  );
+
   return (
     <div className="flex h-full flex-col">
       {title && <h6 className="mb-2 text-center font-bold">{title}</h6>}
 
-      <div className="flex-grow">
+      <div
+        className={`flex-grow ${activePoint ? "pointer-events-none" : ""}`}
+        onClick={handleChartClick}
+      >
         <ChartContainer config={chartConfig}>
           <ResponsiveContainer>
             <ComposedChart
@@ -129,7 +165,10 @@ export function RiskMatrix({ title, data }: Props) {
                   offset: 20,
                 }}
               />
-              <ChartTooltip content={<CustomTooltip />} />
+              <ChartTooltip
+                content={<CustomTooltip activePoint={activePoint} />}
+                cursor={{ strokeDasharray: "3 3" }}
+              />
               <Area
                 type="monotone"
                 dataKey="low"
@@ -162,7 +201,10 @@ export function RiskMatrix({ title, data }: Props) {
                 fill={chartConfig.critical.color}
                 fillOpacity={0.6}
               />
-              <Scatter dataKey="impact" shape={<CustomShape />} />
+              <Scatter
+                dataKey="impact"
+                shape={<CustomShape onPointClick={handlePointClick} />}
+              />
 
               {/* Risk level labels */}
               <Label
@@ -205,8 +247,9 @@ export function RiskMatrix({ title, data }: Props) {
       <div className="mt-4 text-center text-sm text-gray-600">
         <p>Los puntos en el gráfico representan riesgos específicos.</p>
         <p>
-          Pase el cursor sobre un punto para ver detalles y haga clic para
-          obtener información completa.
+          {isMobile
+            ? "Toque un punto para ver detalles y acceder a más información."
+            : "Pase el cursor sobre un punto para ver detalles y haga clic para obtener información completa."}
         </p>
       </div>
     </div>
