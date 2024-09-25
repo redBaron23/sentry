@@ -1,4 +1,4 @@
-"use client";
+'use client'
 
 import {
   Bar,
@@ -9,49 +9,49 @@ import {
   ResponsiveContainer,
   XAxis,
   YAxis,
-} from "recharts";
+} from 'recharts'
 
 import {
   ChartConfig,
   ChartContainer,
   ChartTooltip,
   ChartTooltipContent,
-} from "@/components/ui/chart";
+} from '@/components/ui/chart'
 
 interface ROIData {
-  name: string;
-  inversionSeguridad: number;
-  perdidasEvitadas: number;
-  roi: number;
+  name: string
+  inversionSeguridad: number
+  perdidasEvitadas: number
+  roi: number
 }
 
 interface Props {
-  title: string;
-  description: string;
-  data: ROIData[];
+  title: string
+  description: string
+  data: ROIData[]
 }
 
 const chartConfig: ChartConfig = {
   inversionSeguridad: {
-    label: "Inversión en Seguridad",
-    color: "hsl(var(--chart-investment))",
+    label: 'Inversión en Seguridad',
+    color: 'hsl(var(--chart-investment))',
   },
   perdidasEvitadas: {
-    label: "Pérdidas Evitadas",
-    color: "hsl(var(--chart-savings))",
+    label: 'Pérdidas Evitadas',
+    color: 'hsl(var(--chart-savings))',
   },
-  roi: { label: "ROI", color: "hsl(var(--chart-roi))" },
-};
+  roi: { label: 'ROI', color: 'hsl(var(--chart-roi))' },
+}
 
 const formatCurrency = (value: number) =>
-  new Intl.NumberFormat("es-ES", {
-    style: "currency",
-    currency: "USD",
+  new Intl.NumberFormat('es-ES', {
+    style: 'currency',
+    currency: 'USD',
     minimumFractionDigits: 0,
     maximumFractionDigits: 0,
-  }).format(value);
+  }).format(value)
 
-const formatPercentage = (value: number) => `${value.toFixed(1)}%`;
+const formatPercentage = (value: number) => `${value.toFixed(1)}%`
 
 export function ROIChart({ title, description, data }: Props) {
   return (
@@ -113,5 +113,5 @@ export function ROIChart({ title, description, data }: Props) {
         </ChartContainer>
       </div>
     </div>
-  );
+  )
 }

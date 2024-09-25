@@ -1,4 +1,4 @@
-"use client";
+'use client'
 
 import {
   Label,
@@ -6,32 +6,32 @@ import {
   PolarRadiusAxis,
   RadialBar,
   RadialBarChart,
-} from "recharts";
+} from 'recharts'
 
 import {
   ChartConfig,
   ChartContainer,
   ChartTooltip,
   ChartTooltipContent,
-} from "../../ui/chart";
+} from '../../ui/chart'
 
 interface Props {
-  value: number;
-  title?: string;
+  value: number
+  title?: string
 }
 
 export function VariationChart({ title, value }: Props) {
-  const chartData = [{ variation: value }];
+  const chartData = [{ variation: value }]
 
   const currentBackgroundColor =
-    value >= 0 ? "variation-positive" : "variation-negative";
+    value >= 0 ? 'variation-positive' : 'variation-negative'
 
   const chartConfig = {
     variation: {
-      label: "variation",
+      label: 'variation',
       color: `hsl(var(--chart-${currentBackgroundColor}))`,
     },
-  } satisfies ChartConfig;
+  } satisfies ChartConfig
 
   return (
     <div className="flex w-full flex-col text-center">
@@ -66,7 +66,7 @@ export function VariationChart({ title, value }: Props) {
           >
             <Label
               content={({ viewBox }) => {
-                if (viewBox && "cx" in viewBox && "cy" in viewBox) {
+                if (viewBox && 'cx' in viewBox && 'cy' in viewBox) {
                   return (
                     <text x={viewBox.cx} y={viewBox.cy} textAnchor="middle">
                       <tspan
@@ -84,7 +84,7 @@ export function VariationChart({ title, value }: Props) {
                         Variacion
                       </tspan>
                     </text>
-                  );
+                  )
                 }
               }}
             />
@@ -100,5 +100,5 @@ export function VariationChart({ title, value }: Props) {
         </RadialBarChart>
       </ChartContainer>
     </div>
-  );
+  )
 }

@@ -1,11 +1,11 @@
-"use client";
+'use client'
 
 import {
   Cell,
   Pie,
   PieChart as RechartPieChart,
   ResponsiveContainer,
-} from "recharts";
+} from 'recharts'
 
 import {
   ChartContainer,
@@ -13,41 +13,41 @@ import {
   ChartLegendContent,
   ChartTooltip,
   ChartTooltipContent,
-} from "../../ui/chart";
+} from '../../ui/chart'
 
 interface PieData {
-  label: string;
-  color: string;
-  quantity: number;
+  label: string
+  color: string
+  quantity: number
 }
 
 interface Props {
-  title?: string;
-  data: Record<string, PieData>;
+  title?: string
+  data: Record<string, PieData>
 }
 
 const renderCustomizedLabel = ({ percent, quantity }: any) => {
-  return `${quantity} (${(percent * 100).toFixed(0)}%)`;
-};
+  return `${quantity} (${(percent * 100).toFixed(0)}%)`
+}
 
 export function DonutChart({ title, data }: Props) {
   const totalQuantity = Object.values(data).reduce(
     (sum, item) => sum + item.quantity,
     0,
-  );
+  )
 
   const chartData = Object.entries(data).map(([key, value]) => ({
     name: key,
     ...value,
     percentage: ((value.quantity / totalQuantity) * 100).toFixed(1),
-  }));
+  }))
 
   const config = Object.fromEntries(
     Object.entries(data).map(([key, { label, color }]) => [
       key,
       { label, color },
     ]),
-  );
+  )
 
   return (
     <div className="flex h-full flex-col">
@@ -80,5 +80,5 @@ export function DonutChart({ title, data }: Props) {
         </ChartContainer>
       </div>
     </div>
-  );
+  )
 }

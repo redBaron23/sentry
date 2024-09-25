@@ -1,7 +1,7 @@
-"use client";
+'use client'
 
-import { ResendCodeButton } from "@/components/atoms/buttons/resend-code-button";
-import { Button } from "@/components/ui/button";
+import { ResendCodeButton } from '@/components/atoms/buttons/resend-code-button'
+import { Button } from '@/components/ui/button'
 import {
   Form,
   FormControl,
@@ -9,104 +9,104 @@ import {
   FormItem,
   FormLabel,
   FormMessage,
-} from "@/components/ui/form";
-import { Input } from "@/components/ui/input";
-import { toast } from "@/hooks/use-toast";
-import { PAGES } from "@/lib/constants/pages";
-import { createSupabaseBrowserClient } from "@/lib/supabase/client";
-import { zodResolver } from "@hookform/resolvers/zod";
-import Link from "next/link";
-import { useRouter } from "next/navigation";
-import { useState } from "react";
-import { useForm } from "react-hook-form";
-import { z } from "zod";
+} from '@/components/ui/form'
+import { Input } from '@/components/ui/input'
+import { toast } from '@/hooks/use-toast'
+import { PAGES } from '@/lib/constants/pages'
+import { createSupabaseBrowserClient } from '@/lib/supabase/client'
+import { zodResolver } from '@hookform/resolvers/zod'
+import Link from 'next/link'
+import { useRouter } from 'next/navigation'
+import { useState } from 'react'
+import { useForm } from 'react-hook-form'
+import { z } from 'zod'
 
 const schema = z.object({
-  token: z.string().length(6, "El código debe tener exactamente 6 caracteres"),
-});
+  token: z.string().length(6, 'El código debe tener exactamente 6 caracteres'),
+})
 
 interface Props {
-  email: string;
+  email: string
 }
 
 export function VerifyEmailForm({ email }: Props) {
-  const router = useRouter();
-  const [isLoading, setIsLoading] = useState(false);
+  const router = useRouter()
+  const [isLoading, setIsLoading] = useState(false)
 
   const form = useForm<z.infer<typeof schema>>({
     resolver: zodResolver(schema),
     defaultValues: {
-      token: "",
+      token: '',
     },
-  });
+  })
 
   const onSubmit = async ({ token }: z.infer<typeof schema>) => {
-    if (!email) return;
+    if (!email) return
 
-    setIsLoading(true);
+    setIsLoading(true)
     try {
-      const supabase = createSupabaseBrowserClient();
+      const supabase = createSupabaseBrowserClient()
 
       const { error } = await supabase.auth.verifyOtp({
         email,
         token: token,
-        type: "signup",
-      });
+        type: 'signup',
+      })
 
-      if (error) throw error;
+      if (error) throw error
 
       toast({
-        title: "Email verificado",
-        description: "Tu cuenta ha sido verificada exitosamente.",
-        variant: "default",
-      });
+        title: 'Email verificado',
+        description: 'Tu cuenta ha sido verificada exitosamente.',
+        variant: 'default',
+      })
 
-      router.push(PAGES.DASHBOARD);
+      router.push(PAGES.DASHBOARD)
     } catch (error) {
-      console.error("Error al validar el email:", error);
+      console.error('Error al validar el email:', error)
       toast({
-        title: "Error de verificación",
+        title: 'Error de verificación',
         description:
           error instanceof Error
             ? error.message
-            : "Ha ocurrido un error al verificar tu email.",
-        variant: "destructive",
-      });
+            : 'Ha ocurrido un error al verificar tu email.',
+        variant: 'destructive',
+      })
     } finally {
-      setIsLoading(false);
+      setIsLoading(false)
     }
-  };
+  }
 
   const resendCode = async () => {
-    if (!email) return;
+    if (!email) return
 
     try {
-      const supabase = createSupabaseBrowserClient();
+      const supabase = createSupabaseBrowserClient()
 
       const { error } = await supabase.auth.resend({
-        type: "signup",
+        type: 'signup',
         email: email,
-      });
+      })
 
-      if (error) throw error;
+      if (error) throw error
 
       toast({
-        title: "Código reenviado",
-        description: "Se ha enviado un nuevo código a tu correo electrónico.",
-        variant: "default",
-      });
+        title: 'Código reenviado',
+        description: 'Se ha enviado un nuevo código a tu correo electrónico.',
+        variant: 'default',
+      })
     } catch (error) {
-      console.error("Error al reenviar el código:", error);
+      console.error('Error al reenviar el código:', error)
       toast({
-        title: "Error al reenviar",
+        title: 'Error al reenviar',
         description:
           error instanceof Error
             ? error.message
-            : "Ha ocurrido un error al reenviar el código.",
-        variant: "destructive",
-      });
+            : 'Ha ocurrido un error al reenviar el código.',
+        variant: 'destructive',
+      })
     }
-  };
+  }
 
   return (
     <div className="mx-auto w-full max-w-md space-y-6">
@@ -147,7 +147,7 @@ export function VerifyEmailForm({ email }: Props) {
             className="w-full bg-primary text-primary-foreground hover:bg-primary/90"
             disabled={isLoading}
           >
-            {isLoading ? "Validando..." : "Validar Email"}
+            {isLoading ? 'Validando...' : 'Validar Email'}
           </Button>
         </form>
       </Form>
@@ -159,7 +159,7 @@ export function VerifyEmailForm({ email }: Props) {
       </div>
 
       <p className="text-center text-sm text-muted-foreground">
-        Si tienes problemas para validar tu email, por favor{" "}
+        Si tienes problemas para validar tu email, por favor{' '}
         <Link
           href={PAGES.CONTACT}
           className="font-medium text-primary hover:underline"
@@ -169,5 +169,5 @@ export function VerifyEmailForm({ email }: Props) {
         .
       </p>
     </div>
-  );
+  )
 }

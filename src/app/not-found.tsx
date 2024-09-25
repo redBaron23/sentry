@@ -1,6 +1,6 @@
-import { PAGES } from "@/lib/constants/pages";
-import Link from "next/link";
-import { Button } from "../components/ui/button";
+import { PAGES } from '@/lib/constants/pages'
+import Link from 'next/link'
+import { Button } from '../components/ui/button'
 
 export default function Custom404() {
   return (
@@ -37,5 +37,5 @@ export default function Custom404() {
         </svg>
       </div>
     </div>
-  );
+  )
 }

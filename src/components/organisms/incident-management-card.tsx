@@ -1,17 +1,17 @@
-import { AlertTriangle, CheckCircle, Clock } from "lucide-react";
-import Link from "next/link";
-import ChartCard from "./charts/chart-card";
+import { AlertTriangle, CheckCircle, Clock } from 'lucide-react'
+import Link from 'next/link'
+import ChartCard from './charts/chart-card'
 
 interface IncidentStat {
-  label?: string;
-  value: number;
-  link?: string;
+  label?: string
+  value: number
+  link?: string
 }
 
 interface IncidentManagementProps {
-  criticalIncidents: number;
-  closedAlerts: IncidentStat[];
-  escalationDetails: IncidentStat[];
+  criticalIncidents: number
+  closedAlerts: IncidentStat[]
+  escalationDetails: IncidentStat[]
 }
 
 const StatBlock = ({
@@ -34,7 +34,7 @@ const StatBlock = ({
       </Link>
     )}
   </div>
-);
+)
 
 export function IncidentManagement({
   criticalIncidents,
@@ -66,5 +66,5 @@ export function IncidentManagement({
         ))}
       </div>
     </ChartCard>
-  );
+  )
 }

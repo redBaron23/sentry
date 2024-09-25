@@ -1,27 +1,27 @@
-import { Eye, EyeOff } from "lucide-react";
-import { useState } from "react";
-import { useFormContext } from "react-hook-form";
+import { Eye, EyeOff } from 'lucide-react'
+import { useState } from 'react'
+import { useFormContext } from 'react-hook-form'
 import {
   FormControl,
   FormField,
   FormItem,
   FormLabel,
   FormMessage,
-} from "../../ui/form";
-import { Input, InputProps } from "../../ui/input";
+} from '../../ui/form'
+import { Input, InputProps } from '../../ui/input'
 
 type FormInputProps = {
-  name: string;
-  label: string;
-} & InputProps;
+  name: string
+  label: string
+} & InputProps
 
 const FormInput = ({ name, label, type, ...props }: FormInputProps) => {
-  const { control } = useFormContext();
-  const [showPassword, setShowPassword] = useState(false);
+  const { control } = useFormContext()
+  const [showPassword, setShowPassword] = useState(false)
 
   const togglePasswordVisibility = () => {
-    setShowPassword(!showPassword);
-  };
+    setShowPassword(!showPassword)
+  }
 
   return (
     <FormField
@@ -35,9 +35,9 @@ const FormInput = ({ name, label, type, ...props }: FormInputProps) => {
               <Input
                 {...field}
                 {...props}
-                type={type === "password" && showPassword ? "text" : type}
+                type={type === 'password' && showPassword ? 'text' : type}
               />
-              {type === "password" && (
+              {type === 'password' && (
                 <button
                   type="button"
                   onClick={togglePasswordVisibility}
@@ -56,7 +56,7 @@ const FormInput = ({ name, label, type, ...props }: FormInputProps) => {
         </FormItem>
       )}
     />
-  );
-};
+  )
+}
 
-export default FormInput;
+export default FormInput

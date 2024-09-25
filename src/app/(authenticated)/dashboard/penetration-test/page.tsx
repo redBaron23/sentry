@@ -1,37 +1,37 @@
-import { BarChart } from "../../../../components/atoms/charts/bar-chart";
-import { DonutChart } from "../../../../components/atoms/charts/donut-chart";
-import { StackedBarChart } from "../../../../components/atoms/charts/stacked-bar-chart";
-import TicketCountCard from "../../../../components/atoms/ticket-count-card";
-import ChartCard from "../../../../components/organisms/charts/chart-card";
+import { BarChart } from '../../../../components/atoms/charts/bar-chart'
+import { DonutChart } from '../../../../components/atoms/charts/donut-chart'
+import { StackedBarChart } from '../../../../components/atoms/charts/stacked-bar-chart'
+import TicketCountCard from '../../../../components/atoms/ticket-count-card'
+import ChartCard from '../../../../components/organisms/charts/chart-card'
 
 const vulnerabilitiesChartData = {
   critical: {
-    label: "Critical",
-    color: "hsl(var(--chart-critical))",
+    label: 'Critical',
+    color: 'hsl(var(--chart-critical))',
     quantity: 40,
   },
-  high: { label: "High", color: "hsl(var(--chart-high))", quantity: 60 },
-  medium: { label: "Medium", color: "hsl(var(--chart-medium))", quantity: 140 },
-  low: { label: "Low", color: "hsl(var(--chart-low))", quantity: 30 },
-};
+  high: { label: 'High', color: 'hsl(var(--chart-high))', quantity: 60 },
+  medium: { label: 'Medium', color: 'hsl(var(--chart-medium))', quantity: 140 },
+  low: { label: 'Low', color: 'hsl(var(--chart-low))', quantity: 30 },
+}
 
 const ticketsChartData = {
   mar: {
-    label: "Marzo",
-    color: "hsl(var(--chart-low))",
+    label: 'Marzo',
+    color: 'hsl(var(--chart-low))',
     quantity: 6,
   },
-  abr: { label: "Abril", color: "hsl(var(--chart-low))", quantity: 0 },
-  may: { label: "Mayo", color: "hsl(var(--chart-low))", quantity: 3 },
-  jun: { label: "Junio", color: "hsl(var(--chart-low))", quantity: 0 },
-  jul: { label: "Jul", color: "hsl(var(--chart-low))", quantity: 4 },
-  ago: { label: "Agosto", color: "hsl(var(--chart-low))", quantity: 6 },
-};
+  abr: { label: 'Abril', color: 'hsl(var(--chart-low))', quantity: 0 },
+  may: { label: 'Mayo', color: 'hsl(var(--chart-low))', quantity: 3 },
+  jun: { label: 'Junio', color: 'hsl(var(--chart-low))', quantity: 0 },
+  jul: { label: 'Jul', color: 'hsl(var(--chart-low))', quantity: 4 },
+  ago: { label: 'Agosto', color: 'hsl(var(--chart-low))', quantity: 6 },
+}
 
 const last12MonthTicketsChartData = {
   new: {
-    label: "Tickets Pendientes",
-    color: "hsl(var(--chart-pending-tickets))",
+    label: 'Tickets Pendientes',
+    color: 'hsl(var(--chart-pending-tickets))',
     values: {
       January: 12,
       February: 0,
@@ -42,8 +42,8 @@ const last12MonthTicketsChartData = {
     },
   },
   pending: {
-    label: "Tickets Nuevos",
-    color: "hsl(var(--chart-new-tickets))",
+    label: 'Tickets Nuevos',
+    color: 'hsl(var(--chart-new-tickets))',
     values: {
       January: 6,
       February: 6,
@@ -53,52 +53,52 @@ const last12MonthTicketsChartData = {
       June: 22,
     },
   },
-};
+}
 
 const ticketsRemediationChartData = {
   setup: {
-    label: "Configuracion Insegura",
-    color: "hsl(var(--chart-new-tickets))",
+    label: 'Configuracion Insegura',
+    color: 'hsl(var(--chart-new-tickets))',
     quantity: 19,
   },
   out: {
-    label: "SO fuera de soporte",
-    color: "hsl(var(--chart-new-tickets))",
+    label: 'SO fuera de soporte',
+    color: 'hsl(var(--chart-new-tickets))',
     quantity: 3,
   },
-};
+}
 
 const ticketsPendingRemediationChartData = {
   setup: {
-    label: "Aplicacion WEB",
-    color: "hsl(var(--chart-new-tickets))",
+    label: 'Aplicacion WEB',
+    color: 'hsl(var(--chart-new-tickets))',
     quantity: 14,
   },
   out: {
-    label: "Infraestructura Interna",
-    color: "hsl(var(--chart-new-tickets))",
+    label: 'Infraestructura Interna',
+    color: 'hsl(var(--chart-new-tickets))',
     quantity: 8,
   },
-};
+}
 
 const ticketsPendingBySeverityChartData = {
   critical: {
-    label: "Critical",
-    color: "hsl(var(--chart-critical))",
+    label: 'Critical',
+    color: 'hsl(var(--chart-critical))',
     quantity: 40,
   },
-  high: { label: "High", color: "hsl(var(--chart-high))", quantity: 60 },
-  medium: { label: "Medium", color: "hsl(var(--chart-medium))", quantity: 140 },
-  low: { label: "Low", color: "hsl(var(--chart-low))", quantity: 30 },
-};
+  high: { label: 'High', color: 'hsl(var(--chart-high))', quantity: 60 },
+  medium: { label: 'Medium', color: 'hsl(var(--chart-medium))', quantity: 140 },
+  low: { label: 'Low', color: 'hsl(var(--chart-low))', quantity: 30 },
+}
 
 const ticketsPendingByPenTestChartData = {
   pen: {
-    label: "Penetration test externo",
+    label: 'Penetration test externo',
     quantity: 22,
-    color: "hsl(var(--chart-1))",
+    color: 'hsl(var(--chart-1))',
   },
-};
+}
 
 export default function PenetrationTest() {
   return (
@@ -149,5 +149,5 @@ export default function PenetrationTest() {
         </div>
       </div>
     </>
-  );
+  )
 }

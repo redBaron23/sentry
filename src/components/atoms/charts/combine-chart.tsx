@@ -1,4 +1,4 @@
-"use client";
+'use client'
 
 import {
   Bar,
@@ -9,7 +9,7 @@ import {
   ResponsiveContainer,
   XAxis,
   YAxis,
-} from "recharts";
+} from 'recharts'
 
 import {
   ChartContainer,
@@ -17,32 +17,32 @@ import {
   ChartLegendContent,
   ChartTooltip,
   ChartTooltipContent,
-} from "../../ui/chart";
+} from '../../ui/chart'
 
 interface DataPoint {
-  label: string;
-  color: string;
-  quantity?: number;
-  value?: number;
+  label: string
+  color: string
+  quantity?: number
+  value?: number
 }
 
 interface BarDataPoint {
-  month: string;
-  closedFalsePositive: DataPoint;
-  inProgress: DataPoint;
-  unmanaged: DataPoint;
+  month: string
+  closedFalsePositive: DataPoint
+  inProgress: DataPoint
+  unmanaged: DataPoint
 }
 
 interface LineDataPoint {
-  month: string;
-  avgResolutionTime: DataPoint;
+  month: string
+  avgResolutionTime: DataPoint
 }
 
 interface Props {
-  title?: string;
-  description?: string;
-  barData: BarDataPoint[];
-  lineData: LineDataPoint[];
+  title?: string
+  description?: string
+  barData: BarDataPoint[]
+  lineData: LineDataPoint[]
 }
 
 export function CombinedChart({
@@ -52,11 +52,11 @@ export function CombinedChart({
   lineData,
 }: Props) {
   const combinedData = barData.map((barPoint) => {
-    const linePoint = lineData.find((lp) => lp.month === barPoint.month);
+    const linePoint = lineData.find((lp) => lp.month === barPoint.month)
     const total =
       (barPoint.closedFalsePositive.quantity ?? 0) +
       (barPoint.inProgress.quantity ?? 0) +
-      (barPoint.unmanaged.quantity ?? 0);
+      (barPoint.unmanaged.quantity ?? 0)
 
     return {
       month: barPoint.month,
@@ -65,23 +65,23 @@ export function CombinedChart({
       unmanaged: barPoint.unmanaged.quantity,
       avgResolutionTime: linePoint?.avgResolutionTime.value,
       total,
-    };
-  });
+    }
+  })
 
   const config = {
     closedFalsePositive: {
-      label: "Cerrado como Falso Positivo",
+      label: 'Cerrado como Falso Positivo',
       color: barData[0].closedFalsePositive.color,
     },
-    inProgress: { label: "En Progreso", color: barData[0].inProgress.color },
-    unmanaged: { label: "Sin Gestionar", color: barData[0].unmanaged.color },
+    inProgress: { label: 'En Progreso', color: barData[0].inProgress.color },
+    unmanaged: { label: 'Sin Gestionar', color: barData[0].unmanaged.color },
     avgResolutionTime: {
-      label: "Tiempo promedio de resolución (horas)",
+      label: 'Tiempo promedio de resolución (horas)',
       color: lineData[0].avgResolutionTime.color,
     },
-  };
+  }
 
-  const barKeys = ["closedFalsePositive", "inProgress", "unmanaged"];
+  const barKeys = ['closedFalsePositive', 'inProgress', 'unmanaged']
 
   return (
     <div className="flex h-full flex-col gap-3">
@@ -148,5 +148,5 @@ export function CombinedChart({
         </ChartContainer>
       </div>
     </div>
-  );
+  )
 }

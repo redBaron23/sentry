@@ -1,6 +1,6 @@
-"use client";
+'use client'
 
-import React from "react";
+import React from 'react'
 import {
   Bar,
   CartesianGrid,
@@ -10,26 +10,26 @@ import {
   ResponsiveContainer,
   XAxis,
   YAxis,
-} from "recharts";
+} from 'recharts'
 
-import { ChartContainer, ChartTooltip } from "../../ui/chart";
+import { ChartContainer, ChartTooltip } from '../../ui/chart'
 
 interface BarData {
-  label: string;
-  color: string;
-  quantity: number;
+  label: string
+  color: string
+  quantity: number
 }
 
 interface Props {
-  title?: string;
-  data: Record<string, BarData>;
-  showYAxis?: boolean;
+  title?: string
+  data: Record<string, BarData>
+  showYAxis?: boolean
 }
 
 interface CustomXAxisTickProps {
-  x: number;
-  y: number;
-  payload: { value: string };
+  x: number
+  y: number
+  payload: { value: string }
 }
 
 const CustomXAxisTick: React.FC<
@@ -49,16 +49,16 @@ const CustomXAxisTick: React.FC<
         {data[payload.value]?.label || payload.value}
       </text>
     </g>
-  );
-};
+  )
+}
 
 const CustomXAxisTickWrapper = (data: Record<string, BarData>) => {
   function WrappedComponent(props: CustomXAxisTickProps) {
-    return <CustomXAxisTick {...props} data={data} />;
+    return <CustomXAxisTick {...props} data={data} />
   }
-  WrappedComponent.displayName = "CustomXAxisTickWrapper";
-  return WrappedComponent;
-};
+  WrappedComponent.displayName = 'CustomXAxisTickWrapper'
+  return WrappedComponent
+}
 
 export const BarChart: React.FC<Props> = ({
   title,
@@ -69,14 +69,14 @@ export const BarChart: React.FC<Props> = ({
     name: key,
     ...value,
     fill: value.color,
-  }));
+  }))
 
   const config = Object.fromEntries(
     Object.entries(data).map(([key, { label, color }]) => [
       key,
       { label, color },
     ]),
-  );
+  )
 
   return (
     <div className="flex h-full flex-col">
@@ -103,9 +103,9 @@ export const BarChart: React.FC<Props> = ({
                 content={({ active, payload }) => {
                   if (active && payload && payload.length) {
                     const { name, quantity } = payload[0].payload as {
-                      name: string;
-                      quantity: number;
-                    };
+                      name: string
+                      quantity: number
+                    }
                     return (
                       <div className="rounded bg-white p-2 shadow-md dark:bg-gray-800">
                         <p className="font-bold text-gray-900 dark:text-gray-100">
@@ -115,9 +115,9 @@ export const BarChart: React.FC<Props> = ({
                           Cantidad: {quantity}
                         </p>
                       </div>
-                    );
+                    )
                   }
-                  return null;
+                  return null
                 }}
               />
               <Bar
@@ -147,5 +147,5 @@ export const BarChart: React.FC<Props> = ({
         </ChartContainer>
       </div>
     </div>
-  );
-};
+  )
+}

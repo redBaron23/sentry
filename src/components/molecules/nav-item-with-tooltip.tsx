@@ -1,13 +1,13 @@
-import { LucideIcon } from "lucide-react";
-import { NavItem } from "../atoms/nav-item";
-import { Tooltip, TooltipContent, TooltipTrigger } from "../ui/tooltip";
+import { LucideIcon } from 'lucide-react'
+import { NavItem } from '../atoms/nav-item'
+import { Tooltip, TooltipContent, TooltipTrigger } from '../ui/tooltip'
 
 interface NavItemWithTooltipProps {
-  href: string;
-  icon: LucideIcon;
-  label: string;
-  isActive: boolean;
-  isLogo?: boolean;
+  href: string
+  icon: LucideIcon
+  label: string
+  isActive: boolean
+  isLogo?: boolean
 }
 
 export function NavItemWithTooltip({
@@ -30,5 +30,5 @@ export function NavItemWithTooltip({
       </TooltipTrigger>
       <TooltipContent side="right">{label}</TooltipContent>
     </Tooltip>
-  );
+  )
 }

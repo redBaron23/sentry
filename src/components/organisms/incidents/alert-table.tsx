@@ -1,4 +1,4 @@
-import { AlertCircle } from "lucide-react";
+import { AlertCircle } from 'lucide-react'
 import {
   Table,
   TableBody,
@@ -6,21 +6,21 @@ import {
   TableHead,
   TableHeader,
   TableRow,
-} from "../../ui/table";
-import ChartCard from "../charts/chart-card";
+} from '../../ui/table'
+import ChartCard from '../charts/chart-card'
 
 interface AlertItem {
-  description: string;
-  count: number;
+  description: string
+  count: number
 }
 
 interface AlertTableProps {
-  alerts: AlertItem[];
-  title?: string;
+  alerts: AlertItem[]
+  title?: string
 }
 
-export function AlertTable({ alerts, title = "Alertas" }: AlertTableProps) {
-  const totalAlerts = alerts.reduce((sum, alert) => sum + alert.count, 0);
+export function AlertTable({ alerts, title = 'Alertas' }: AlertTableProps) {
+  const totalAlerts = alerts.reduce((sum, alert) => sum + alert.count, 0)
 
   return (
     <ChartCard title={title} icon={AlertCircle} cols={1}>
@@ -48,5 +48,5 @@ export function AlertTable({ alerts, title = "Alertas" }: AlertTableProps) {
         </TableBody>
       </Table>
     </ChartCard>
-  );
+  )
 }

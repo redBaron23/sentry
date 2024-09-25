@@ -1,36 +1,36 @@
-import { CheckCircle, Clock, PlusCircle } from "lucide-react";
-import { Card, CardContent, CardHeader, CardTitle } from "../ui/card";
+import { CheckCircle, Clock, PlusCircle } from 'lucide-react'
+import { Card, CardContent, CardHeader, CardTitle } from '../ui/card'
 
 const TICKET_STYLES = {
   created: {
-    title: "Tickets Creados",
-    bgColor: "bg-blue-50",
-    textColor: "text-blue-700",
+    title: 'Tickets Creados',
+    bgColor: 'bg-blue-50',
+    textColor: 'text-blue-700',
     icon: PlusCircle,
   },
   closed: {
-    title: "Tickets Cerrados",
-    bgColor: "bg-green-50",
-    textColor: "text-green-700",
+    title: 'Tickets Cerrados',
+    bgColor: 'bg-green-50',
+    textColor: 'text-green-700',
     icon: CheckCircle,
   },
   pending: {
-    title: "Tickets Pendientes",
-    bgColor: "bg-amber-50",
-    textColor: "text-amber-700",
+    title: 'Tickets Pendientes',
+    bgColor: 'bg-amber-50',
+    textColor: 'text-amber-700',
     icon: Clock,
   },
-};
+}
 
-type TicketType = "created" | "closed" | "pending";
+type TicketType = 'created' | 'closed' | 'pending'
 
 interface Props {
-  count: number;
-  type: TicketType;
+  count: number
+  type: TicketType
 }
 
 const TicketCountCard = ({ count, type }: Props) => {
-  const { title, bgColor, textColor, icon: Icon } = TICKET_STYLES[type];
+  const { title, bgColor, textColor, icon: Icon } = TICKET_STYLES[type]
 
   return (
     <Card
@@ -46,7 +46,7 @@ const TicketCountCard = ({ count, type }: Props) => {
         <p className={`text-3xl font-bold ${textColor}`}>{count}</p>
       </CardContent>
     </Card>
-  );
-};
+  )
+}
 
-export default TicketCountCard;
+export default TicketCountCard

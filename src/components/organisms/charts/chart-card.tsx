@@ -1,14 +1,14 @@
-import { cn } from "@/lib/utils";
-import { ChartColumnIncreasing, LucideIcon } from "lucide-react";
-import { ReactNode } from "react";
-import { Card, CardContent, CardHeader, CardTitle } from "../../ui/card";
+import { cn } from '@/lib/utils'
+import { ChartColumnIncreasing, LucideIcon } from 'lucide-react'
+import { ReactNode } from 'react'
+import { Card, CardContent, CardHeader, CardTitle } from '../../ui/card'
 
 interface ChartCardProps {
-  title: string;
-  children: ReactNode;
-  cols?: number;
-  icon?: LucideIcon;
-  className?: string;
+  title: string
+  children: ReactNode
+  cols?: number
+  icon?: LucideIcon
+  className?: string
 }
 
 const ChartCard = ({
@@ -21,7 +21,7 @@ const ChartCard = ({
   return (
     <Card
       className={cn(
-        "flex h-full flex-col shadow-sm transition-shadow duration-300 hover:shadow-md",
+        'flex h-full flex-col shadow-sm transition-shadow duration-300 hover:shadow-md',
         className,
       )}
     >
@@ -34,15 +34,15 @@ const ChartCard = ({
         </div>
       </CardHeader>
       <CardContent
-        className={cn("grid flex-grow gap-6 pt-6", {
-          "grid-cols-1 md:grid-cols-2": cols === 2,
-          "grid-cols-1 xl:grid-cols-3": cols === 3,
+        className={cn('grid flex-grow gap-6 pt-6', {
+          'grid-cols-1 md:grid-cols-2': cols === 2,
+          'grid-cols-1 xl:grid-cols-3': cols === 3,
         })}
       >
         {children}
       </CardContent>
     </Card>
-  );
-};
+  )
+}
 
-export default ChartCard;
+export default ChartCard

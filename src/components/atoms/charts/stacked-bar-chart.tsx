@@ -1,4 +1,4 @@
-"use client";
+'use client'
 
 import {
   Bar,
@@ -7,7 +7,7 @@ import {
   BarChart as RechartBarChart,
   XAxis,
   YAxis,
-} from "recharts";
+} from 'recharts'
 
 import {
   ChartContainer,
@@ -15,19 +15,19 @@ import {
   ChartLegendContent,
   ChartTooltip,
   ChartTooltipContent,
-} from "../../ui/chart";
+} from '../../ui/chart'
 
 interface BarData {
-  label: string;
-  color: string;
-  values: Record<string, number>;
+  label: string
+  color: string
+  values: Record<string, number>
 }
 
 interface Props {
-  title?: string;
-  description?: string;
-  data: Record<string, BarData>;
-  showYAxis?: boolean;
+  title?: string
+  description?: string
+  data: Record<string, BarData>
+  showYAxis?: boolean
 }
 
 export function StackedBarChart({
@@ -36,30 +36,30 @@ export function StackedBarChart({
   data,
   showYAxis = true,
 }: Props) {
-  const xAxisLabels = Object.keys(Object.values(data)[0].values);
+  const xAxisLabels = Object.keys(Object.values(data)[0].values)
 
   const chartData = xAxisLabels.map((label) => {
     const values = Object.entries(data).map(([key, { values }]) => [
       key,
       values[label],
-    ]);
+    ])
 
-    const total = values.reduce((sum, [, value]) => sum + +value, 0);
+    const total = values.reduce((sum, [, value]) => sum + +value, 0)
     return {
       name: label,
       ...Object.fromEntries(values),
       total,
-    };
-  });
+    }
+  })
 
   const config = Object.fromEntries(
     Object.entries(data).map(([key, { label, color }]) => [
       key,
       { label, color },
     ]),
-  );
+  )
 
-  const barKeys = Object.keys(data);
+  const barKeys = Object.keys(data)
 
   return (
     <div className="flex flex-col gap-3">
@@ -104,5 +104,5 @@ export function StackedBarChart({
         </RechartBarChart>
       </ChartContainer>
     </div>
-  );
+  )
 }

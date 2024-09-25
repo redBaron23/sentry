@@ -1,4 +1,4 @@
-type IconProps = React.HTMLAttributes<SVGElement>;
+type IconProps = React.HTMLAttributes<SVGElement>
 
 export const Icons = {
   logo: (props: IconProps) => (
@@ -166,4 +166,4 @@ export const Icons = {
       <path fill="#ffba08" d="M12 12h10v10H12z" />
     </svg>
   ),
-};
+}

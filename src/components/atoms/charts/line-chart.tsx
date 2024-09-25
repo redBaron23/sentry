@@ -1,4 +1,4 @@
-"use client";
+'use client'
 
 import {
   CartesianGrid,
@@ -7,23 +7,23 @@ import {
   ResponsiveContainer,
   XAxis,
   YAxis,
-} from "recharts";
+} from 'recharts'
 
 import {
   ChartContainer,
   ChartTooltip,
   ChartTooltipContent,
-} from "../../ui/chart";
+} from '../../ui/chart'
 
 interface LineData {
-  label: string;
-  color: string;
-  values: Record<string, number>;
+  label: string
+  color: string
+  values: Record<string, number>
 }
 
 interface Props {
-  title?: string;
-  data: Record<string, LineData>;
+  title?: string
+  data: Record<string, LineData>
 }
 
 export function LineChart({ title, data }: Props) {
@@ -34,14 +34,14 @@ export function LineChart({ title, data }: Props) {
         Object.entries(data).map(([key, { values }]) => [key, values[month]]),
       ),
     }),
-  );
+  )
 
   const config = Object.fromEntries(
     Object.entries(data).map(([key, { label, color }]) => [
       key,
       { label, color },
     ]),
-  );
+  )
 
   return (
     <div className="flex h-full flex-col">
@@ -68,5 +68,5 @@ export function LineChart({ title, data }: Props) {
         </ChartContainer>
       </div>
     </div>
-  );
+  )
 }

@@ -1,4 +1,4 @@
-"use client";
+'use client'
 
 import {
   Area,
@@ -7,36 +7,36 @@ import {
   ResponsiveContainer,
   XAxis,
   YAxis,
-} from "recharts";
+} from 'recharts'
 
 import {
   ChartContainer,
   ChartTooltip,
   ChartTooltipContent,
-} from "../../ui/chart";
+} from '../../ui/chart'
 
 interface AreaData {
-  label: string;
-  value: number;
+  label: string
+  value: number
 }
 
 interface Props {
-  title?: string;
-  data: Record<string, AreaData>;
+  title?: string
+  data: Record<string, AreaData>
 }
 
 export function AreaChart({ title, data }: Props) {
   const chartData = Object.entries(data).map(([key, value]) => ({
     name: key,
     ...value,
-  }));
+  }))
 
   const config = Object.fromEntries(
     Object.entries(data).map(([key, { label }]) => [
       key,
-      { label, color: "hsl(var(--primary))" },
+      { label, color: 'hsl(var(--primary))' },
     ]),
-  );
+  )
 
   return (
     <div className="flex h-full flex-col">
@@ -61,5 +61,5 @@ export function AreaChart({ title, data }: Props) {
         </ChartContainer>
       </div>
     </div>
-  );
+  )
 }

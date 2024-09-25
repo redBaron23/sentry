@@ -1,14 +1,14 @@
-"use client";
+'use client'
 
-import { useToast } from "@/hooks/use-toast";
-import { PAGES } from "@/lib/constants/pages";
-import { createSupabaseBrowserClient } from "@/lib/supabase/client";
-import { HelpCircle, Loader2, LogOut, Settings, User } from "lucide-react";
-import Link from "next/link";
-import { useRouter } from "next/navigation";
-import { useState } from "react";
-import { Avatar, AvatarFallback, AvatarImage } from "../ui/avatar";
-import { Button } from "../ui/button";
+import { useToast } from '@/hooks/use-toast'
+import { PAGES } from '@/lib/constants/pages'
+import { createSupabaseBrowserClient } from '@/lib/supabase/client'
+import { HelpCircle, Loader2, LogOut, Settings, User } from 'lucide-react'
+import Link from 'next/link'
+import { useRouter } from 'next/navigation'
+import { useState } from 'react'
+import { Avatar, AvatarFallback, AvatarImage } from '../ui/avatar'
+import { Button } from '../ui/button'
 import {
   DropdownMenu,
   DropdownMenuContent,
@@ -16,40 +16,40 @@ import {
   DropdownMenuLabel,
   DropdownMenuSeparator,
   DropdownMenuTrigger,
-} from "../ui/dropdown-menu";
+} from '../ui/dropdown-menu'
 
 interface UserMenuProps {
-  userInitials: string;
-  userImage?: string;
+  userInitials: string
+  userImage?: string
 }
 
 export function UserMenu({ userInitials, userImage }: UserMenuProps) {
-  const router = useRouter();
-  const { toast } = useToast();
-  const [isLoggingOut, setIsLoggingOut] = useState(false);
-  const [isOpen, setIsOpen] = useState(false);
+  const router = useRouter()
+  const { toast } = useToast()
+  const [isLoggingOut, setIsLoggingOut] = useState(false)
+  const [isOpen, setIsOpen] = useState(false)
 
   const handleLogout = async (e: React.MouseEvent) => {
-    e.preventDefault();
-    setIsLoggingOut(true);
-    const supabase = createSupabaseBrowserClient();
-    const { error } = await supabase.auth.signOut();
+    e.preventDefault()
+    setIsLoggingOut(true)
+    const supabase = createSupabaseBrowserClient()
+    const { error } = await supabase.auth.signOut()
 
     if (error) {
-      console.log(error);
+      console.log(error)
       toast({
-        title: "Error al salir",
+        title: 'Error al salir',
         description: error.message,
-        variant: "destructive",
-      });
+        variant: 'destructive',
+      })
     } else {
-      router.replace(PAGES.LOGIN);
+      router.replace(PAGES.LOGIN)
     }
 
-    setIsLoggingOut(false);
-  };
+    setIsLoggingOut(false)
+  }
 
-  const avatarFallback = userInitials || <User />;
+  const avatarFallback = userInitials || <User />
 
   return (
     <DropdownMenu open={isOpen} onOpenChange={setIsOpen}>
@@ -95,9 +95,9 @@ export function UserMenu({ userInitials, userImage }: UserMenuProps) {
           ) : (
             <LogOut className="mr-2 h-4 w-4" />
           )}
-          <span>{isLoggingOut ? "Cerrando Sesión..." : "Cerrar Sesión"}</span>
+          <span>{isLoggingOut ? 'Cerrando Sesión...' : 'Cerrar Sesión'}</span>
         </DropdownMenuItem>
       </DropdownMenuContent>
     </DropdownMenu>
-  );
+  )
 }

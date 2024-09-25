@@ -1,15 +1,15 @@
-import { Button } from "@/components/ui/button";
-import { Input } from "@/components/ui/input";
-import { Label } from "@/components/ui/label";
-import { Textarea } from "@/components/ui/textarea";
-import { Mail, MapPin, Phone } from "lucide-react";
-import { Metadata } from "next";
+import { Button } from '@/components/ui/button'
+import { Input } from '@/components/ui/input'
+import { Label } from '@/components/ui/label'
+import { Textarea } from '@/components/ui/textarea'
+import { Mail, MapPin, Phone } from 'lucide-react'
+import { Metadata } from 'next'
 
 export const metadata: Metadata = {
-  title: "Sentrio - Contacto",
+  title: 'Sentrio - Contacto',
   description:
-    "Póngase en contacto con el equipo de Sentrio para cualquier consulta o soporte.",
-};
+    'Póngase en contacto con el equipo de Sentrio para cualquier consulta o soporte.',
+}
 
 export default function ContactPage() {
   return (
@@ -81,5 +81,5 @@ export default function ContactPage() {
         </p>
       </div>
     </div>
-  );
+  )
 }

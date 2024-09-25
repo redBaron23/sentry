@@ -1,13 +1,13 @@
-import { PanelLeft } from "lucide-react";
-import React from "react";
-import { HeaderActions } from "../organisms/header/header-actions";
-import { MobileNav } from "../organisms/navigation/mobile-nav";
-import { SidebarNav } from "../organisms/navigation/sidebar-nav";
-import { Button } from "../ui/button";
-import { Sheet, SheetContent, SheetTrigger } from "../ui/sheet";
+import { PanelLeft } from 'lucide-react'
+import React from 'react'
+import { HeaderActions } from '../organisms/header/header-actions'
+import { MobileNav } from '../organisms/navigation/mobile-nav'
+import { SidebarNav } from '../organisms/navigation/sidebar-nav'
+import { Button } from '../ui/button'
+import { Sheet, SheetContent, SheetTrigger } from '../ui/sheet'
 
 interface DashboardTemplateProps {
-  children: React.ReactNode;
+  children: React.ReactNode
 }
 
 export function DashboardTemplate({ children }: DashboardTemplateProps) {
@@ -34,5 +34,5 @@ export function DashboardTemplate({ children }: DashboardTemplateProps) {
         <main className="flex-1 overflow-y-auto p-4 sm:p-6">{children}</main>
       </div>
     </div>
-  );
+  )
 }

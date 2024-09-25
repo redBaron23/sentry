@@ -1,6 +1,6 @@
-import { Button } from "@/components/ui/button";
-import { Input } from "@/components/ui/input";
-import { PAGES } from "@/lib/constants/pages";
+import { Button } from '@/components/ui/button'
+import { Input } from '@/components/ui/input'
+import { PAGES } from '@/lib/constants/pages'
 import {
   Book,
   FileQuestion,
@@ -8,45 +8,45 @@ import {
   Search,
   Shield,
   Wrench,
-} from "lucide-react";
-import { Metadata } from "next";
-import Link from "next/link";
+} from 'lucide-react'
+import { Metadata } from 'next'
+import Link from 'next/link'
 
 export const metadata: Metadata = {
-  title: "Sentrio - Centro de Ayuda",
+  title: 'Sentrio - Centro de Ayuda',
   description:
-    "Centro de ayuda y recursos para usuarios de la plataforma Sentrio de ciberseguridad bancaria.",
-};
+    'Centro de ayuda y recursos para usuarios de la plataforma Sentrio de ciberseguridad bancaria.',
+}
 
 const helpCategories = [
   {
-    title: "Guías de Uso",
+    title: 'Guías de Uso',
     description:
-      "Tutoriales paso a paso sobre cómo usar las funciones de Sentrio.",
+      'Tutoriales paso a paso sobre cómo usar las funciones de Sentrio.',
     icon: <Book className="h-8 w-8 text-primary" />,
-    link: "#",
+    link: '#',
   },
   {
-    title: "Preguntas Frecuentes",
+    title: 'Preguntas Frecuentes',
     description:
-      "Respuestas a las preguntas más comunes sobre nuestra plataforma.",
+      'Respuestas a las preguntas más comunes sobre nuestra plataforma.',
     icon: <FileQuestion className="h-8 w-8 text-primary" />,
-    link: "#",
+    link: '#',
   },
   {
-    title: "Seguridad",
+    title: 'Seguridad',
     description:
-      "Información sobre nuestras prácticas de seguridad y consejos para usuarios.",
+      'Información sobre nuestras prácticas de seguridad y consejos para usuarios.',
     icon: <Shield className="h-8 w-8 text-primary" />,
-    link: "#",
+    link: '#',
   },
   {
-    title: "Solución de Problemas",
-    description: "Guías para resolver problemas comunes y errores conocidos.",
+    title: 'Solución de Problemas',
+    description: 'Guías para resolver problemas comunes y errores conocidos.',
     icon: <Wrench className="h-8 w-8 text-primary" />,
-    link: "#",
+    link: '#',
   },
-];
+]
 
 export default function HelpPage() {
   return (
@@ -98,5 +98,5 @@ export default function HelpPage() {
         </Button>
       </div>
     </div>
-  );
+  )
 }

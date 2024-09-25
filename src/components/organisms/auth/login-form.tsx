@@ -1,16 +1,16 @@
-"use client";
+'use client'
 
-import FormInput from "@/components/atoms/form-inputs/form-input";
-import { OAuthProviders } from "@/components/molecules/oauth-providers";
-import { Button } from "@/components/ui/button";
-import { Form } from "@/components/ui/form";
-import { Icons } from "@/lib/constants/icons";
-import { loginAction } from "@/lib/server/actions/auth-actions";
-import { cn } from "@/lib/utils";
-import { loginSchema } from "@/types/schemas/auth-schemas";
-import { zodResolver } from "@hookform/resolvers/zod";
-import { useHookFormAction } from "@next-safe-action/adapter-react-hook-form/hooks";
-import { HTMLAttributes } from "react";
+import FormInput from '@/components/atoms/form-inputs/form-input'
+import { OAuthProviders } from '@/components/molecules/oauth-providers'
+import { Button } from '@/components/ui/button'
+import { Form } from '@/components/ui/form'
+import { Icons } from '@/lib/constants/icons'
+import { loginAction } from '@/lib/server/actions/auth-actions'
+import { cn } from '@/lib/utils'
+import { loginSchema } from '@/types/schemas/auth-schemas'
+import { zodResolver } from '@hookform/resolvers/zod'
+import { useHookFormAction } from '@next-safe-action/adapter-react-hook-form/hooks'
+import { HTMLAttributes } from 'react'
 
 interface Props extends HTMLAttributes<HTMLDivElement> {}
 
@@ -22,10 +22,10 @@ export function LoginForm({ className, ...props }: Props) {
       result: { serverError },
     },
     form,
-  } = useHookFormAction(loginAction, zodResolver(loginSchema));
+  } = useHookFormAction(loginAction, zodResolver(loginSchema))
 
   return (
-    <div className={cn("space-y-6", className)} {...props}>
+    <div className={cn('space-y-6', className)} {...props}>
       <Form {...form}>
         <form onSubmit={handleSubmitWithAction} className="space-y-4">
           <FormInput
@@ -74,5 +74,5 @@ export function LoginForm({ className, ...props }: Props) {
 
       <OAuthProviders />
     </div>
-  );
+  )
 }

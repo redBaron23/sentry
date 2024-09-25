@@ -1,22 +1,22 @@
-"use client";
+'use client'
 
-import { Icons } from "@/lib/constants/icons";
-import { signUpAction } from "@/lib/server/actions/auth-actions";
-import { cn } from "@/lib/utils";
-import { signUpSchema } from "@/types/schemas/auth-schemas";
-import { zodResolver } from "@hookform/resolvers/zod";
-import { useHookFormAction } from "@next-safe-action/adapter-react-hook-form/hooks";
-import { HTMLAttributes, useState } from "react";
-import FormInput from "../../atoms/form-inputs/form-input";
-import { Button } from "../../ui/button";
-import { Form } from "../../ui/form";
+import { Icons } from '@/lib/constants/icons'
+import { signUpAction } from '@/lib/server/actions/auth-actions'
+import { cn } from '@/lib/utils'
+import { signUpSchema } from '@/types/schemas/auth-schemas'
+import { zodResolver } from '@hookform/resolvers/zod'
+import { useHookFormAction } from '@next-safe-action/adapter-react-hook-form/hooks'
+import { HTMLAttributes, useState } from 'react'
+import FormInput from '../../atoms/form-inputs/form-input'
+import { Button } from '../../ui/button'
+import { Form } from '../../ui/form'
 
 interface Props extends HTMLAttributes<HTMLDivElement> {
-  onSignUpComplete: (email: string) => void;
+  onSignUpComplete: (email: string) => void
 }
 
 export function SignUpForm({ onSignUpComplete, className, ...props }: Props) {
-  const [isLoadingGoogle, setIsLoadingGoogle] = useState(false);
+  const [isLoadingGoogle, setIsLoadingGoogle] = useState(false)
 
   const {
     handleSubmitWithAction,
@@ -28,15 +28,15 @@ export function SignUpForm({ onSignUpComplete, className, ...props }: Props) {
   } = useHookFormAction(signUpAction, zodResolver(signUpSchema), {
     actionProps: {
       onSuccess: ({ input }) => {
-        onSignUpComplete(input.email);
+        onSignUpComplete(input.email)
       },
     },
-  });
+  })
 
-  const isSigningUp = isLoadingGoogle || isExecuting;
+  const isSigningUp = isLoadingGoogle || isExecuting
 
   return (
-    <div className={cn("space-y-6", className)} {...props}>
+    <div className={cn('space-y-6', className)} {...props}>
       <Form {...form}>
         <form onSubmit={handleSubmitWithAction} className="space-y-4">
           <FormInput
@@ -109,5 +109,5 @@ export function SignUpForm({ onSignUpComplete, className, ...props }: Props) {
         Google
       </Button>
     </div>
-  );
+  )
 }

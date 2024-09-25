@@ -1,36 +1,36 @@
 // components/atoms/ResendCodeButton.tsx
-import { Button } from "@/components/ui/button";
-import { useEffect, useState } from "react";
+import { Button } from '@/components/ui/button'
+import { useEffect, useState } from 'react'
 
 interface ResendCodeButtonProps {
-  onResend: () => Promise<void>;
-  cooldownTime?: number;
+  onResend: () => Promise<void>
+  cooldownTime?: number
 }
 
 export function ResendCodeButton({
   onResend,
   cooldownTime = 60,
 }: ResendCodeButtonProps) {
-  const [isResending, setIsResending] = useState(false);
-  const [countdown, setCountdown] = useState(0);
+  const [isResending, setIsResending] = useState(false)
+  const [countdown, setCountdown] = useState(0)
 
   useEffect(() => {
-    let timer: NodeJS.Timeout;
+    let timer: NodeJS.Timeout
     if (countdown > 0) {
-      timer = setTimeout(() => setCountdown(countdown - 1), 1000);
+      timer = setTimeout(() => setCountdown(countdown - 1), 1000)
     }
-    return () => clearTimeout(timer);
-  }, [countdown]);
+    return () => clearTimeout(timer)
+  }, [countdown])
 
   const handleResend = async () => {
-    setIsResending(true);
+    setIsResending(true)
     try {
-      await onResend();
-      setCountdown(cooldownTime);
+      await onResend()
+      setCountdown(cooldownTime)
     } finally {
-      setIsResending(false);
+      setIsResending(false)
     }
-  };
+  }
 
   return (
     <Button
@@ -40,10 +40,10 @@ export function ResendCodeButton({
       className="h-auto p-0 font-medium text-primary hover:underline focus:ring-2 focus:ring-primary focus:ring-offset-2"
     >
       {isResending
-        ? "Reenviando..."
+        ? 'Reenviando...'
         : countdown > 0
           ? `Reenviar en ${countdown}s`
-          : "Reenviar código"}
+          : 'Reenviar código'}
     </Button>
-  );
+  )
 }

@@ -1,11 +1,11 @@
-import { ShieldAlert } from "lucide-react";
-import { BarChart } from "../atoms/charts/bar-chart";
-import { VariationChart } from "../atoms/charts/variation-chart";
-import ChartCard from "./charts/chart-card";
+import { ShieldAlert } from 'lucide-react'
+import { BarChart } from '../atoms/charts/bar-chart'
+import { VariationChart } from '../atoms/charts/variation-chart'
+import ChartCard from './charts/chart-card'
 
 interface VulnerabilityStatProps {
-  label: string;
-  value: number;
+  label: string
+  value: number
 }
 
 const VulnerabilityStat = ({ label, value }: VulnerabilityStatProps) => (
@@ -15,13 +15,13 @@ const VulnerabilityStat = ({ label, value }: VulnerabilityStatProps) => (
       {value.toLocaleString()}
     </span>
   </div>
-);
+)
 
 interface VulnerabilitiesITProps {
-  baseMonth: { label: string; value: number };
-  currentMonth: { label: string; value: number };
-  vulnerabilitiesChartData: any; // Adjust this type according to your data structure
-  variationPercentage: number;
+  baseMonth: { label: string; value: number }
+  currentMonth: { label: string; value: number }
+  vulnerabilitiesChartData: any // Adjust this type according to your data structure
+  variationPercentage: number
 }
 
 export function VulnerabilitiesIT({
@@ -58,5 +58,5 @@ export function VulnerabilitiesIT({
         </div>
       </div>
     </ChartCard>
-  );
+  )
 }

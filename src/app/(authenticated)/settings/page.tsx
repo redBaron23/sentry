@@ -1,25 +1,25 @@
-import { SettingsForm } from "@/components/organisms/settings/settings-form";
-import { PAGES } from "@/lib/constants/pages";
-import { Metadata } from "next";
-import Link from "next/link";
-import { Button } from "../../../components/ui/button";
+import { SettingsForm } from '@/components/organisms/settings/settings-form'
+import { PAGES } from '@/lib/constants/pages'
+import { Metadata } from 'next'
+import Link from 'next/link'
+import { Button } from '../../../components/ui/button'
 import {
   Card,
   CardContent,
   CardHeader,
   CardTitle,
-} from "../../../components/ui/card";
+} from '../../../components/ui/card'
 import {
   Tabs,
   TabsContent,
   TabsList,
   TabsTrigger,
-} from "../../../components/ui/tabs";
+} from '../../../components/ui/tabs'
 
 export const metadata: Metadata = {
-  title: "Sentrio - Configuración",
-  description: "Administra la configuración de tu cuenta Sentrio.",
-};
+  title: 'Sentrio - Configuración',
+  description: 'Administra la configuración de tu cuenta Sentrio.',
+}
 
 export default function SettingsPage() {
   return (
@@ -94,14 +94,14 @@ export default function SettingsPage() {
       </Tabs>
 
       <p className="mt-8 text-center text-sm text-muted-foreground">
-        ¿Necesitas ayuda? Consulta nuestra{" "}
+        ¿Necesitas ayuda? Consulta nuestra{' '}
         <Link
           href={PAGES.HELP}
           className="font-medium text-primary hover:underline"
         >
           página de ayuda
-        </Link>{" "}
-        o{" "}
+        </Link>{' '}
+        o{' '}
         <Link
           href={PAGES.CONTACT}
           className="font-medium text-primary hover:underline"
@@ -111,5 +111,5 @@ export default function SettingsPage() {
         .
       </p>
     </div>
-  );
+  )
 }

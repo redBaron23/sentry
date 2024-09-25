@@ -1,8 +1,8 @@
-"use client";
+'use client'
 
-import { Bell } from "lucide-react";
-import { useState } from "react";
-import { Button } from "../ui/button";
+import { Bell } from 'lucide-react'
+import { useState } from 'react'
+import { Button } from '../ui/button'
 import {
   DropdownMenu,
   DropdownMenuContent,
@@ -10,18 +10,18 @@ import {
   DropdownMenuLabel,
   DropdownMenuSeparator,
   DropdownMenuTrigger,
-} from "../ui/dropdown-menu";
+} from '../ui/dropdown-menu'
 
 interface NotificationBellProps {
-  initialCount: number;
+  initialCount: number
 }
 
 export function NotificationBell({ initialCount }: NotificationBellProps) {
-  const [count, setCount] = useState(initialCount);
+  const [count, setCount] = useState(initialCount)
 
   const handleClearNotifications = () => {
-    setCount(0);
-  };
+    setCount(0)
+  }
 
   return (
     <DropdownMenu>
@@ -57,5 +57,5 @@ export function NotificationBell({ initialCount }: NotificationBellProps) {
         )}
       </DropdownMenuContent>
     </DropdownMenu>
-  );
+  )
 }

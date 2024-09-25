@@ -1,10 +1,10 @@
-import { Icons } from "@/lib/constants/icons";
-import { Button } from "../../ui/button";
+import { Icons } from '@/lib/constants/icons'
+import { Button } from '../../ui/button'
 
 interface ProviderButtonProps {
-  provider: "google" | "azure";
-  onClick: () => void;
-  isLoading: boolean;
+  provider: 'google' | 'azure'
+  onClick: () => void
+  isLoading: boolean
 }
 
 export function ProviderButton({
@@ -12,8 +12,8 @@ export function ProviderButton({
   onClick,
   isLoading,
 }: ProviderButtonProps) {
-  const Icon = Icons[provider];
-  const text = provider === "google" ? "Google" : "Microsoft";
+  const Icon = Icons[provider]
+  const text = provider === 'google' ? 'Google' : 'Microsoft'
 
   return (
     <Button
@@ -30,5 +30,5 @@ export function ProviderButton({
       )}
       {text}
     </Button>
-  );
+  )
 }

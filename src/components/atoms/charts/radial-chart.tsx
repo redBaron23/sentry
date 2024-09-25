@@ -1,6 +1,6 @@
-"use client";
+'use client'
 
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useRef, useState } from 'react'
 import {
   Label,
   PolarAngleAxis,
@@ -8,31 +8,31 @@ import {
   RadialBar,
   RadialBarChart,
   ResponsiveContainer,
-} from "recharts";
+} from 'recharts'
 import {
   ChartConfig,
   ChartContainer,
   ChartTooltip,
   ChartTooltipContent,
-} from "../../ui/chart";
+} from '../../ui/chart'
 
 interface RadialChartProps {
-  name: string;
-  value: number;
-  title?: string;
-  color?: string;
-  maxWidth?: number;
-  startAngle?: number;
-  endAngle?: number;
-  innerRadius?: number;
-  outerRadius?: number;
+  name: string
+  value: number
+  title?: string
+  color?: string
+  maxWidth?: number
+  startAngle?: number
+  endAngle?: number
+  innerRadius?: number
+  outerRadius?: number
 }
 
 export function RadialChart({
   name,
   value,
   title,
-  color = "hsl(var(--chart-variation-positive))",
+  color = 'hsl(var(--chart-variation-positive))',
   maxWidth = 200,
   startAngle = 180,
   endAngle = 0,
@@ -44,40 +44,40 @@ export function RadialChart({
       name,
       value,
     },
-  ];
+  ]
 
   const chartConfig: ChartConfig = {
     [name]: {
       label: name,
       color: color,
     },
-  };
+  }
 
-  const containerRef = useRef<HTMLDivElement>(null);
-  const [containerWidth, setContainerWidth] = useState(0);
+  const containerRef = useRef<HTMLDivElement>(null)
+  const [containerWidth, setContainerWidth] = useState(0)
 
   useEffect(() => {
     const updateWidth = () => {
       if (containerRef.current) {
-        setContainerWidth(containerRef.current.offsetWidth);
+        setContainerWidth(containerRef.current.offsetWidth)
       }
-    };
+    }
 
-    updateWidth();
-    window.addEventListener("resize", updateWidth);
+    updateWidth()
+    window.addEventListener('resize', updateWidth)
 
-    return () => window.removeEventListener("resize", updateWidth);
-  }, []);
+    return () => window.removeEventListener('resize', updateWidth)
+  }, [])
 
-  const chartSize = Math.min(containerWidth, maxWidth);
-  const scaleFactor = chartSize / maxWidth;
-  const adjustedInnerRadius = innerRadius * scaleFactor;
-  const adjustedOuterRadius = outerRadius * scaleFactor;
+  const chartSize = Math.min(containerWidth, maxWidth)
+  const scaleFactor = chartSize / maxWidth
+  const adjustedInnerRadius = innerRadius * scaleFactor
+  const adjustedOuterRadius = outerRadius * scaleFactor
 
   return (
     <div className="flex w-full flex-col gap-3 text-center" ref={containerRef}>
       {title && <h6>{title}</h6>}
-      <div style={{ width: "100%", height: `${chartSize}px` }}>
+      <div style={{ width: '100%', height: `${chartSize}px` }}>
         <ChartContainer config={chartConfig} className="mx-auto h-full w-full">
           <ResponsiveContainer width="100%" height="100%">
             <RadialBarChart
@@ -107,9 +107,9 @@ export function RadialChart({
               <PolarRadiusAxis tick={false} axisLine={false}>
                 <Label
                   content={({ viewBox }) => {
-                    if (viewBox && "cx" in viewBox && "cy" in viewBox) {
-                      const fontSize = Math.max(12, 16 * scaleFactor);
-                      const smallFontSize = Math.max(8, 12 * scaleFactor);
+                    if (viewBox && 'cx' in viewBox && 'cy' in viewBox) {
+                      const fontSize = Math.max(12, 16 * scaleFactor)
+                      const smallFontSize = Math.max(8, 12 * scaleFactor)
                       return (
                         <>
                           <text
@@ -147,7 +147,7 @@ export function RadialChart({
                             </tspan>
                           </text>
                         </>
-                      );
+                      )
                     }
                   }}
                 />
@@ -157,5 +157,5 @@ export function RadialChart({
         </ChartContainer>
       </div>
     </div>
-  );
+  )
 }

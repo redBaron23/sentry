@@ -1,36 +1,36 @@
-"use server";
+'use server'
 
-import { PAGES } from "@/lib/constants/pages";
-import { createServerSideClient } from "@/lib/supabase/server";
-import { ActionError } from "@/types/errors";
+import { PAGES } from '@/lib/constants/pages'
+import { createServerSideClient } from '@/lib/supabase/server'
+import { ActionError } from '@/types/errors'
 import {
   loginSchema,
   signUpSchema,
   verifyEmailSchema,
-} from "@/types/schemas/auth-schemas";
-import { redirect } from "next/navigation";
-import { baseActionClient } from "../clients/base-action-client";
+} from '@/types/schemas/auth-schemas'
+import { redirect } from 'next/navigation'
+import { baseActionClient } from '../clients/base-action-client'
 
 export const loginAction = baseActionClient
-  .metadata({ actionName: "login" })
+  .metadata({ actionName: 'login' })
   .schema(loginSchema)
   .action(async ({ parsedInput, ctx: {} }) => {
-    const supabase = await createServerSideClient();
+    const supabase = await createServerSideClient()
 
-    const { error } = await supabase.auth.signInWithPassword(parsedInput);
+    const { error } = await supabase.auth.signInWithPassword(parsedInput)
 
     if (error) {
-      throw new ActionError(error.message);
+      throw new ActionError(error.message)
     }
 
-    redirect(PAGES.DASHBOARD);
-  });
+    redirect(PAGES.DASHBOARD)
+  })
 
 export const signUpAction = baseActionClient
-  .metadata({ actionName: "signUp" })
+  .metadata({ actionName: 'signUp' })
   .schema(signUpSchema)
   .action(async ({ parsedInput: { email, password, name }, ctx: {} }) => {
-    const supabase = await createServerSideClient();
+    const supabase = await createServerSideClient()
 
     const { error, data } = await supabase.auth.signUp({
       email,
@@ -40,10 +40,10 @@ export const signUpAction = baseActionClient
           name,
         },
       },
-    });
+    })
 
     if (error) {
-      throw new ActionError(error.message);
+      throw new ActionError(error.message)
     }
 
     if (
@@ -51,25 +51,25 @@ export const signUpAction = baseActionClient
       data.user.identities &&
       data.user.identities.length === 0
     ) {
-      throw new ActionError("User already exists");
+      throw new ActionError('User already exists')
     }
-  });
+  })
 
 export const verifyEmailAction = baseActionClient
-  .metadata({ actionName: "verifyEmail" })
+  .metadata({ actionName: 'verifyEmail' })
   .schema(verifyEmailSchema)
   .action(async ({ parsedInput, ctx: {} }) => {
-    const supabase = await createServerSideClient();
+    const supabase = await createServerSideClient()
 
     const { error } = await supabase.auth.verifyOtp({
       email: parsedInput.email,
       token: parsedInput.token,
-      type: "signup",
-    });
+      type: 'signup',
+    })
 
     if (error) {
-      throw new ActionError(error.message);
+      throw new ActionError(error.message)
     }
 
-    redirect(PAGES.DASHBOARD);
-  });
+    redirect(PAGES.DASHBOARD)
+  })
