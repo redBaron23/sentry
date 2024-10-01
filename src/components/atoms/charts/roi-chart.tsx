@@ -26,8 +26,8 @@ interface ROIData {
 }
 
 interface Props {
-  title: string
-  description: string
+  title?: string
+  description?: string
   data: ROIData[]
 }
 
@@ -67,7 +67,7 @@ export function ROIChart({ title, description, data }: Props) {
           <ResponsiveContainer width="100%" height={400}>
             <ComposedChart
               data={data}
-              margin={{ top: 20, right: 30, left: 20, bottom: 20 }}
+              margin={{ top: 20, right: 30, left: 30, bottom: 20 }}
             >
               <CartesianGrid strokeDasharray="3 3" />
               <XAxis dataKey="name" scale="band" />

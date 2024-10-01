@@ -1,3 +1,4 @@
+import CyberSecurityCostChart from '@/components/atoms/charts/cyber-security-cost-chart'
 import { RiskMatrix } from '@/components/atoms/charts/risk-matrix'
 import { ROIChart } from '@/components/atoms/charts/roi-chart'
 import ChartCard from '@/components/organisms/charts/chart-card'
@@ -177,11 +178,13 @@ export default function impactAnalysisPage() {
         title="impacto Financiero por Prevención de Incidentes"
         cols={1}
       >
-        <ROIChart
-          title="Análisis Anual de Inversión en Ciberseguridad"
-          description="Inversión mensual, pérdidas evitadas y ROI para el año fiscal"
-          data={roiData}
-        />
+        <CyberSecurityCostChart />
+      </ChartCard>
+      <ChartCard
+        title="impacto Financiero por Prevención de Incidentes"
+        cols={1}
+      >
+        <ROIChart data={roiData} />
       </ChartCard>
       <ChartCard
         title="Evolución del Perfil de Riesgo de Ciberseguridad"
