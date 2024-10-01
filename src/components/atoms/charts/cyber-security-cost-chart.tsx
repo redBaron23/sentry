@@ -60,9 +60,10 @@ const chartConfig = {
 
 interface Props {
   title?: string
+  description?: string
 }
 
-function CyberSecurityImpactChart({ title }: Props) {
+function CyberSecurityImpactChart({ title, description }: Props) {
   const [selectedPoint, setSelectedPoint] = useState<any>(null)
 
   const CustomShape = ({ cx, cy, payload }: any) => (
@@ -78,6 +79,7 @@ function CyberSecurityImpactChart({ title }: Props) {
         }
         onMouseEnter={() => setSelectedPoint(payload)}
         onMouseLeave={() => setSelectedPoint(null)}
+        onClick={() => setSelectedPoint(payload)}
       />
       <text
         x={0}
@@ -85,9 +87,9 @@ function CyberSecurityImpactChart({ title }: Props) {
         textAnchor="middle"
         fill="hsl(210, 100%, 35%)"
         transform="rotate(-45)"
-        fontSize="10"
+        fontSize="12"
         fontWeight="bold"
-        filter="url(#solid)"
+        className="hidden md:block"
       >
         {payload.label}
       </text>
@@ -112,13 +114,15 @@ function CyberSecurityImpactChart({ title }: Props) {
   return (
     <div className="flex h-full flex-col">
       {title && <h6 className="mb-2 text-center">{title}</h6>}
+      {description && (
+        <p className="mb-4 text-center text-sm text-muted-foreground">
+          {description}
+        </p>
+      )}
       <div className="flex-grow">
         <ChartContainer config={chartConfig}>
           <ResponsiveContainer>
-            <ComposedChart
-              data={areaData}
-              margin={{ top: 40, right: 30, left: 30, bottom: 20 }}
-            >
+            <ComposedChart data={areaData}>
               <defs>
                 <filter x="0" y="0" width="1" height="1" id="solid">
                   <feFlood flood-color="white" result="bg" />

@@ -174,10 +174,7 @@ const roiData = [
 export default function impactAnalysisPage() {
   return (
     <div className="grid grid-cols-1 gap-6 md:grid-cols-2">
-      <ChartCard
-        title="impacto Financiero por Prevención de Incidentes"
-        cols={1}
-      >
+      <ChartCard title="Rango de Impacto" cols={1}>
         <CyberSecurityCostChart />
       </ChartCard>
       <ChartCard
