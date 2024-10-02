@@ -18,30 +18,31 @@ interface SecurityFactor {
 
 const factors: SecurityFactor[] = [
   {
-    name: 'Patching cadence',
-    description: 'Detecting DNS insecure configurations and vulnerabilities',
+    name: 'Frecuencia de parches',
+    description:
+      'Detección de configuraciones inseguras y vulnerabilidades de DNS',
     currentScore: { letter: 'F', score: 58 },
     suggestedScore: { letter: 'D', score: 60 },
     impact: '$449.96K',
   },
   {
-    name: 'Network security',
-    description: 'Detecting insecure network settings',
+    name: 'Seguridad de red',
+    description: 'Detección de configuraciones de red inseguras',
     currentScore: { letter: 'C', score: 72 },
     suggestedScore: { letter: 'C', score: 75 },
     impact: '$72.07K',
   },
   {
-    name: 'IP reputation',
+    name: 'Reputación de IP',
     description:
-      'Detecting suspicious activity, such as malware or spam, within your company network',
+      'Detección de actividad sospechosa, como malware o spam, dentro de la red de la empresa',
     currentScore: { letter: 'C', score: 75 },
     suggestedScore: { letter: 'B', score: 78 },
     impact: '$219K',
   },
   {
-    name: 'Application security',
-    description: 'Detecting common website application vulnerabilities',
+    name: 'Seguridad de aplicaciones',
+    description: 'Detección de vulnerabilidades comunes en aplicaciones web',
     currentScore: { letter: 'C', score: 72 },
     suggestedScore: { letter: 'C', score: 75 },
     impact: '$94.50K',
@@ -72,8 +73,8 @@ export const SecurityFactorsTable: React.FC = () => {
     <Card className="w-full overflow-hidden">
       <div className="grid grid-cols-1 md:grid-cols-3 gap-4 p-6 font-semibold text-sm text-gray-700 border-b bg-gray-100">
         <div className="text-center">Factor</div>
-        <div className="hidden md:block text-center">Suggestion</div>
-        <div className="hidden md:block text-center">Reduce impact by</div>
+        <div className="hidden md:block text-center">Sugerencia</div>
+        <div className="hidden md:block text-center">Reducir impacto en</div>
       </div>
       {factors.map((factor, index) => (
         <div
@@ -89,7 +90,7 @@ export const SecurityFactorsTable: React.FC = () => {
               <ScoreBadge {...factor.suggestedScore} />
             </div>
             <div className="mt-2 font-medium text-gray-800 md:hidden">
-              Reduce impact by {factor.impact}
+              Reducir impacto en {factor.impact}
             </div>
           </div>
           <div className="hidden md:flex items-center justify-center space-x-4">

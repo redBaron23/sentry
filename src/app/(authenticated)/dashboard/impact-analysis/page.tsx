@@ -177,7 +177,7 @@ const roiData = [
 
 const tableData = [
   {
-    title: 'Estimated financial impact',
+    title: 'Impacto financiero estimado',
     data: {
       'Data breach': { value: '$2.67M' },
       DDoS: { value: '$812.84K' },
@@ -186,7 +186,7 @@ const tableData = [
     },
   },
   {
-    title: 'Probability of compromise',
+    title: 'Probabilidad de compromiso',
     data: {
       'Data breach': { value: '9.79%' },
       DDoS: { value: '35.79%', bold: true },
@@ -195,12 +195,12 @@ const tableData = [
     },
   },
   {
-    title: 'Predicted frequency in years',
+    title: 'Frecuencia prevista en años',
     data: {
-      'Data breach': { value: '1 out of 3', bold: true },
-      DDoS: { value: '1 out of 10' },
-      Ransomware: { value: '1 out of 5' },
-      Wiper: { value: '1 out of 5' },
+      'Data breach': { value: '1 de cada 3', bold: true },
+      DDoS: { value: '1 de cada 10' },
+      Ransomware: { value: '1 de cada 5' },
+      Wiper: { value: '1 de cada 5' },
     },
   },
 ]
@@ -213,16 +213,16 @@ export default function ImpactAnalysisPage() {
         <TabsList className="grid w-full max-w-md mb-6 grid-cols-2">
           <TabsTrigger value="risk-quantification">
             <Shield className="w-4 h-4 mr-2" />
-            Risk Quantification
+            Cuantificación de Riesgo
           </TabsTrigger>
           <TabsTrigger value="other-analysis">
             <ChartBar className="w-4 h-4 mr-2" />
-            Other Analysis
+            Otros Análisis
           </TabsTrigger>
         </TabsList>
         <TabsContent
           value="risk-quantification"
-          className="flex flex-col gap-4"
+          className="flex flex-col gap-6"
         >
           <div className="grid grid-cols-1 gap-6 md:grid-cols-2">
             <ChartCard title="Rango de Impacto" cols={1}>
