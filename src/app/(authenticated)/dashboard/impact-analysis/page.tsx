@@ -3,6 +3,8 @@ import { RiskMatrix } from '@/components/atoms/charts/risk-matrix'
 import { ROIChart } from '@/components/atoms/charts/roi-chart'
 import DataTable from '@/components/molecules/data-table'
 import ChartCard from '@/components/organisms/charts/chart-card'
+import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs'
+import { ChartBar, Shield } from 'lucide-react'
 
 const pointsRiskData = [
   {
@@ -202,26 +204,46 @@ const tableData = [
   },
 ]
 
-export default function impactAnalysisPage() {
+export default function ImpactAnalysisPage() {
   return (
-    <div className="grid grid-cols-1 gap-6 md:grid-cols-2">
-      <ChartCard title="Rango de Impacto" cols={1}>
-        <CyberSecurityCostChart />
-      </ChartCard>
-      <DataTable items={tableData} />
-
-      <ChartCard
-        title="impacto Financiero por Prevención de Incidentes"
-        cols={1}
-      >
-        <ROIChart data={roiData} />
-      </ChartCard>
-      <ChartCard
-        title="Evolución del Perfil de Riesgo de Ciberseguridad"
-        cols={1}
-      >
-        <RiskMatrix title="Matriz de Riesgo" data={riskData} />
-      </ChartCard>
+    <div className="space-y-6">
+      <h1 className="text-3xl font-bold">Análisis de impacto</h1>
+      <Tabs defaultValue="risk-quantification" className="justify-start">
+        <TabsList className="grid w-full max-w-md mb-6 grid-cols-2">
+          <TabsTrigger value="risk-quantification">
+            <Shield className="w-4 h-4 mr-2" />
+            Risk Quantification
+          </TabsTrigger>
+          <TabsTrigger value="other-analysis">
+            <ChartBar className="w-4 h-4 mr-2" />
+            Other Analysis
+          </TabsTrigger>
+        </TabsList>
+        <TabsContent value="risk-quantification">
+          <div className="grid grid-cols-1 gap-6 md:grid-cols-2">
+            <ChartCard title="Rango de Impacto" cols={1}>
+              <CyberSecurityCostChart />
+            </ChartCard>
+            <DataTable items={tableData} />
+          </div>
+        </TabsContent>
+        <TabsContent value="other-analysis">
+          <div className="grid grid-cols-1 gap-6 md:grid-cols-2">
+            <ChartCard
+              title="Impacto Financiero por Prevención de Incidentes"
+              cols={1}
+            >
+              <ROIChart data={roiData} />
+            </ChartCard>
+            <ChartCard
+              title="Evolución del Perfil de Riesgo de Ciberseguridad"
+              cols={1}
+            >
+              <RiskMatrix title="Matriz de Riesgo" data={riskData} />
+            </ChartCard>
+          </div>
+        </TabsContent>
+      </Tabs>
     </div>
   )
 }
