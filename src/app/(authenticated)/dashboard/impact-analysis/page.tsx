@@ -1,6 +1,7 @@
 import CyberSecurityCostChart from '@/components/atoms/charts/cyber-security-cost-chart'
 import { RiskMatrix } from '@/components/atoms/charts/risk-matrix'
 import { ROIChart } from '@/components/atoms/charts/roi-chart'
+import DataTable from '@/components/molecules/data-table'
 import ChartCard from '@/components/organisms/charts/chart-card'
 
 const pointsRiskData = [
@@ -171,12 +172,44 @@ const roiData = [
   },
 ]
 
+const tableData = [
+  {
+    title: 'Estimated financial impact',
+    data: {
+      'Data breach': { value: '$2.67M' },
+      DDoS: { value: '$812.84K' },
+      Ransomware: { value: '$2.69M', bold: true },
+      Wiper: { value: '$2.49M' },
+    },
+  },
+  {
+    title: 'Probability of compromise',
+    data: {
+      'Data breach': { value: '9.79%' },
+      DDoS: { value: '35.79%', bold: true },
+      Ransomware: { value: '10.72%' },
+      Wiper: { value: '10.72%' },
+    },
+  },
+  {
+    title: 'Predicted frequency in years',
+    data: {
+      'Data breach': { value: '1 out of 3', bold: true },
+      DDoS: { value: '1 out of 10' },
+      Ransomware: { value: '1 out of 5' },
+      Wiper: { value: '1 out of 5' },
+    },
+  },
+]
+
 export default function impactAnalysisPage() {
   return (
     <div className="grid grid-cols-1 gap-6 md:grid-cols-2">
       <ChartCard title="Rango de Impacto" cols={1}>
         <CyberSecurityCostChart />
       </ChartCard>
+      <DataTable items={tableData} />
+
       <ChartCard
         title="impacto Financiero por Prevención de Incidentes"
         cols={1}
