@@ -16,7 +16,7 @@ interface DataTableProps {
 
 const DataTable: React.FC<DataTableProps> = ({ items }) => {
   return (
-    <div className="w-full max-w-4xl mx-auto grid grid-cols-1 gap-4 h-full">
+    <div className="w-full mx-auto grid grid-cols-1 gap-4 h-full">
       {items.map((item, index) => (
         <Card key={index} className="w-full flex flex-col h-full">
           <CardHeader className="flex-shrink-0">
