@@ -2,6 +2,7 @@ import CyberSecurityCostChart from '@/components/atoms/charts/cyber-security-cos
 import { RiskMatrix } from '@/components/atoms/charts/risk-matrix'
 import { ROIChart } from '@/components/atoms/charts/roi-chart'
 import DataTable from '@/components/molecules/data-table'
+import { SecurityFactorsTable } from '@/components/molecules/security-factors-table'
 import ChartCard from '@/components/organisms/charts/chart-card'
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs'
 import { ChartBar, Shield } from 'lucide-react'
@@ -219,12 +220,18 @@ export default function ImpactAnalysisPage() {
             Other Analysis
           </TabsTrigger>
         </TabsList>
-        <TabsContent value="risk-quantification">
+        <TabsContent
+          value="risk-quantification"
+          className="flex flex-col gap-4"
+        >
           <div className="grid grid-cols-1 gap-6 md:grid-cols-2">
             <ChartCard title="Rango de Impacto" cols={1}>
               <CyberSecurityCostChart />
             </ChartCard>
             <DataTable items={tableData} />
+          </div>
+          <div>
+            <SecurityFactorsTable />
           </div>
         </TabsContent>
         <TabsContent value="other-analysis">
