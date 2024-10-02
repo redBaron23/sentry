@@ -13,34 +13,33 @@ import {
 
 const pointsRiskData = [
   {
-    x: 1.9,
+    x: 3,
     y: 0,
     impact: 3.8,
     cost: 2670000,
-    label: 'Fraude en línea',
+    label: 'Data breach',
   },
   {
     x: 1,
     y: 0,
     impact: 1,
-    cost: 500000,
-    label: 'Phishing',
+    cost: 812840,
+    label: 'DDoS',
   },
   {
-    x: 3,
+    x: 4.6,
     y: 0,
     impact: 5,
-    cost: 5000000,
-    label: 'Malware',
-  },
-  {
-    x: 4.1,
-    y: 0,
-    impact: 4.5,
-    cost: 4500000,
+    cost: 2690000,
     label: 'Ransomware',
   },
-  // ... (other data points)
+  {
+    x: 3.8,
+    y: 0,
+    impact: 4.5,
+    cost: 2490000,
+    label: 'Wiper',
+  },
 ]
 
 const areaData = [

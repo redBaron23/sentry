@@ -1,5 +1,5 @@
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card'
-import { cn } from '@/lib/utils' // Asegúrate de tener esta utilidad de shadcn
+import { cn } from '@/lib/utils'
 import React from 'react'
 
 export interface DataItem {
@@ -16,22 +16,22 @@ interface DataTableProps {
 
 const DataTable: React.FC<DataTableProps> = ({ items }) => {
   return (
-    <div className="w-full max-w-4xl mx-auto space-y-4">
+    <div className="w-full max-w-4xl mx-auto grid grid-cols-1 gap-4 h-full">
       {items.map((item, index) => (
-        <Card key={index} className="w-full">
-          <CardHeader>
+        <Card key={index} className="w-full flex flex-col h-full">
+          <CardHeader className="flex-shrink-0">
             <CardTitle>{item.title}</CardTitle>
           </CardHeader>
-          <CardContent>
-            <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
+          <CardContent className="flex-grow flex items-center">
+            <div className="grid grid-cols-2 md:grid-cols-4 gap-4 w-full">
               {Object.entries(item.data).map(([key, { value, bold }], idx) => (
                 <div
                   key={idx}
-                  className="flex flex-col items-center justify-center py-2"
+                  className="flex flex-col items-center justify-center py-4"
                 >
                   <span
                     className={cn(
-                      'text-sm text-center mb-1',
+                      'text-sm text-center mb-2',
                       bold ? 'font-bold' : 'font-normal text-muted-foreground',
                     )}
                   >
@@ -39,7 +39,7 @@ const DataTable: React.FC<DataTableProps> = ({ items }) => {
                   </span>
                   <span
                     className={cn(
-                      'text-foreground text-center',
+                      'text-foreground text-center text-lg',
                       bold ? 'font-bold' : 'font-normal',
                     )}
                   >
