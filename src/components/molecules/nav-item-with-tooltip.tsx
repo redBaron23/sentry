@@ -8,6 +8,7 @@ interface NavItemWithTooltipProps {
   label: string
   isActive: boolean
   isLogo?: boolean
+  isExpanded: boolean
 }
 
 export function NavItemWithTooltip({
@@ -16,7 +17,21 @@ export function NavItemWithTooltip({
   label,
   isActive,
   isLogo = false,
+  isExpanded,
 }: NavItemWithTooltipProps) {
+  if (isExpanded) {
+    return (
+      <NavItem
+        href={href}
+        icon={icon}
+        label={label}
+        isActive={isActive}
+        isLogo={isLogo}
+        showLabel
+      />
+    )
+  }
+
   return (
     <Tooltip>
       <TooltipTrigger asChild={isLogo}>

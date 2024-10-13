@@ -2,6 +2,7 @@ import CyberSecurityCostChart from '@/components/atoms/charts/cyber-security-cos
 import { RiskMatrix } from '@/components/atoms/charts/risk-matrix'
 import { ROIChart } from '@/components/atoms/charts/roi-chart'
 import DataTable from '@/components/molecules/data-table'
+import FindingsBarChart from '@/components/molecules/findings-bar-chart'
 import { SecurityFactorsTable } from '@/components/molecules/security-factors-table'
 import ChartCard from '@/components/organisms/charts/chart-card'
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs'
@@ -233,6 +234,12 @@ export default function ImpactAnalysisPage() {
           <div>
             <SecurityFactorsTable />
           </div>
+          <ChartCard
+            title="Impacto Financiero por Prevención de Incidentes"
+            cols={1}
+          >
+            <FindingsBarChart />
+          </ChartCard>
         </TabsContent>
         <TabsContent value="other-analysis">
           <div className="grid grid-cols-1 gap-6 md:grid-cols-2">
