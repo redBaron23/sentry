@@ -209,7 +209,7 @@ const tableData = [
 export default function ImpactAnalysisPage() {
   return (
     <div className="space-y-6">
-      <h1 className="text-3xl font-bold">Análisis de impacto</h1>
+      <h1 className="text-3xl font-bold">ROI</h1>
       <Tabs defaultValue="risk-quantification" className="justify-start">
         <TabsList className="grid w-full max-w-md mb-6 grid-cols-2">
           <TabsTrigger value="risk-quantification">

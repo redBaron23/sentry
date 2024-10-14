@@ -102,12 +102,7 @@ const ticketsPendingByPenTestChartData = {
 export default function AntivirusPage() {
   return (
     <>
-      <div className="grid grid-cols-1 gap-3 pb-3 md:grid-cols-2 xl:grid-cols-3">
-        <ChartCard title="Parches de seguridad (SCCM)">
-          <RadialChart title="Server" name="Server" value={55} />
-          <RadialChart title="Work Station" name="Work Station" value={55} />
-        </ChartCard>
-
+      <div className="grid grid-cols-1 gap-3 pb-3 md:grid-cols-2">
         <ChartCard title="Antivirus">
           <RadialChart title="Server" name="Server" value={99} />
           <RadialChart title="Work Station" name="Work Station" value={99} />

@@ -44,7 +44,7 @@ export const NAV_ITEMS = [
   },
   {
     icon: TrendingDown,
-    label: 'Análisis de Impacto',
+    label: 'ROI',
     href: PAGES.IMPACT_ANALYSIS,
   },
   {

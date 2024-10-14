@@ -1,4 +1,4 @@
-import { NewsScroll } from '@/components/organisms/news-carousel'
+import { NewsSection } from '@/components/organisms/news-carousel'
 import { BarChart } from '../../../components/atoms/charts/bar-chart'
 import { DonutChart } from '../../../components/atoms/charts/donut-chart'
 import { RadialChart } from '../../../components/atoms/charts/radial-chart'
@@ -183,9 +183,7 @@ export default function DashboardPage() {
         </ChartCard>
       </div>
       <div className="grid grid-cols-1 gap-3 pb-3 md:grid-cols-3">
-        <ChartCard title="Noticias" cols={1} cardContentClassName="h-[400px]">
-          <NewsScroll news={cybersecurityNews} />
-        </ChartCard>
+        <NewsSection news={cybersecurityNews} />
         <VulnerabilitiesIT
           baseMonth={{ label: 'Mes base', value: 4049 }}
           currentMonth={{ label: 'Octubre', value: 3501 }}
