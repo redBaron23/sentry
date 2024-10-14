@@ -19,7 +19,11 @@ function NewsItem({ title, source, timeAgo, imageUrl, link }: NewsItemProps) {
     <div className="flex items-start space-x-4 py-2">
       <div className="flex-1">
         <h3 className="text-sm font-medium leading-snug">
-          <a href={link} className="hover:underline text-primary">
+          <a
+            href={link}
+            className="hover:underline text-primary"
+            target="_blank"
+          >
             {title}
           </a>
         </h3>
