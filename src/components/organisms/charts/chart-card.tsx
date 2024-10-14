@@ -9,6 +9,7 @@ interface ChartCardProps {
   cols?: number
   icon?: LucideIcon
   className?: string
+  cardContentClassName?: string
 }
 
 const ChartCard = ({
@@ -17,6 +18,7 @@ const ChartCard = ({
   cols = 2,
   icon: Icon = ChartColumnIncreasing,
   className,
+  cardContentClassName,
 }: ChartCardProps) => {
   return (
     <Card
@@ -34,7 +36,7 @@ const ChartCard = ({
         </div>
       </CardHeader>
       <CardContent
-        className={cn('grid flex-grow gap-6 pt-6', {
+        className={cn('grid flex-grow gap-6 pt-6', cardContentClassName, {
           'grid-cols-1 md:grid-cols-2': cols === 2,
           'grid-cols-1 xl:grid-cols-3': cols === 3,
         })}

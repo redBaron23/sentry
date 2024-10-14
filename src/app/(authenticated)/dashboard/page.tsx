@@ -183,7 +183,7 @@ export default function DashboardPage() {
         </ChartCard>
       </div>
       <div className="grid grid-cols-1 gap-3 pb-3 md:grid-cols-3">
-        <ChartCard title="Noticias" cols={1}>
+        <ChartCard title="Noticias" cols={1} cardContentClassName="h-[400px]">
           <NewsScroll news={cybersecurityNews} />
         </ChartCard>
         <VulnerabilitiesIT
