@@ -182,7 +182,7 @@ export default function DashboardPage() {
           <RadialChart title="Work Station" name="Work Station" value={95} />
         </ChartCard>
       </div>
-      <div className="grid grid-cols-1 gap-3 pb-3 md:grid-cols-2">
+      <div className="grid grid-cols-1 gap-3 pb-3 md:grid-cols-3">
         <ChartCard title="Noticias" cols={1}>
           <NewsScroll news={cybersecurityNews} />
         </ChartCard>

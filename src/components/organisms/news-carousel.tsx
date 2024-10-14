@@ -40,7 +40,7 @@ function NewsItem({ title, source, timeAgo, imageUrl, link }: NewsItemProps) {
 
 export function NewsScroll({ news }: NewsScrollProps) {
   return (
-    <ScrollArea className="h-[500px] w-full">
+    <ScrollArea className="h-[400px] w-full">
       <div className="space-y-4">
         {news.map((item, index) => (
           <React.Fragment key={index}>
