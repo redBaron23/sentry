@@ -58,7 +58,7 @@ const ALERT_STATUS_DATA = {
   closedIncident: {
     label: 'Cerrado como Incidente',
     color: ChartColors.RED, // Se mantiene RED
-    quantity: 0,
+    quantity: 1,
   },
 }
 

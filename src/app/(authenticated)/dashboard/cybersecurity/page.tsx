@@ -102,20 +102,10 @@ const ticketsPendingByPenTestChartData = {
 export default function DashboardPage() {
   return (
     <>
-      <div className="grid grid-cols-1 gap-3 pb-3 md:grid-cols-2 xl:grid-cols-3">
+      <div className="grid grid-cols-1 gap-3 pb-3">
         <ChartCard title="Parches de seguridad (SCCM)">
           <RadialChart title="Server" name="Server" value={55} />
           <RadialChart title="Work Station" name="Work Station" value={55} />
-        </ChartCard>
-
-        <ChartCard title="Antivirus">
-          <RadialChart title="Server" name="Server" value={99} />
-          <RadialChart title="Work Station" name="Work Station" value={99} />
-        </ChartCard>
-
-        <ChartCard title="Bóveda de contraseñas">
-          <RadialChart title="Server" name="Server" value={97} />
-          <RadialChart title="Work Station" name="Work Station" value={95} />
         </ChartCard>
       </div>
       <div className="grid grid-cols-1 gap-3 pb-3 md:grid-cols-2">

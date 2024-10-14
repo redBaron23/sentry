@@ -54,7 +54,7 @@ export const NAV_ITEMS = [
   },
   {
     icon: LucideShieldAlert,
-    label: 'Penetration Testing',
+    label: 'Vulnerabilidades',
     href: PAGES.PENETRATION_TEST,
   },
   { icon: BugOff, label: 'Tablero de Antivirus', href: PAGES.ANTIVIRUS },

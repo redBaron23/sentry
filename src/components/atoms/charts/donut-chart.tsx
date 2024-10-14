@@ -27,7 +27,7 @@ interface Props {
 }
 
 const renderCustomizedLabel = ({ percent, quantity }: any) => {
-  return `${quantity} (${(percent * 100).toFixed(0)}%)`
+  return `${quantity} (${(percent * 100).toFixed(2)}%)`
 }
 
 export function DonutChart({ title, data }: Props) {
