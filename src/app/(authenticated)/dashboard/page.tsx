@@ -1,3 +1,4 @@
+import { NewsScroll } from '@/components/organisms/news-carousel'
 import { BarChart } from '../../../components/atoms/charts/bar-chart'
 import { DonutChart } from '../../../components/atoms/charts/donut-chart'
 import { RadialChart } from '../../../components/atoms/charts/radial-chart'
@@ -103,6 +104,65 @@ const ticketsPendingByPenTestChartData = {
   },
 }
 
+const cybersecurityNews = [
+  {
+    title: 'DoJ & Microsoft Seize 100+ Russian Hacker Domains',
+    source: 'The Hacker News',
+    timeAgo: '1 day ago',
+    imageUrl:
+      'https://cms.therecord.media/uploads/format_webp/Kremlin_1_e7d4900192.jpg?w=1080',
+    link: 'https://therecord.media/doj-microsoft-seize-domains-russian-intelligence',
+  },
+  {
+    title: 'Record-Breaking 3.8 Tbps DDoS Attack Thwarted by Cloudflare',
+    source: 'Cloudflare',
+    timeAgo: '2 days ago',
+    imageUrl:
+      'https://eadn-wc01-8182785.nxedge.io/wp-content/uploads/2024/05/cloudflare02-750x375.png',
+    link: 'https://convergedigest.com/cloudflare-mitigates-largest-ever-3-8-tbps-ddos-attack/#:~:text=The%20largest%20of%20these%20attacks,%2C%20internet%2C%20and%20telecommunications%20sectors.',
+  },
+  {
+    title: 'North Korean Hackers Deploy New VeilShell Trojan',
+    source: 'Bleeping Computer',
+    timeAgo: '3 days ago',
+    imageUrl:
+      'https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgYEfXN87k4Pzn7PnwX6FKcPhemB4Hfo1Ls4sXTFYzUtwzYMhPUzuyD23AUarS5cLAIOuKJQ43jP350Sop3GJhFSw9FcKALYvzJDh3ThY5ACpYnETQC3Uw2sAJ5UZ6tY_5k0lOHVeL30uf8mURzLaTFb566N22BCTEuxq2sD91Eu0fxVLbJg439CAOU7K_w/s728-rw-e365/malware-code.png',
+    link: 'https://thehackernews.com/2024/10/north-korean-hackers-using-new.html',
+  },
+  {
+    title: 'Fake Trading Apps on Apple and Google Stores Defraud Users',
+    source: 'Ars Technica',
+    timeAgo: '4 days ago',
+    link: 'https://timesofindia.indiatimes.com/technology/tech-news/these-fake-trading-apps-on-your-iphones-android-smartphones-are-helping-hackers-to-steal-your-money/articleshow/113946187.cms#:~:text=Hackers%20have%20scammed%20thousands%20using,the%20guise%20of%20high%20returns.',
+    imageUrl:
+      'https://static.toiimg.com/thumb/msid-113946662,imgsize-9538,width-400,resizemode-4/113946662.jpg',
+  },
+  {
+    title: 'Salt Typhoon Breached AT&T, Verizon, and Lumen Networks',
+    source: 'The Wall Street Journal',
+    timeAgo: '5 days ago',
+    imageUrl: 'https://images.wsj.net/im-859972/social',
+    link: '#',
+  },
+  {
+    title: 'U.K. and U.S. Warn of Iranian Spear-Phishing Activity',
+    source: 'National Cyber Security Centre',
+    timeAgo: '6 days ago',
+    imageUrl:
+      'https://www.ncsc.gov.uk/images/alert-no-logo-night-mustard@2x.png?mpwidth=545&mlwidth=737&twidth=961&dwidth=635&dpr=1&width=2560',
+    link: 'https://www.ncsc.gov.uk/news/uk-us-issue-alert-cyber-actors-behalf-iranian-state-carry-targeted-phishing-attacks',
+  },
+  {
+    title:
+      "Telegram's Data Policy Shift Pushes Cybercriminals to Alternative Apps",
+    source: 'ZDNet',
+    timeAgo: '1 week ago',
+    imageUrl:
+      'https://cms.therecord.media/uploads/format_webp/Telegram_e1527c82ed.jpg?w=1080',
+    link: 'https://therecord.media/telegram-alternatives-for-cybercriminals',
+  },
+]
+
 export default function DashboardPage() {
   return (
     <>
@@ -123,6 +183,9 @@ export default function DashboardPage() {
         </ChartCard>
       </div>
       <div className="grid grid-cols-1 gap-3 pb-3 md:grid-cols-2">
+        <ChartCard title="Noticias" cols={1}>
+          <NewsScroll news={cybersecurityNews} />
+        </ChartCard>
         <VulnerabilitiesIT
           baseMonth={{ label: 'Mes base', value: 4049 }}
           currentMonth={{ label: 'Octubre', value: 3501 }}
