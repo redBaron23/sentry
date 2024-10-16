@@ -182,7 +182,7 @@ export default function DashboardPage() {
           <RadialChart title="Work Station" name="Work Station" value={95} />
         </ChartCard>
       </div>
-      <div className="grid grid-cols-1 gap-3 pb-3 md:grid-cols-3">
+      <div className="grid grid-cols-1 gap-3 pb-3 lg:grid-cols-2 2xl:grid-cols-3">
         <NewsSection news={cybersecurityNews} />
         <VulnerabilitiesIT
           baseMonth={{ label: 'Mes base', value: 4049 }}
@@ -190,15 +190,18 @@ export default function DashboardPage() {
           vulnerabilitiesChartData={vulnerabilitiesChartData}
           variationPercentage={22.1}
         />
-
-        <IncidentManagement
-          criticalIncidents={0}
-          closedAlerts={[
-            { label: 'Falso Positivo', value: 348, link: '#' },
-            { label: 'Incidente', value: 0, link: '#' },
-          ]}
-          escalationDetails={[{ label: 'Fuera de Hora', value: 5, link: '#' }]}
-        />
+        <div className="lg:col-span-2 2xl:col-span-1">
+          <IncidentManagement
+            criticalIncidents={0}
+            closedAlerts={[
+              { label: 'Falso Positivo', value: 348, link: '#' },
+              { label: 'Incidente', value: 0, link: '#' },
+            ]}
+            escalationDetails={[
+              { label: 'Fuera de Hora', value: 5, link: '#' },
+            ]}
+          />
+        </div>
       </div>
       <div className="grid grid-cols-1 gap-3 pb-3 md:grid-cols-2">
         <div className="flex flex-col gap-3">

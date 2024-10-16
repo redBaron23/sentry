@@ -165,7 +165,7 @@ export default function AlertDashboardPage() {
         </ChartCard>
 
         <ChartCard title="Alertas por estado" cols={1}>
-          <DonutChart data={ALERT_STATUS_DATA} />
+          <DonutChart data={ALERT_STATUS_DATA} decimals={2} />
         </ChartCard>
       </div>
 

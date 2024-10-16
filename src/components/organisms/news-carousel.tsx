@@ -94,9 +94,7 @@ export function NewsSection({ news }: NewsSectionProps) {
         <div className="flex items-center justify-between">
           <div className="flex items-center space-x-2">
             <Newspaper className="h-5 w-5 text-muted-foreground" />
-            <CardTitle className="text-lg font-semibold">
-              Noticias de Ciberseguridad
-            </CardTitle>
+            <CardTitle className="text-lg font-semibold">Noticias</CardTitle>
           </div>
           <Tabs value={filter} onValueChange={setFilter}>
             <TabsList>
@@ -109,7 +107,7 @@ export function NewsSection({ news }: NewsSectionProps) {
         </div>
       </CardHeader>
       <CardContent>
-        <ScrollArea className="h-[600px] w-full pr-4">
+        <ScrollArea className="h-[400px] w-full pr-4">
           <div className="space-y-4">
             {filteredNews.map((item, index) => (
               <React.Fragment key={index}>

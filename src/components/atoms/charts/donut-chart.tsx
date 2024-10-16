@@ -24,13 +24,14 @@ interface PieData {
 interface Props {
   title?: string
   data: Record<string, PieData>
+  decimals?: number
 }
 
-const renderCustomizedLabel = ({ percent, quantity }: any) => {
-  return `${quantity} (${(percent * 100).toFixed(2)}%)`
+const renderCustomizedLabel = ({ percent, quantity, decimals }: any) => {
+  return `${quantity} (${(percent * 100).toFixed(decimals)}%)`
 }
 
-export function DonutChart({ title, data }: Props) {
+export function DonutChart({ title, data, decimals = 0 }: Props) {
   const totalQuantity = Object.values(data).reduce(
     (sum, item) => sum + item.quantity,
     0,
@@ -68,7 +69,9 @@ export function DonutChart({ title, data }: Props) {
                 innerRadius="50%"
                 outerRadius="80%"
                 labelLine={false}
-                label={renderCustomizedLabel}
+                label={({ percent, quantity }) =>
+                  renderCustomizedLabel({ percent, quantity, decimals })
+                }
               >
                 {chartData.map((entry, index) => (
                   <Cell key={`cell-${index}`} fill={entry.color} />
