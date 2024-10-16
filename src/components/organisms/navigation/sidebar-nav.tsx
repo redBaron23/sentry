@@ -19,7 +19,7 @@ export function SidebarNav({ children }: SidebarNavProps) {
     <div className="flex min-h-screen w-full">
       <aside
         className={cn(
-          'fixed inset-y-0 left-0 z-10 hidden flex-col border-r bg-background transition-all duration-300 ease-in-out sm:flex',
+          'fixed inset-y-0 left-0 z-10 hidden flex-col border-r bg-background transition-all duration-150 ease-in-out sm:flex',
           isExpanded ? 'w-[200px]' : 'w-14',
         )}
         onMouseEnter={() => setIsExpanded(true)}
@@ -59,7 +59,7 @@ export function SidebarNav({ children }: SidebarNavProps) {
       </aside>
       <div
         className={cn(
-          'flex flex-1 flex-col transition-all duration-300 ease-in-out',
+          'flex flex-1 flex-col transition-all duration-150 ease-in-out',
           isExpanded ? 'sm:ml-[200px]' : 'sm:ml-14',
         )}
       >
