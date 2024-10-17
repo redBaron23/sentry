@@ -5,6 +5,7 @@ import DataTable from '@/components/molecules/data-table'
 import FindingsBarChart from '@/components/molecules/findings-bar-chart'
 import { SecurityFactorsTable } from '@/components/molecules/security-factors-table'
 import ChartCard from '@/components/organisms/charts/chart-card'
+import ProviderUsage from '@/components/organisms/provider-usage'
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs'
 import { ChartBar, Shield } from 'lucide-react'
 
@@ -210,7 +211,7 @@ export default function ImpactAnalysisPage() {
   return (
     <div className="space-y-6">
       <h1 className="text-3xl font-bold">ROI</h1>
-      <Tabs defaultValue="risk-quantification" className="justify-start">
+      <Tabs defaultValue="other-analysis" className="justify-start">
         <TabsList className="grid w-full max-w-md mb-6 grid-cols-2">
           <TabsTrigger value="risk-quantification">
             <Shield className="w-4 h-4 mr-2" />
@@ -242,7 +243,7 @@ export default function ImpactAnalysisPage() {
           </ChartCard>
         </TabsContent>
         <TabsContent value="other-analysis">
-          <div className="grid grid-cols-1 gap-6 md:grid-cols-2">
+          <div className="grid grid-cols-1 gap-6 md:grid-cols-2 xl:grid-cols-3 col-span">
             <ChartCard
               title="Impacto Financiero por Prevención de Incidentes"
               cols={1}
@@ -253,7 +254,14 @@ export default function ImpactAnalysisPage() {
               title="Evolución del Perfil de Riesgo de Ciberseguridad"
               cols={1}
             >
-              <RiskMatrix title="Matriz de Riesgo" data={riskData} />
+              <RiskMatrix data={riskData} />
+            </ChartCard>
+            <ChartCard
+              title="Panel de Utilización"
+              cols={1}
+              className="col-span-2"
+            >
+              <ProviderUsage />
             </ChartCard>
           </div>
         </TabsContent>

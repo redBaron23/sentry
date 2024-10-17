@@ -33,7 +33,7 @@ interface RiskData {
 }
 
 interface Props {
-  title: string
+  title?: string
   data: RiskData[]
 }
 
