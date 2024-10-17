@@ -211,7 +211,7 @@ export default function ImpactAnalysisPage() {
   return (
     <div className="space-y-6">
       <h1 className="text-3xl font-bold">ROI</h1>
-      <Tabs defaultValue="other-analysis" className="justify-start">
+      <Tabs defaultValue="risk-quantification" className="justify-start">
         <TabsList className="grid w-full max-w-md mb-6 grid-cols-2">
           <TabsTrigger value="risk-quantification">
             <Shield className="w-4 h-4 mr-2" />
@@ -259,7 +259,7 @@ export default function ImpactAnalysisPage() {
             <ChartCard
               title="Panel de Utilización"
               cols={1}
-              className="col-span-2"
+              className="col-span-1 md:col-span-2 xl:col-span-1"
             >
               <ProviderUsage />
             </ChartCard>
