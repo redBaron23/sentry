@@ -308,7 +308,7 @@ const ProviderUsage = () => {
           </SelectContent>
         </Select>
       </div>
-      <ScrollArea className="h-[calc(100vh-120px)]">
+      <ScrollArea className="h-[calc(100vh-120px)] lg:h-[400px]">
         {/* Mobile view */}
         <div className="space-y-2 md:hidden">
           {filteredProviders.map((provider, index) => (

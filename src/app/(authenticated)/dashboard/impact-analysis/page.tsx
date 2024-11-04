@@ -6,6 +6,7 @@ import FindingsBarChart from '@/components/molecules/findings-bar-chart'
 import { SecurityFactorsTable } from '@/components/molecules/security-factors-table'
 import ChartCard from '@/components/organisms/charts/chart-card'
 import ProviderUsage from '@/components/organisms/provider-usage'
+import SecurityScoreTable from '@/components/organisms/security-score-table'
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs'
 import { ChartBar, Shield } from 'lucide-react'
 
@@ -242,7 +243,7 @@ export default function ImpactAnalysisPage() {
             <FindingsBarChart />
           </ChartCard>
         </TabsContent>
-        <TabsContent value="other-analysis">
+        <TabsContent value="other-analysis" className="flex flex-col gap-6">
           <div className="grid grid-cols-1 gap-6 md:grid-cols-2 xl:grid-cols-3 col-span">
             <ChartCard
               title="Impacto Financiero por Prevención de Incidentes"
@@ -263,6 +264,11 @@ export default function ImpactAnalysisPage() {
             >
               <ProviderUsage />
             </ChartCard>
+          </div>
+          <div className="grid grid-cols-1 gap-6 md:grid-cols-2">
+            <div className="col-span-2">
+              <SecurityScoreTable />
+            </div>
           </div>
         </TabsContent>
       </Tabs>
