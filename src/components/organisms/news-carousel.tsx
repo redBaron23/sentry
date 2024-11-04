@@ -91,7 +91,7 @@ export function NewsSection({ news }: NewsSectionProps) {
   return (
     <Card className="w-full">
       <CardHeader>
-        <div className="flex items-center justify-between">
+        <div className="flex items-center justify-between flex-col sm:flex-row">
           <div className="flex items-center space-x-2">
             <Newspaper className="h-5 w-5 text-muted-foreground" />
             <CardTitle className="text-lg font-semibold">Noticias</CardTitle>
