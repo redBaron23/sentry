@@ -233,13 +233,11 @@ export default function ImpactAnalysisPage() {
             </ChartCard>
             <DataTable items={tableData} />
           </div>
-          <div>
-            <SecurityFactorsTable />
-          </div>
           <ChartCard
             title="Impacto Financiero por Prevención de Incidentes"
-            cols={1}
+            cols={2}
           >
+            <SecurityFactorsTable />
             <FindingsBarChart />
           </ChartCard>
         </TabsContent>
