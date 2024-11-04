@@ -1,4 +1,5 @@
 import { NewsSection } from '@/components/organisms/news-carousel'
+import { VulnerabilitiesOWASP } from '@/components/organisms/vulnerabilities-owasp'
 import { BarChart } from '../../../components/atoms/charts/bar-chart'
 import { DonutChart } from '../../../components/atoms/charts/donut-chart'
 import { RadialChart } from '../../../components/atoms/charts/radial-chart'
@@ -232,21 +233,22 @@ export default function DashboardPage() {
           </ChartCard>
         </div>
       </div>
-      <div className="grid grid-cols-1 gap-3 md:grid-cols-2">
+      <div className="grid grid-cols-1 gap-3 md:grid-cols-2 pb-3">
         <ChartCard
           title="Tickets Resueltos por mes (últimos 12 meses)"
           cols={1}
         >
           <BarChart data={ticketsChartData} />
         </ChartCard>
-        <div className="grid grid-cols-1 gap-3 md:grid-cols-2">
-          <ChartCard title="Tickets Pendientes por Severidad" cols={1}>
-            <DonutChart data={ticketsPendingBySeverityChartData} />
-          </ChartCard>
-          <ChartCard title="Tickets Pendientes por Tipo de PenTest" cols={1}>
-            <DonutChart data={ticketsPendingByPenTestChartData} />
-          </ChartCard>
-        </div>
+        <VulnerabilitiesOWASP />
+      </div>
+      <div className="grid grid-cols-1 gap-3 md:grid-cols-2">
+        <ChartCard title="Tickets Pendientes por Severidad" cols={1}>
+          <DonutChart data={ticketsPendingBySeverityChartData} />
+        </ChartCard>
+        <ChartCard title="Tickets Pendientes por Tipo de PenTest" cols={1}>
+          <DonutChart data={ticketsPendingByPenTestChartData} />
+        </ChartCard>
       </div>
     </>
   )
