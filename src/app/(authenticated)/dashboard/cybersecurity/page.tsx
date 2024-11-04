@@ -2,6 +2,12 @@ import { RadialChart } from '../../../../components/atoms/charts/radial-chart'
 import ChartCard from '../../../../components/organisms/charts/chart-card'
 import { IncidentManagement } from '../../../../components/organisms/incident-management-card'
 import { VulnerabilitiesIT } from '../../../../components/organisms/vulnerabilities-it'
+import {
+  AssetExposure,
+  NewAssetDiscovered,
+  ThirdPartyCatalog,
+  VulnerabilityPosture,
+} from './components/charts'
 
 const vulnerabilitiesChartData = {
   critical: {
@@ -123,6 +129,20 @@ export default function DashboardPage() {
           ]}
           escalationDetails={[{ label: 'Fuera de Hora', value: 5, link: '#' }]}
         />
+      </div>
+
+      {/* Nuevas secciones de seguridad */}
+      <div className="grid grid-cols-1 gap-3 pb-3 md:grid-cols-2">
+        <AssetExposure />
+        <NewAssetDiscovered />
+      </div>
+
+      <div className="grid grid-cols-1 gap-3 pb-3">
+        <VulnerabilityPosture />
+      </div>
+
+      <div className="grid grid-cols-1 gap-3 pb-3">
+        <ThirdPartyCatalog />
       </div>
     </>
   )
